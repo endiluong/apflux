@@ -39,7 +39,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif-medium"
                 android:textAlignment="center"
-                android:text="Login"
+                android:text="Đăng Nhập"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
 
