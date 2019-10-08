@@ -1,4 +1,4 @@
-package com.poly.testlogin;
+package com.oldbie.applux;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -17,9 +17,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.poly.testlogin.model.ServerResponse;
-import com.poly.testlogin.network.NetworkAPI;
-import com.poly.testlogin.network.ServiceAPI;
+import com.oldbie.applux.model.ServerResponse;
+import com.oldbie.applux.network.NetworkAPI;
+import com.oldbie.applux.network.ServiceAPI;
 
 import retrofit2.Call;
 import retrofit2.Callback;

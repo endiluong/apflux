@@ -1,4 +1,4 @@
-package com.poly.testlogin;
+package com.oldbie.applux;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;

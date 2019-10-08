@@ -1,4 +1,4 @@
-package com.poly.testlogin.model;
+package com.oldbie.applux.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

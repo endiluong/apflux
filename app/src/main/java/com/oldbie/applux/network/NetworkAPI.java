@@ -1,6 +1,6 @@
-package com.poly.testlogin.network;
+package com.oldbie.applux.network;
 
-import com.poly.testlogin.model.ServerResponse;
+import com.oldbie.applux.model.ServerResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

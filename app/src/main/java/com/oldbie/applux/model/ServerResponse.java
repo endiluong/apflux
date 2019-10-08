@@ -1,4 +1,4 @@
-package com.poly.testlogin.model;
+package com.oldbie.applux.model;
 
 public class ServerResponse {
     private String message;

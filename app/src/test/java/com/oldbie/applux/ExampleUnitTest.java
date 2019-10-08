@@ -1,4 +1,4 @@
-package com.poly.testlogin;
+package com.oldbie.applux;
 
 import org.junit.Test;
 
