@@ -7,7 +7,7 @@
     android:animateLayoutChanges="true"
     android:background="@drawable/grad_bg"
     android:fitsSystemWindows="true"
-    tools:context="com.poly.testlogin.LoginActitity">
+    tools:context=".LoginActitity">
 
     <RelativeLayout
         android:id="@+id/rellay0"
@@ -40,7 +40,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:textAlignment="center"
                 android:text="Login"
-                android:textColor="@color/white"
+                android:textColor="@color/whitegraylight"
                 android:textSize="30sp" />
 
             <LinearLayout
@@ -51,64 +51,47 @@
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    style="@style/LoginTextInputLayoutStyle"
+                    android:theme="@style/LoginTextInputLayoutStyle"
+                    android:textColorHint="#fff"
+                    app:boxStrokeColor="#fff">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="Username"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
-
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etUser"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/et_bg"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:inputType="textPersonName"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/whitegraylight"
                         android:fontFamily="sans-serif-light"
-                        android:text="Password"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
+                        android:hint="Username"
 
-                    <EditText
+                        android:textSize="15sp"
+                        android:inputType="textPersonName"
+                        android:layout_marginTop="5dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/LoginTextInputLayoutStyle"
+                    android:theme="@style/LoginTextInputLayoutStyle"
+                    android:textColorHint="#fff"
+                    app:boxStrokeColor="#fff">
+
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPass"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/et_bg"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/whitegraylight"
                         android:fontFamily="sans-serif-light"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:inputType="textPassword"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
+                        android:hint="Password"
 
-                </LinearLayout>
+                        android:textSize="15sp"
+                        android:inputType="textPersonName"
+                        android:layout_marginTop="5dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
@@ -119,13 +102,13 @@
                 android:layout_below="@+id/linlay1"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/btn_bg"
+                android:background="#8EC9D7"
                 android:fontFamily="sans-serif-medium"
                 android:paddingLeft="70dp"
                 android:paddingRight="70dp"
                 android:text="Login Now"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="@color/whitegraylight"
                 android:textSize="16sp" />
 
         </RelativeLayout>
