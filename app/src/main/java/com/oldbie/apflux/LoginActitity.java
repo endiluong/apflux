@@ -269,13 +269,13 @@ public class LoginActitity extends AppCompatActivity {
 
     private void updateUI(GoogleSignInAccount account) {
         if (account != null){
-//            Toast.makeText(LoginActitity.this,"Google already logged in", LENGTH_SHORT).show();
-            Toast.makeText(LoginActitity.this,
-                    account.getDisplayName() + "\n"+
-                            account.getGivenName() + "\n"+
-                            account.getFamilyName() + "\n"+
-                            account.getEmail() + "\n"+
-                            account.getId(), LENGTH_LONG).show();
+            Toast.makeText(LoginActitity.this,"Google account already logged in", LENGTH_SHORT).show();
+//            Toast.makeText(LoginActitity.this,
+//                    account.getDisplayName() + "\n"+
+//                            account.getGivenName() + "\n"+
+//                            account.getFamilyName() + "\n"+
+//                            account.getEmail() + "\n"+
+//                            account.getId(), LENGTH_LONG).show();
             Intent i = new Intent(getBaseContext(), MainActivity.class);
             startActivity(i);
             finish();

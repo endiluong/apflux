@@ -102,7 +102,7 @@ public class FragmentUser extends Fragment {
                 intent.putExtra("email", email);
                 intent.putExtra("thumb", thumb);
                 intent.putExtra("date", date);
-                startActivityForResult(intent, 10001);
+//                startActivityForResult(intent, 10001);
                 startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
@@ -117,7 +117,7 @@ public class FragmentUser extends Fragment {
                 intent.putExtra("email", email);
                 intent.putExtra("thumb", thumb);
                 intent.putExtra("date", date);
-                startActivityForResult(intent, 10001);
+//                startActivityForResult(intent, 10001);
                 startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
