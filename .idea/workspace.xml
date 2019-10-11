@@ -141,7 +141,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_user_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/oldbie/apflux/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/oldbie/apflux/LoginActitity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/oldbie/apflux/adapter/TimeTableAdapter.java" />
@@ -153,7 +152,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="45" />
     <option name="y" value="23" />
     <option name="width" value="1383" />
@@ -184,7 +183,6 @@
               <item name="apflux" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
           </expand>
           <select />
@@ -352,7 +350,7 @@
       <window_info anchor="bottom" id="Flutter Performance" order="10" side_tool="true" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" weight="0.32960477" />
+      <window_info anchor="right" id="Gradle" order="2" weight="0.3290469" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Preview" order="4" weight="0.19062027" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
@@ -360,6 +358,18 @@
       <window_info anchor="right" id="Flutter Outline" order="7" />
       <window_info anchor="right" id="Codota" order="8" />
     </layout>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/oldbie/apflux/fragment/FragmentTimetable.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/btn_bg.xml" />

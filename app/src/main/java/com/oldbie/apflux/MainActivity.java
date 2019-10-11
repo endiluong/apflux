@@ -38,14 +38,11 @@ public class MainActivity extends AppCompatActivity {
 
         AppBarLayout appbar = findViewById(R.id.appbarMain);
         appbar.setElevation( 0 );
-
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
         adapter.notifyDataSetChanged();
 
         viewPager.setOnPageChangeListener( new ViewPager.OnPageChangeListener() {
@@ -71,11 +68,7 @@ public class MainActivity extends AppCompatActivity {
 //                        tabLayout.getTabAt( position ).setIcon( R.drawable.socials_color );
 
                         break;
-
                 }
-
-
-
             }
 
             @Override
