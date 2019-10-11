@@ -13,14 +13,14 @@
         android:id="@+id/rellay0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp">
+        android:layout_marginTop="@dimen/_100sdp"
+        android:layout_marginLeft="@dimen/_25sdp"
+        android:layout_marginRight="@dimen/_25sdp">
 
         <ImageView
             android:id="@+id/imgView_logo"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="@dimen/_50sdp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:src="@drawable/white_book_icon" />
@@ -36,7 +36,7 @@
                 android:id="@+id/tv_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:fontFamily="sans-serif-medium"
                 android:textAlignment="center"
                 android:text="Login"
@@ -48,10 +48,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_login"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILUser"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     style="@style/LoginTextInputLayoutStyle"
@@ -66,19 +67,22 @@
                         android:textColor="@color/whitegraylight"
                         android:fontFamily="sans-serif-light"
                         android:hint="Username"
-
-                        android:textSize="15sp"
+                        android:textSize="@dimen/_12sdp"
                         android:inputType="textPersonName"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="@dimen/_3sdp"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILPass"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     style="@style/LoginTextInputLayoutStyle"
                     android:theme="@style/LoginTextInputLayoutStyle"
+                    android:layout_marginTop="@dimen/_6sdp"
                     android:textColorHint="#fff"
-                    app:boxStrokeColor="#fff">
+                    app:boxStrokeColor="#fff"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@android:color/white">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPass"
@@ -87,10 +91,9 @@
                         android:textColor="@color/whitegraylight"
                         android:fontFamily="sans-serif-light"
                         android:hint="Password"
-
-                        android:textSize="15sp"
-                        android:inputType="textPersonName"
-                        android:layout_marginTop="5dp"/>
+                        android:textSize="@dimen/_12sdp"
+                        android:inputType="textPassword"
+                        android:layout_marginTop="@dimen/_3sdp"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -98,18 +101,25 @@
             <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/linlay1"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="@dimen/_18sdp"
                 android:background="#8EC9D7"
                 android:fontFamily="sans-serif-medium"
-                android:paddingLeft="70dp"
-                android:paddingRight="70dp"
-                android:text="Login Now"
+                android:paddingLeft="@dimen/_40sdp"
+                android:paddingRight="@dimen/_40sdp"
+                android:text="Login"
                 android:textAllCaps="false"
                 android:textColor="@color/whitegraylight"
-                android:textSize="16sp" />
+                android:textSize="@dimen/_12sdp" />
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/sign_in_button"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnLogin"/>
 
         </RelativeLayout>
 
@@ -119,7 +129,7 @@
         android:id="@+id/loadingPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/_6sdp"
         android:layout_below="@+id/rellay0"
         android:gravity="center" >
 

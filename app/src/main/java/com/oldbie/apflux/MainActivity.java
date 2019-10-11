@@ -1,4 +1,4 @@
-package com.oldbie.applux;
+package com.oldbie.apflux;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
-import com.oldbie.applux.adapter.FragmentAdapter;
+import com.oldbie.apflux.adapter.FragmentAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         imageView=findViewById( R.id.ivBackground );
         collapsingToolbarLayout=findViewById( R.id.collapsingLayout );
         tabLayout=findViewById( R.id.tabLayout );
-        viewPager=findViewById( R.id.viewPaper );
+        viewPager=(ViewPager) findViewById( R.id.viewPaper );
 
         adapter = new FragmentAdapter( getSupportFragmentManager(),this );
         tabLayout.setupWithViewPager( viewPager );
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         AppBarLayout appbar = findViewById(R.id.appbarMain);
         appbar.setElevation( 0 );
+
 
     }
 

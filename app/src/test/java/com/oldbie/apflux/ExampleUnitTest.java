@@ -1,4 +1,4 @@
-package com.oldbie.applux;
+package com.oldbie.apflux;
 
 import org.junit.Test;
 

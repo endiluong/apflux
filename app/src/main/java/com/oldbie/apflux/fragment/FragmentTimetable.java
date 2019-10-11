@@ -1,4 +1,5 @@
-package com.oldbie.applux.fragment;
+package com.oldbie.apflux.fragment;
+
 
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
 
 import com.oldbie.applux.R;
 import com.oldbie.applux.adapter.TimeTableAdapter;

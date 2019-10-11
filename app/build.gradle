@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.oldbie.applux"
+        applicationId "com.oldbie.apflux"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -33,6 +33,11 @@ dependencies {
     //library Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    //Load Image. //
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+//    implementation 'de.hdodenhof:circleimageview:2.1.0'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
