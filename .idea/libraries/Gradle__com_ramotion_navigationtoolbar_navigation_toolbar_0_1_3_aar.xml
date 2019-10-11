@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.ramotion.navigationtoolbar:navigation-toolbar:0.1.3@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d38d6a7299938213187d7192ff9da371/navigation-toolbar-0.1.3/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d38d6a7299938213187d7192ff9da371/navigation-toolbar-0.1.3/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/776a57bf92ce997986e60703ba9f4639/navigation-toolbar-0.1.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/776a57bf92ce997986e60703ba9f4639/navigation-toolbar-0.1.3/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
