@@ -1,11 +1,11 @@
-package com.oldbie.applux.adapter;
+package com.oldbie.apflux.adapter;
 
 import android.content.Context;
 
-import com.oldbie.applux.R;
-import com.oldbie.applux.fragment.FragmentHome;
-import com.oldbie.applux.fragment.FragmentTimetable;
-import com.oldbie.applux.fragment.FragmentUser;
+import com.oldbie.apflux.R;
+import com.oldbie.apflux.fragment.FragmentHome;
+import com.oldbie.apflux.fragment.FragmentTimetable;
+import com.oldbie.apflux.fragment.FragmentUser;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

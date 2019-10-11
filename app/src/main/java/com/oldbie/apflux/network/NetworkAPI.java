@@ -1,7 +1,7 @@
-package com.oldbie.applux.network;
+package com.oldbie.apflux.network;
 
-import com.oldbie.applux.model.ModelUser;
-import com.oldbie.applux.model.ServerResponse;
+import com.oldbie.apflux.model.ModelUser;
+import com.oldbie.apflux.model.ServerResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -1,4 +1,4 @@
-package com.oldbie.applux;
+package com.oldbie.apflux;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -29,9 +29,9 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.oldbie.applux.model.ServerResponse;
-import com.oldbie.applux.network.NetworkAPI;
-import com.oldbie.applux.network.ServiceAPI;
+import com.oldbie.apflux.model.ServerResponse;
+import com.oldbie.apflux.network.NetworkAPI;
+import com.oldbie.apflux.network.ServiceAPI;
 
 import retrofit2.Call;
 import retrofit2.Callback;

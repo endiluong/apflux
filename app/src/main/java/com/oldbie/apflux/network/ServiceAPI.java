@@ -1,4 +1,4 @@
-package com.oldbie.applux.network;
+package com.oldbie.apflux.network;
 
 import java.util.concurrent.TimeUnit;
 

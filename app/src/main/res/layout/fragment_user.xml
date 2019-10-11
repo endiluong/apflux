@@ -59,7 +59,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/lnNoti"
+        android:id="@+id/lnDetail"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:layout_alignParentEnd="true"
@@ -76,7 +76,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/_10sdp"
             android:fontFamily="sans-serif-medium"
-            android:text="Info"
+            android:text="Detai Infomation"
             android:textColor="@color/white"
             android:textSize="@dimen/_13sdp" />
     </LinearLayout>

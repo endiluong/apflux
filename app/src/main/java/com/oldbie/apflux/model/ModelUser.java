@@ -1,4 +1,4 @@
-package com.oldbie.applux.model;
+package com.oldbie.apflux.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

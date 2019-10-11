@@ -1,4 +1,4 @@
-package com.oldbie.applux.fragment;
+package com.oldbie.apflux.fragment;
 
 
 import android.annotation.SuppressLint;
@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.renderscript.RenderScript;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,24 +22,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.oldbie.applux.DetailUserActivity;
-import com.oldbie.applux.LoginActitity;
-import com.oldbie.applux.MainActivity;
-import com.oldbie.applux.R;
-import com.oldbie.applux.model.ModelUser;
-import com.oldbie.applux.network.NetworkAPI;
-import com.oldbie.applux.network.ServiceAPI;
+import com.oldbie.apflux.DetailUserActivity;
+import com.oldbie.apflux.LoginActitity;
+import com.oldbie.apflux.R;
+import com.oldbie.apflux.model.ModelUser;
+import com.oldbie.apflux.network.NetworkAPI;
+import com.oldbie.apflux.network.ServiceAPI;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Date;
-import java.util.concurrent.Executor;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -58,7 +51,7 @@ public class FragmentUser extends Fragment {
     GoogleSignInClient mGoogleSignInClient;
     String name, email, thumb, user;
     Date date;
-    LinearLayout lnProfile;
+    LinearLayout lnProfile,lnDetail;
     TextView tvName, tvUsername;
     ImageView imvProfile;
     Button btnLogout;
@@ -78,6 +71,7 @@ public class FragmentUser extends Fragment {
         api = ServiceAPI.userService(NetworkAPI.class);
 
         lnProfile = view.findViewById(R.id.lnProfileSum);
+        lnDetail = view.findViewById(R.id.lnDetail);
         tvName = view.findViewById(R.id.tvProfileName);
         tvUsername = view.findViewById(R.id.tvRole);
         imvProfile = view.findViewById(R.id.imvProfile);
@@ -100,6 +94,21 @@ public class FragmentUser extends Fragment {
         });
 
         lnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), DetailUserActivity.class);
+                intent.putExtra("user", user);
+                intent.putExtra("name", name);
+                intent.putExtra("email", email);
+                intent.putExtra("thumb", thumb);
+                intent.putExtra("date", date);
+                startActivityForResult(intent, 10001);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+            }
+        });
+
+        lnDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), DetailUserActivity.class);
@@ -157,7 +166,7 @@ public class FragmentUser extends Fragment {
                             Glide.with(getContext()).load(response.body().getThumb())
                                     .apply(centerCropTransform()
                                             .placeholder(R.raw.loading)
-                                            .error(R.raw.error)
+//                                            .error(R.raw.error)
 //                                            .priority(RenderScript.Priority.HIGH)
                                             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC))
                                     .transition(withCrossFade())
