@@ -9,17 +9,17 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import androidx.fragment.app.Fragment;
 
-import com.oldbie.applux.R;
+import com.oldbie.apflux.R;
+import com.oldbie.apflux.network.NetworkAPI;
+import com.oldbie.apflux.network.ServiceAPI;
 import com.oldbie.applux.adapter.TimeTableAdapter;
 import com.oldbie.applux.model.TimeTable;
-import com.oldbie.applux.network.NetworkAPI;
-import com.oldbie.applux.network.ServiceAPI;
 import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.List;
 
-import androidx.fragment.app.Fragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

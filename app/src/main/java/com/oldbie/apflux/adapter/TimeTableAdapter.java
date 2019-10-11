@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.oldbie.applux.R;
+import com.oldbie.apflux.R;
 import com.oldbie.applux.model.TimeTable;
 import com.ramotion.foldingcell.FoldingCell;
 

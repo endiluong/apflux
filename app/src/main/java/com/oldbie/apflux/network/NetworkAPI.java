@@ -1,6 +1,6 @@
-package com.oldbie.applux.network;
+package com.oldbie.apflux.network;
 
-import com.oldbie.applux.model.ServerResponse;
+import com.oldbie.apflux.model.ServerResponse;
 import com.oldbie.applux.model.TimeTable;
 
 import java.util.List;

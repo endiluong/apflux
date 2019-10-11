@@ -64,12 +64,13 @@
                         android:id="@+id/etUser"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/whitegraylight"
+                        android:layout_marginTop="@dimen/_3sdp"
                         android:fontFamily="sans-serif-light"
                         android:hint="Username"
-                        android:textSize="@dimen/_12sdp"
                         android:inputType="textPersonName"
-                        android:layout_marginTop="@dimen/_3sdp"/>
+                        android:text="admin2"
+                        android:textColor="@color/whitegraylight"
+                        android:textSize="@dimen/_12sdp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -88,12 +89,13 @@
                         android:id="@+id/etPass"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/whitegraylight"
+                        android:layout_marginTop="@dimen/_3sdp"
                         android:fontFamily="sans-serif-light"
                         android:hint="Password"
-                        android:textSize="@dimen/_12sdp"
                         android:inputType="textPassword"
-                        android:layout_marginTop="@dimen/_3sdp"/>
+                        android:text="123456789"
+                        android:textColor="@color/whitegraylight"
+                        android:textSize="@dimen/_12sdp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
