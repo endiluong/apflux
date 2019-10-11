@@ -29,7 +29,7 @@ public class FragmentHome extends Fragment {
         // Inflate the layout for this fragment
         View view=inflater.inflate( R.layout.fragment_home, container, false );
 
-        lvMain=(ListView) view.findViewById( R.id.lvMain );
+//        lvMain=(ListView) view.findViewById( R.id.lvMain );
 
         return view;
     }

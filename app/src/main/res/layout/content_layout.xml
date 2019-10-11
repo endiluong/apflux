@@ -4,7 +4,7 @@
     android:layout_height="wrap_content">
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="715dp"
+        android:layout_height="@dimen/_560sdp"
         android:id="@+id/viewPaper">
 
     </androidx.viewpager.widget.ViewPager>

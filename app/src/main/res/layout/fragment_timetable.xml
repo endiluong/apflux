@@ -6,9 +6,16 @@
     tools:context=".fragment.FragmentTimetable">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+        android:layout_height="@dimen/_560sdp"
+        android:id="@+id/lvMain"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"
+        android:paddingBottom="@dimen/_6sdp"
+        android:paddingLeft="@dimen/_6sdp"
+        android:paddingRight="@dimen/_6sdp"
+        android:paddingTop="@dimen/_6sdp" />
 </FrameLayout>

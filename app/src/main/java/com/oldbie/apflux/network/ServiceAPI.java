@@ -12,6 +12,8 @@ public class ServiceAPI {
     public static String BASE_URL = "";
     public static String FOLDER_USER = "https://mangahay.net/test/api_for_user/";
 
+    public static String URL_TIMETABLE = "https://jsonstorage.net/api/items/";
+
     public static <S> S userService(Class<S> serviceClass) {
 
         OkHttpClient httpClient = new OkHttpClient.Builder()
@@ -34,5 +36,19 @@ public class ServiceAPI {
                 .baseUrl(GET_DATA_COMIC)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+    }
+
+    private static Retrofit getRetrofitData() {
+        return new Retrofit.Builder()
+                .baseUrl(URL_TIMETABLE)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+//    private static Retrofit retrofit = new Retrofit.Builder().baseUrl( "https://jsonstorage.net/").addConverterFactory( GsonConverterFactory.create()).build();
+
+    public static NetworkAPI getDataJSON(){
+
+        return getRetrofitData().create( NetworkAPI.class );
     }
 }

@@ -6,18 +6,5 @@
     tools:context=".fragment.FragmentHome">
 
     <!-- TODO: Update blank fragment layout -->
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lvMain"
-        android:background="@drawable/bg_gradient_1"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="10dp"
-        android:paddingBottom="@dimen/_6sdp"
-        android:paddingLeft="@dimen/_6sdp"
-        android:paddingRight="@dimen/_6sdp"
-        android:paddingTop="@dimen/_6sdp"
-        android:scrollbars="none"/>
+
 </FrameLayout>
