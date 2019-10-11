@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -26,6 +28,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.oldbie.applux.model.ServerResponse;
 import com.oldbie.applux.network.NetworkAPI;
 import com.oldbie.applux.network.ServiceAPI;
@@ -42,6 +45,7 @@ public class LoginActitity extends AppCompatActivity {
     RelativeLayout rellay1;
     ImageView imageView;
     EditText etUser,etPass;
+    TextInputLayout TILPass,TILUser;
     Button btnLogin;
     private NetworkAPI api;
     GoogleSignInClient mGoogleSignInClient;
@@ -55,8 +59,6 @@ public class LoginActitity extends AppCompatActivity {
             findViewById(R.id.loadingPanel).setVisibility(View.GONE);
         }
     };
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,8 @@ public class LoginActitity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         etUser = findViewById(R.id.etUser);
         etPass = findViewById(R.id.etPass);
+        TILPass = findViewById(R.id.TILPass);
+        TILUser = findViewById(R.id.TILUser);
         // Set the dimensions of the sign-in button.
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
@@ -140,6 +144,41 @@ public class LoginActitity extends AppCompatActivity {
                     }
                 }
                 return false;
+            }
+        });
+
+        OnTextChanged();
+    }
+
+    //OnTextChangedListener
+    private void OnTextChanged(){
+        etUser.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                TILUser.setErrorEnabled(false); // disable error
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        etPass.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                TILPass.setErrorEnabled(false); // disable error
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
             }
         });
     }
@@ -208,11 +247,12 @@ public class LoginActitity extends AppCompatActivity {
         String password = etPass.getText().toString();
 
         if (user.isEmpty()) {
-            etUser.setError("User can't be empty!");
+            TILUser.setError("User can't be empty!");
             valid = false;
         }
-        if (password.isEmpty()) {
-            etPass.setError("Password must from 8 characters!");
+        if (password.length() <= 8) {
+            TILPass.setError("Password must from 8 characters!");
+
             valid = false;
         }
         return valid;

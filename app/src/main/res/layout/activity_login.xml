@@ -52,6 +52,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILUser"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     style="@style/LoginTextInputLayoutStyle"
@@ -72,6 +73,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TILPass"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     style="@style/LoginTextInputLayoutStyle"
@@ -89,7 +91,6 @@
                         android:textColor="@color/whitegraylight"
                         android:fontFamily="sans-serif-light"
                         android:hint="Password"
-
                         android:textSize="@dimen/_12sdp"
                         android:inputType="textPassword"
                         android:layout_marginTop="@dimen/_3sdp"/>

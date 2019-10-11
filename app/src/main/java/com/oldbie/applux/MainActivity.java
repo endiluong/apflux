@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         imageView=findViewById( R.id.ivBackground );
         collapsingToolbarLayout=findViewById( R.id.collapsingLayout );
         tabLayout=findViewById( R.id.tabLayout );
-        viewPager=findViewById( R.id.viewPaper );
+        viewPager=(ViewPager) findViewById( R.id.viewPaper );
 
         adapter = new FragmentAdapter( getSupportFragmentManager(),this );
         tabLayout.setupWithViewPager( viewPager );
