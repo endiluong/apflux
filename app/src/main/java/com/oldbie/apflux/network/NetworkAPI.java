@@ -1,24 +1,31 @@
 package com.oldbie.apflux.network;
 
 import com.oldbie.apflux.model.ServerResponse;
-import com.oldbie.applux.model.TimeTable;
+import com.oldbie.apflux.model.TimeTable;
+import com.oldbie.apflux.model.User;
 
 import java.util.List;
-import com.oldbie.apflux.model.ModelUser;
-import com.oldbie.apflux.model.ServerResponse;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
+import retrofit2.http.POST;
 
 public interface NetworkAPI {
 
-    @GET("api_check_user.php")
-    Call<ServerResponse> checkLogin(@Query("user") String user,
-                                    @Query("pass") String pass);
+    @POST("api_login.php")
+    @FormUrlEncoded
+    Call<ServerResponse> checkLogin(@Field("user") String user,
+                                    @Field("pass") String pass);
 
-    @GET("api_get_user.php")
-    Call<ModelUser> getUser(@Query("user") String user);
+    @POST("api_login.php")
+    @FormUrlEncoded
+    Call<ServerResponse> getUser(@Field("user") String user);
+
+    @GET("api_login.php")
+    Call<ServerResponse> getAllUser(  );
+
     @GET("aee9b644-52bf-4fb5-a3c1-371b1803192d")
     Call<List<TimeTable>> getAllData(  );
 

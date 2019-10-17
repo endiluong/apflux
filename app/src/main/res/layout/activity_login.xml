@@ -68,7 +68,6 @@
                         android:fontFamily="sans-serif-light"
                         android:hint="Username"
                         android:inputType="textPersonName"
-                        android:text="admin2"
                         android:textColor="@color/whitegraylight"
                         android:textSize="@dimen/_12sdp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -93,7 +92,6 @@
                         android:fontFamily="sans-serif-light"
                         android:hint="Password"
                         android:inputType="textPassword"
-                        android:text="123456789"
                         android:textColor="@color/whitegraylight"
                         android:textSize="@dimen/_12sdp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -102,12 +100,12 @@
 
             <Button
                 android:id="@+id/btnLogin"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linlay1"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_18sdp"
-                android:background="#8EC9D7"
+                android:background="@drawable/btn_bg"
                 android:fontFamily="sans-serif-medium"
                 android:paddingLeft="@dimen/_40sdp"
                 android:paddingRight="@dimen/_40sdp"

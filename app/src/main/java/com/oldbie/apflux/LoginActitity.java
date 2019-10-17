@@ -6,6 +6,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -27,11 +29,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.oldbie.apflux.model.ServerResponse;
+import com.oldbie.apflux.model.User;
 import com.oldbie.apflux.network.NetworkAPI;
 import com.oldbie.apflux.network.ServiceAPI;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,6 +55,8 @@ public class LoginActitity extends AppCompatActivity {
     Button btnLogin;
     private NetworkAPI api;
     GoogleSignInClient mGoogleSignInClient;
+    public static ArrayList<User> arrSSR;
+    String user,pass;
 
     //Animation
     Handler handler = new Handler();
@@ -122,6 +130,7 @@ public class LoginActitity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signIn();
+                login();
             }
 
         });
@@ -188,6 +197,18 @@ public class LoginActitity extends AppCompatActivity {
         startActivityForResult(signInIntent, 101);
     }
 
+    private void signOut() {
+        mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                // ...
+                Intent i = new Intent(getBaseContext(), LoginActitity.class);
+                startActivity(i);
+            }
+        });
+    }
+
+
     public void login(){
         final ProgressDialog dialog = ProgressDialog.show(LoginActitity.this, "Authenticating",
                 "Wait a bit mate!", true);
@@ -210,8 +231,8 @@ public class LoginActitity extends AppCompatActivity {
     }
 
     public void onLoginSuccess() {
-        final String user = etUser.getText().toString();
-        final String pass = etPass.getText().toString();
+//        final String user = etUser.getText().toString();
+//        final String pass = etPass.getText().toString();
 
         Call<ServerResponse> call = api.checkLogin(user, pass);
         call.enqueue(new Callback<ServerResponse>() {
@@ -219,12 +240,21 @@ public class LoginActitity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 if (response.body().getResult() == 1) {
-                    Toast.makeText(LoginActitity.this,"Successful", LENGTH_LONG).show();
+//                    final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+//                    SharedPreferences.Editor editor = prefs.edit();
+//                    editor.putBoolean("isTempLoggedIn", true);
+//                    editor.putString("user", user);
+//                    editor.putString("pass", pass);
+//                    editor.commit();
+                    arrSSR = response.body().getData();
+                    Toast.makeText(getBaseContext(), arrSSR.get(0).getId(), Toast.LENGTH_LONG).show();
                     Intent i = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(i);
             } else {
                     Toast.makeText(LoginActitity.this,"Failed!", LENGTH_LONG).show();
-                Log.e(TAG," Response Error " + response.code());
+                    Log.e(TAG," Response Error " + response.body().getResult());
+                    Log.e(TAG," Fail ");
+                signOut();
             }
         }
 
@@ -242,19 +272,19 @@ public class LoginActitity extends AppCompatActivity {
 
     public boolean validate() {
         boolean valid = true;
-
-        String user = etUser.getText().toString();
-        String password = etPass.getText().toString();
-
-        if (user.isEmpty()) {
-            TILUser.setError("User can't be empty!");
-            valid = false;
-        }
-        if (password.length() <= 8) {
-            TILPass.setError("Password must from 8 characters!");
-
-            valid = false;
-        }
+//
+//        String user = etUser.getText().toString();
+//        String password = etPass.getText().toString();
+//
+//        if (user.isEmpty()) {
+//            TILUser.setError("User can't be empty!");
+//            valid = false;
+//        }
+//        if (password.length() <= 8) {
+//            TILPass.setError("Password must from 8 characters!");
+//
+//            valid = false;
+//        }
         return valid;
     }
 
@@ -269,16 +299,18 @@ public class LoginActitity extends AppCompatActivity {
 
     private void updateUI(GoogleSignInAccount account) {
         if (account != null){
-            Toast.makeText(LoginActitity.this,"Google account already logged in", LENGTH_SHORT).show();
+//            Toast.makeText(LoginActitity.this,"Google account already logged in", LENGTH_SHORT).show();
+            user = account.getEmail();
+            pass = account.getEmail();
 //            Toast.makeText(LoginActitity.this,
 //                    account.getDisplayName() + "\n"+
 //                            account.getGivenName() + "\n"+
 //                            account.getFamilyName() + "\n"+
 //                            account.getEmail() + "\n"+
 //                            account.getId(), LENGTH_LONG).show();
-            Intent i = new Intent(getBaseContext(), MainActivity.class);
-            startActivity(i);
-            finish();
+//            Intent i = new Intent(getBaseContext(), MainActivity.class);
+//            startActivity(i);
+//            finish();
         } else {
             Log.d(TAG, "Not logged in");
         }
@@ -330,6 +362,5 @@ public class LoginActitity extends AppCompatActivity {
         });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-//        super.onBackPressed();
     }
 }
