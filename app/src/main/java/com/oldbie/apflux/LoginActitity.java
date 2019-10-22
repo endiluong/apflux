@@ -17,10 +17,12 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -50,9 +52,9 @@ public class LoginActitity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     RelativeLayout rellay1;
     ImageView imageView;
-    EditText etUser,etPass;
-    TextInputLayout TILPass,TILUser;
-    Button btnLogin;
+//    EditText etUser,etPass;
+//    TextInputLayout TILPass,TILUser;
+//    Button btnLogin;
     private NetworkAPI api;
     GoogleSignInClient mGoogleSignInClient;
     public static ArrayList<User> arrSSR;
@@ -86,11 +88,11 @@ public class LoginActitity extends AppCompatActivity {
 
         rellay1 = findViewById(R.id.rellay1);
         imageView = findViewById(R.id.imgView_logo);
-        btnLogin = findViewById(R.id.btnLogin);
-        etUser = findViewById(R.id.etUser);
-        etPass = findViewById(R.id.etPass);
-        TILPass = findViewById(R.id.TILPass);
-        TILUser = findViewById(R.id.TILUser);
+//        btnLogin = findViewById(R.id.btnLogin);
+//        etUser = findViewById(R.id.etUser);
+//        etPass = findViewById(R.id.etPass);
+//        TILPass = findViewById(R.id.TILPass);
+//        TILUser = findViewById(R.id.TILUser);
         // Set the dimensions of the sign-in button.
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
@@ -116,81 +118,81 @@ public class LoginActitity extends AppCompatActivity {
             }
         });
 
-        //button OnClickListener
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-
-        });
+//        //button OnClickListener
+//        btnLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                login();
+//            }
+//
+//        });
 
         //google button OnClickListener
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn();
-                login();
             }
 
         });
 
         //press Enter to login
-        etPass.setOnKeyListener(new View.OnKeyListener()
-        {
-            public boolean onKey(View v, int keyCode, KeyEvent event)
-            {
-                if (event.getAction() == KeyEvent.ACTION_DOWN)
-                {
-                    switch (keyCode)
-                    {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            login();
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-                return false;
-            }
-        });
+//        etPass.setOnKeyListener(new View.OnKeyListener()
+//        {
+//            public boolean onKey(View v, int keyCode, KeyEvent event)
+//            {
+//                if (event.getAction() == KeyEvent.ACTION_DOWN)
+//                {
+//                    switch (keyCode)
+//                    {
+//                        case KeyEvent.KEYCODE_DPAD_CENTER:
+//                        case KeyEvent.KEYCODE_ENTER:
+//                            login();
+//                            return true;
+//                        default:
+//                            break;
+//                    }
+//                }
+//                return false;
+//            }
+//        });
 
-        OnTextChanged();
+//        OnTextChanged();
+
     }
 
     //OnTextChangedListener
-    private void OnTextChanged(){
-        etUser.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                TILUser.setErrorEnabled(false); // disable error
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-
-        etPass.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                TILPass.setErrorEnabled(false); // disable error
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-    }
+//    private void OnTextChanged(){
+//        etUser.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                TILUser.setErrorEnabled(false); // disable error
+//            }
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//            }
+//        });
+//
+//        etPass.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                TILPass.setErrorEnabled(false); // disable error
+//            }
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//            }
+//        });
+//    }
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -202,8 +204,7 @@ public class LoginActitity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 // ...
-                Intent i = new Intent(getBaseContext(), LoginActitity.class);
-                startActivity(i);
+            onRestart();
             }
         });
     }
@@ -224,7 +225,6 @@ public class LoginActitity extends AppCompatActivity {
                         } else {
                             onLoginFailed();
                         }
-                        // onLoginFailed();
                         dialog.dismiss();
                     }
                 }, 2000);
@@ -239,35 +239,32 @@ public class LoginActitity extends AppCompatActivity {
             @SuppressLint("ResourceType")
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-                if (response.body().getResult() == 1) {
-//                    final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-//                    SharedPreferences.Editor editor = prefs.edit();
-//                    editor.putBoolean("isTempLoggedIn", true);
-//                    editor.putString("user", user);
-//                    editor.putString("pass", pass);
-//                    editor.commit();
+                if (response.body().getResult()==1) {
                     arrSSR = response.body().getData();
                     Toast.makeText(getBaseContext(), arrSSR.get(0).getId(), Toast.LENGTH_LONG).show();
                     Intent i = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(i);
             } else {
                     Toast.makeText(LoginActitity.this,"Failed!", LENGTH_LONG).show();
-                    Log.e(TAG," Response Error " + response.body().getResult());
-                    Log.e(TAG," Fail ");
-                signOut();
+                    startActivity(new Intent(getApplicationContext(),LoginActitity.class));
+                    Log.e(TAG, "onResponse: "+ response.body().getResult());
+                    finish();
+
             }
         }
 
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 Log.e(TAG," Response Error "+ t.getMessage());
+                Toast.makeText(getBaseContext(),"Wrong Account", Toast.LENGTH_LONG).show();
+                signOut();
             }
         });
     }
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Username Or Password Isn't Correct!", LENGTH_SHORT).show();
-        btnLogin.setEnabled(true);
+//        btnLogin.setEnabled(true);
     }
 
     public boolean validate() {
@@ -326,6 +323,7 @@ public class LoginActitity extends AppCompatActivity {
             // a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
+            login();
         }
     }
 

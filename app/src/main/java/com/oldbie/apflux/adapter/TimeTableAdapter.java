@@ -1,4 +1,4 @@
-package com.oldbie.applux.adapter;
+package com.oldbie.apflux.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.oldbie.apflux.R;
-import com.oldbie.applux.model.TimeTable;
+import com.oldbie.apflux.model.TimeTable;
 import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.HashSet;

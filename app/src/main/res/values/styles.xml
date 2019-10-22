@@ -30,4 +30,10 @@
         <item name="boxStrokeWidth">2dp</item>
     </style>
 
+    <style name="spinnerTheme">
+        <item name="android:textColor">@color/whitegraylight</item>
+        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="android:background">@drawable/spinner_border</item>
+    </style>
+
 </resources>

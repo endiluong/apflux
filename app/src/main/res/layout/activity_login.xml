@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:id="@+id/rellay0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_100sdp"
+        android:layout_marginTop="@dimen/_160sdp"
         android:layout_marginLeft="@dimen/_25sdp"
         android:layout_marginRight="@dimen/_25sdp">
 
@@ -30,113 +30,55 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgView_logo"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/tv_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_30sdp"
                 android:fontFamily="sans-serif-medium"
                 android:textAlignment="center"
                 android:text="Login"
                 android:textColor="@color/whitegraylight"
                 android:textSize="30sp" />
-
-            <LinearLayout
-                android:id="@+id/linlay1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_login"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:orientation="vertical">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/TILUser"
+                <Spinner
+                    android:layout_below="@+id/tv_login"
+                    android:id="@+id/spinner1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    style="@style/LoginTextInputLayoutStyle"
-                    android:theme="@style/LoginTextInputLayoutStyle"
-                    android:textColorHint="#fff"
-                    app:boxStrokeColor="#fff">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etUser"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_3sdp"
-                        android:fontFamily="sans-serif-light"
-                        android:hint="Username"
-                        android:inputType="textPersonName"
-                        android:textColor="@color/whitegraylight"
-                        android:textSize="@dimen/_12sdp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/TILPass"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    style="@style/LoginTextInputLayoutStyle"
-                    android:theme="@style/LoginTextInputLayoutStyle"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:textColorHint="#fff"
-                    app:boxStrokeColor="#fff"
-                    app:passwordToggleEnabled="true"
-                    app:passwordToggleTint="@android:color/white">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etPass"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_3sdp"
-                        android:fontFamily="sans-serif-light"
-                        android:hint="Password"
-                        android:inputType="textPassword"
-                        android:textColor="@color/whitegraylight"
-                        android:textSize="@dimen/_12sdp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btnLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linlay1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_18sdp"
-                android:background="@drawable/btn_bg"
-                android:fontFamily="sans-serif-medium"
-                android:paddingLeft="@dimen/_40sdp"
-                android:paddingRight="@dimen/_40sdp"
-                android:text="Login"
-                android:textAllCaps="false"
-                android:textColor="@color/whitegraylight"
-                android:textSize="@dimen/_12sdp" />
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/_16sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:prompt="@string/place_prompt"
+                    android:popupBackground="@color/colorPrimaryDark"
+                    android:theme="@style/spinnerTheme"
+                    android:entries="@array/place_arrays"
+                    />
 
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/sign_in_button"
                 android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/btnLogin"/>
+                android:paddingTop="@dimen/_10sdp"
+                android:layout_below="@+id/spinner1"
+                android:visibility="visible"/>
 
         </RelativeLayout>
 
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/loadingPanel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_6sdp"
-        android:layout_below="@+id/rellay0"
-        android:gravity="center" >
-
-        <ProgressBar
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/loadingPanel"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:indeterminate="true" />
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_below="@+id/imgView_logo"
+            android:gravity="center" >
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true" />
+        </RelativeLayout>
     </RelativeLayout>
 
-</RelativeLayout>
+</ScrollView>

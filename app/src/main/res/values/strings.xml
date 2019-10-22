@@ -6,5 +6,17 @@
     <string name="timetable">Time Table</string>
     <string name="user">User</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="place_prompt">Choose a place</string>
+
+    <string-array name="place_arrays">
+        <item>FPT Polytechnic Hà Nội</item>
+        <item>FPT Polytechnic Đà Nẵng</item>
+        <item>FPT Polytechnic Hồ Chí Minh</item>
+        <item>FPT Polytechnic Tây Nguyên</item>
+        <item>FPT Polytechnic HO</item>
+        <item>FPT Polytechnic Cần Thơ</item>
+        <item>FPT Polytechnic 9+</item>
+        <item>FPT Polytechnic HiTech</item>
+    </string-array>
 
 </resources>
