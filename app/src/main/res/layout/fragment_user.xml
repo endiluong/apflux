@@ -16,23 +16,25 @@
         android:layout_marginLeft="@dimen/_3sdp"
         android:layout_marginRight="@dimen/_3sdp"
         android:elevation="@dimen/_2sdp"
+
         android:background="@color/colorPrimaryDark"
         android:orientation="vertical"
         >
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/imvProfile"
+            android:src="@drawable/person"
+            android:layout_gravity="center"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_60sdp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:src="@drawable/person"/>
+            app:civ_border_width="2dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:civ_border_color="#FF000000"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-
-            android:layout_marginLeft="@dimen/_15sdp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvProfileName"
