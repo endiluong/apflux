@@ -13,6 +13,7 @@ public class ServiceAPI {
     public static String FOLDER_USER = "api_for_user/";
 
     public static String URL_TIMETABLE = "https://jsonstorage.net/api/items/";
+//public static String URL_TIMETABLE = "https://mangahay.net/test/api_for_user/";
 
     public static <S> S userService(Class<S> serviceClass) {
 
@@ -39,7 +40,7 @@ public class ServiceAPI {
                 .build();
     }
 
-//    private static Retrofit retrofit = new Retrofit.Builder().baseUrl( "https://jsonstorage.net/").addConverterFactory( GsonConverterFactory.create()).build();
+    private static Retrofit retrofit = new Retrofit.Builder().baseUrl( "https://jsonstorage.net/").addConverterFactory( GsonConverterFactory.create()).build();
 
     public static NetworkAPI getDataJSON(){
 

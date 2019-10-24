@@ -1,6 +1,5 @@
 package com.oldbie.apflux.fragment;
 
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import androidx.fragment.app.Fragment;
-
 import com.oldbie.apflux.R;
+import com.oldbie.apflux.adapter.TimeTableAdapter;
+import com.oldbie.apflux.model.TimeTable;
 import com.oldbie.apflux.network.NetworkAPI;
 import com.oldbie.apflux.network.ServiceAPI;
 import com.oldbie.apflux.adapter.TimeTableAdapter;
@@ -20,6 +19,7 @@ import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.List;
 
+import androidx.fragment.app.Fragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
