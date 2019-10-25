@@ -90,6 +90,10 @@ public class LoginActitity extends AppCompatActivity {
         rellay1 = findViewById(R.id.rellay1);
         imageView = findViewById(R.id.imgView_logo);
 
+        // Set the dimensions of the sign-in button.
+        final SignInButton signInButton = findViewById(R.id.sign_in_button);
+        signInButton.setSize(SignInButton.SIZE_STANDARD);
+
         //Spinner set
         ITEMS = getResources().getStringArray(R.array.place_arrays);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ITEMS){
@@ -103,6 +107,7 @@ public class LoginActitity extends AppCompatActivity {
                     tv.setHeight(0);
                     tv.setVisibility(View.GONE);
                     v = tv;
+
                 }
                 else {
                     // Pass convertView as null to prevent reuse of special case views
@@ -123,6 +128,9 @@ public class LoginActitity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.white));
+                if (position != 0) {
+                    signInButton.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -130,10 +138,6 @@ public class LoginActitity extends AppCompatActivity {
 
             }
         });
-
-        // Set the dimensions of the sign-in button.
-        SignInButton signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
 
         //Animation
         handler.postDelayed(runnable, 2000); //2000 is the timeout for the splash

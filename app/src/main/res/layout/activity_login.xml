@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/_10sdp"
                 android:layout_below="@+id/linlay1"
-                android:visibility="visible"/>
+                android:visibility="gone"/>
 
         </RelativeLayout>
 
