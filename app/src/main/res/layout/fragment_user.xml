@@ -17,7 +17,7 @@
         android:layout_marginRight="@dimen/_3sdp"
         android:elevation="@dimen/_2sdp"
 
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         android:orientation="vertical"
         >
         <de.hdodenhof.circleimageview.CircleImageView
@@ -29,7 +29,7 @@
             android:layout_height="@dimen/_60sdp"
             app:civ_border_width="2dp"
             android:layout_marginTop="@dimen/_8sdp"
-            app:civ_border_color="#FF000000"/>
+            app:civ_border_color="#ffffff"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,7 +69,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_3sdp"
         android:elevation="@dimen/_2sdp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         android:outlineAmbientShadowColor="@color/colorAccent">
 
         <TextView
@@ -92,7 +92,7 @@
         android:layout_marginLeft="@dimen/_3sdp"
         android:layout_marginRight="@dimen/_3sdp"
         android:elevation="@dimen/_2sdp"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimary">
 
         <TextView
             android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
         android:layout_marginLeft="@dimen/_3sdp"
         android:layout_marginRight="@dimen/_3sdp"
         android:elevation="@dimen/_2sdp"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimary">
 
         <TextView
             android:layout_width="wrap_content"

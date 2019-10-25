@@ -9,6 +9,7 @@
     <string name="place_prompt">Choose a place</string>
 
     <string-array name="place_arrays">
+        <item>Please choose your Campus</item>
         <item>FPT Polytechnic Hà Nội</item>
         <item>FPT Polytechnic Đà Nẵng</item>
         <item>FPT Polytechnic Hồ Chí Minh</item>

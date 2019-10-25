@@ -47,7 +47,11 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0-beta04'
     implementation 'androidx.cardview:cardview:1.0.0'
 
+    //Folding cell
     implementation 'com.ramotion.foldingcell:folding-cell:1.2.3'
+
+    //Spinner
+    implementation 'com.github.ganfra:material-spinner:2.0.0'
 
 
 }

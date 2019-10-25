@@ -5,17 +5,25 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Handler;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -33,6 +41,7 @@ import com.oldbie.apflux.network.ServiceAPI;
 
 import java.util.ArrayList;
 
+import fr.ganfra.materialspinner.MaterialSpinner;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,13 +53,13 @@ public class LoginActitity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     RelativeLayout rellay1;
     ImageView imageView;
-//    EditText etUser,etPass;
-//    TextInputLayout TILPass,TILUser;
-//    Button btnLogin;
+    MaterialSpinner spinner;
     private NetworkAPI api;
     GoogleSignInClient mGoogleSignInClient;
     public static ArrayList<User> arrSSR;
     String user,pass;
+    private String[] ITEMS = null;
+    private ArrayAdapter<String> adapter;
 
     //Animation
     Handler handler = new Handler();
@@ -80,11 +89,48 @@ public class LoginActitity extends AppCompatActivity {
 
         rellay1 = findViewById(R.id.rellay1);
         imageView = findViewById(R.id.imgView_logo);
-//        btnLogin = findViewById(R.id.btnLogin);
-//        etUser = findViewById(R.id.etUser);
-//        etPass = findViewById(R.id.etPass);
-//        TILPass = findViewById(R.id.TILPass);
-//        TILUser = findViewById(R.id.TILUser);
+
+        //Spinner set
+        ITEMS = getResources().getStringArray(R.array.place_arrays);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ITEMS){
+            @Override
+            public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View v;
+
+                // If this is the initial dummy entry, make it hidden
+                if (position == 0) {
+                    TextView tv = new TextView(getContext());
+                    tv.setHeight(0);
+                    tv.setVisibility(View.GONE);
+                    v = tv;
+                }
+                else {
+                    // Pass convertView as null to prevent reuse of special case views
+                    v = super.getDropDownView(position, null, parent);
+                }
+
+                // Hide scroll bar because it appears sometimes unnecessarily, this does not prevent scrolling
+                parent.setVerticalScrollBarEnabled(false);
+                return v;
+            }
+        };
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner = findViewById(R.id.spinner);
+        spinner.setAdapter(adapter);
+        spinner.setPaddingSafe(0, 0, 0, 0);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.white));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         // Set the dimensions of the sign-in button.
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
@@ -110,16 +156,7 @@ public class LoginActitity extends AppCompatActivity {
             }
         });
 
-//        //button OnClickListener
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                login();
-//            }
-//
-//        });
-
-        //google button OnClickListener
+        //Google button OnClickListener
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,64 +164,7 @@ public class LoginActitity extends AppCompatActivity {
             }
 
         });
-
-        //press Enter to login
-//        etPass.setOnKeyListener(new View.OnKeyListener()
-//        {
-//            public boolean onKey(View v, int keyCode, KeyEvent event)
-//            {
-//                if (event.getAction() == KeyEvent.ACTION_DOWN)
-//                {
-//                    switch (keyCode)
-//                    {
-//                        case KeyEvent.KEYCODE_DPAD_CENTER:
-//                        case KeyEvent.KEYCODE_ENTER:
-//                            login();
-//                            return true;
-//                        default:
-//                            break;
-//                    }
-//                }
-//                return false;
-//            }
-//        });
-
-//        OnTextChanged();
-
     }
-
-    //OnTextChangedListener
-//    private void OnTextChanged(){
-//        etUser.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                TILUser.setErrorEnabled(false); // disable error
-//            }
-//
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//            }
-//        });
-//
-//        etPass.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                TILPass.setErrorEnabled(false); // disable error
-//            }
-//
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//            }
-//        });
-//    }
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -204,28 +184,21 @@ public class LoginActitity extends AppCompatActivity {
 
     public void login(){
         final ProgressDialog dialog = ProgressDialog.show(LoginActitity.this, "Authenticating",
-                "Wait a bit mate!", true);
+                "Please Wait...", true);
         dialog.show();
 
         //authentication from server
         new Handler().postDelayed(
                 new Runnable() {
                     public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        if (validate()){
+                        // On complete call either onLoginSuccess
                             onLoginSuccess();
-                        } else {
-                            onLoginFailed();
-                        }
                         dialog.dismiss();
                     }
                 }, 2000);
     }
 
     public void onLoginSuccess() {
-//        final String user = etUser.getText().toString();
-//        final String pass = etPass.getText().toString();
-
         Call<ServerResponse> call = api.checkLogin(user, pass);
         call.enqueue(new Callback<ServerResponse>() {
             @SuppressLint("ResourceType")
@@ -237,7 +210,7 @@ public class LoginActitity extends AppCompatActivity {
                     Intent i = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(i);
             } else {
-                    Toast.makeText(LoginActitity.this,"Failed!", LENGTH_LONG).show();
+                    Toast.makeText(LoginActitity.this,"Error!", LENGTH_LONG).show();
                     startActivity(new Intent(getApplicationContext(),LoginActitity.class));
                     Log.e(TAG, "onResponse: "+ response.body().getResult());
                     finish();
@@ -248,33 +221,10 @@ public class LoginActitity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 Log.e(TAG," Response Error "+ t.getMessage());
-                Toast.makeText(getBaseContext(),"Wrong Account", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(),"This account is not authorized!", Toast.LENGTH_LONG).show();
                 signOut();
             }
         });
-    }
-
-    public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Username Or Password Isn't Correct!", LENGTH_SHORT).show();
-//        btnLogin.setEnabled(true);
-    }
-
-    public boolean validate() {
-        boolean valid = true;
-//
-//        String user = etUser.getText().toString();
-//        String password = etPass.getText().toString();
-//
-//        if (user.isEmpty()) {
-//            TILUser.setError("User can't be empty!");
-//            valid = false;
-//        }
-//        if (password.length() <= 8) {
-//            TILPass.setError("Password must from 8 characters!");
-//
-//            valid = false;
-//        }
-        return valid;
     }
 
     @Override
@@ -288,18 +238,15 @@ public class LoginActitity extends AppCompatActivity {
 
     private void updateUI(GoogleSignInAccount account) {
         if (account != null){
-//            Toast.makeText(LoginActitity.this,"Google account already logged in", LENGTH_SHORT).show();
             user = account.getEmail();
             pass = account.getEmail();
+            //Get Google infomation
 //            Toast.makeText(LoginActitity.this,
 //                    account.getDisplayName() + "\n"+
 //                            account.getGivenName() + "\n"+
 //                            account.getFamilyName() + "\n"+
 //                            account.getEmail() + "\n"+
 //                            account.getId(), LENGTH_LONG).show();
-//            Intent i = new Intent(getBaseContext(), MainActivity.class);
-//            startActivity(i);
-//            finish();
         } else {
             Log.d(TAG, "Not logged in");
         }
@@ -308,11 +255,9 @@ public class LoginActitity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == 101) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
+            // The Task returned from this call is always completed, no need to attach a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
             login();

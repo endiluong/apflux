@@ -14,15 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.oldbie.apflux.MainActivity">
+
+        </activity>
+        <activity android:name="com.oldbie.apflux.DetailUserActivity"></activity>
+        <activity android:name="com.oldbie.apflux.LoginActitity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name="com.oldbie.apflux.DetailUserActivity"></activity>
-        <activity android:name="com.oldbie.apflux.LoginActitity"
-            android:screenOrientation="portrait">
         </activity>
     </application>
 

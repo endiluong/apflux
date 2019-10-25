@@ -51,18 +51,18 @@
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
-                <Spinner
-                    android:layout_below="@+id/tv_login"
-                    android:id="@+id/spinner1"
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/_16sdp"
-                    android:paddingBottom="@dimen/_10sdp"
-                    android:prompt="@string/place_prompt"
-                    android:popupBackground="@color/colorPrimaryDark"
-                    android:theme="@style/spinnerTheme"
-                    android:entries="@array/place_arrays"
-                    />
+
+                    app:ms_arrowColor="@color/whiteyellow"
+                    app:ms_arrowSize="16dp"
+                    app:ms_floatingLabelColor="@color/white"
+                    app:ms_floatingLabelText="Campus"
+                    app:ms_baseColor="@color/white"
+                    app:ms_highlightColor="@color/white"
+                    app:ms_multiline="true" />
 
             </LinearLayout>
 
@@ -90,7 +90,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminate="true" />
+            android:indeterminate="true"/>
     </RelativeLayout>
 
 </RelativeLayout>
