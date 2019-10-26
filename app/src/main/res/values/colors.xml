@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <color name="colorPrimary">#FFFDE4</color>
+    <color name="colorPrimary">#2EABF7</color>
     <color name="colorPrimaryDark">#005AA7</color>
-    <color name="colorAccent">#007FEB</color>
+    <color name="colorAccent">#003049</color>
 
     <color name="white">#FFFFFF</color>
+    <color name="whiteyellow">#FFFDE4</color>
     <color name="whitegraylight">#F8F8F8</color>
     <color name="transparent">#00000000</color>
     <color name="gradStart">#005AA7</color>

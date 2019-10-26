@@ -13,14 +13,14 @@
         android:id="@+id/rellay0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_100sdp"
-        android:layout_marginLeft="@dimen/_25sdp"
-        android:layout_marginRight="@dimen/_25sdp">
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp">
 
         <ImageView
             android:id="@+id/imgView_logo"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="80dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:src="@drawable/white_book_icon" />
@@ -36,7 +36,7 @@
                 android:id="@+id/tv_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif-medium"
                 android:textAlignment="center"
                 android:text="Login"
@@ -48,80 +48,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_login"
-                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/TILUser"
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    style="@style/LoginTextInputLayoutStyle"
-                    android:theme="@style/LoginTextInputLayoutStyle"
-                    android:textColorHint="#fff"
-                    app:boxStrokeColor="#fff">
+                    android:layout_height="wrap_content"
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etUser"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_3sdp"
-                        android:fontFamily="sans-serif-light"
-                        android:hint="Username"
-                        android:inputType="textPersonName"
-                        android:text="admin2"
-                        android:textColor="@color/whitegraylight"
-                        android:textSize="@dimen/_12sdp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/TILPass"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    style="@style/LoginTextInputLayoutStyle"
-                    android:theme="@style/LoginTextInputLayoutStyle"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:textColorHint="#fff"
-                    app:boxStrokeColor="#fff"
-                    app:passwordToggleEnabled="true"
-                    app:passwordToggleTint="@android:color/white">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etPass"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_3sdp"
-                        android:fontFamily="sans-serif-light"
-                        android:hint="Password"
-                        android:inputType="textPassword"
-                        android:text="123456789"
-                        android:textColor="@color/whitegraylight"
-                        android:textSize="@dimen/_12sdp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    app:ms_arrowColor="@color/whiteyellow"
+                    app:ms_arrowSize="16dp"
+                    app:ms_floatingLabelColor="@color/white"
+                    app:ms_floatingLabelText="Campus"
+                    app:ms_baseColor="@color/white"
+                    app:ms_highlightColor="@color/white"
+                    app:ms_multiline="true" />
 
             </LinearLayout>
-
-            <Button
-                android:id="@+id/btnLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linlay1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_18sdp"
-                android:background="#8EC9D7"
-                android:fontFamily="sans-serif-medium"
-                android:paddingLeft="@dimen/_40sdp"
-                android:paddingRight="@dimen/_40sdp"
-                android:text="Login"
-                android:textAllCaps="false"
-                android:textColor="@color/whitegraylight"
-                android:textSize="@dimen/_12sdp" />
 
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/sign_in_button"
                 android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/btnLogin"/>
+                android:paddingTop="@dimen/_10sdp"
+                android:layout_below="@+id/linlay1"
+                android:visibility="gone"/>
 
         </RelativeLayout>
 
@@ -131,14 +83,14 @@
         android:id="@+id/loadingPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/rellay0"
         android:gravity="center" >
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminate="true" />
+            android:indeterminate="true"/>
     </RelativeLayout>
 
 </RelativeLayout>

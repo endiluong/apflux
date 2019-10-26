@@ -8,9 +8,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceAPI {
 
-    public static String GET_DATA_COMIC = "https://mangahay.net/test";
-    public static String BASE_URL = "";
-    public static String FOLDER_USER = "https://mangahay.net/test/api_for_user/";
+    public static String BASE_URL = "https://mangahay.net/test/";
+
+    public static String FOLDER_USER = "api_for_user/";
 
     public static String URL_TIMETABLE = "https://jsonstorage.net/api/items/";
 //public static String URL_TIMETABLE = "https://mangahay.net/test/api_for_user/";
@@ -32,12 +32,6 @@ public class ServiceAPI {
 
     }
 
-    private static Retrofit getRetrofitInstance() {
-        return new Retrofit.Builder()
-                .baseUrl(GET_DATA_COMIC)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-    }
 
     private static Retrofit getRetrofitData() {
         return new Retrofit.Builder()
@@ -51,5 +45,20 @@ public class ServiceAPI {
     public static NetworkAPI getDataJSON(){
 
         return getRetrofitData().create( NetworkAPI.class );
+    }
+
+
+    //.. TEST GET ALL USER Info ..//
+
+    private static Retrofit getRetrofitDataUser() {
+        return new Retrofit.Builder()
+                .baseUrl(BASE_URL + FOLDER_USER)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+    public static NetworkAPI getDataJSONUser(){
+
+        return getRetrofitDataUser().create( NetworkAPI.class );
     }
 }
