@@ -32,22 +32,6 @@ public class ServiceAPI {
 
     }
 
-
-    private static Retrofit getRetrofitData() {
-        return new Retrofit.Builder()
-                .baseUrl(URL_TIMETABLE)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-    }
-
-    private static Retrofit retrofit = new Retrofit.Builder().baseUrl( "https://jsonstorage.net/").addConverterFactory( GsonConverterFactory.create()).build();
-
-    public static NetworkAPI getDataJSON(){
-
-        return getRetrofitData().create( NetworkAPI.class );
-    }
-
-
     //.. TEST GET ALL USER Info ..//
 
     private static Retrofit getRetrofitDataUser() {

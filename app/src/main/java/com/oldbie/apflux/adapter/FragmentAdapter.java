@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.oldbie.apflux.R;
 import com.oldbie.apflux.fragment.FragmentHome;
+import com.oldbie.apflux.fragment.FragmentNews;
 import com.oldbie.apflux.fragment.FragmentTimetable;
 import com.oldbie.apflux.fragment.FragmentUser;
 
@@ -31,6 +32,8 @@ public class FragmentAdapter extends FragmentPagerAdapter {
                 return new FragmentTimetable();
             case 2:
                 return new FragmentUser();
+            case 3:
+                return new FragmentNews();
         }
         return null;
     }
@@ -45,13 +48,15 @@ public class FragmentAdapter extends FragmentPagerAdapter {
                 return context.getString( R.string.timetable);
             case 2:
                 return context.getString( R.string.user);
+            case 3:
+                return context.getString( R.string.news);
         }
 
         return super.getPageTitle( position );
     }
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
 }
