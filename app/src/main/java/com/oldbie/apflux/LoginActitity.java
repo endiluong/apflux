@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Handler;
 
 import androidx.annotation.NonNull;
@@ -13,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -22,7 +20,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +44,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.widget.Toast.LENGTH_LONG;
-import static android.widget.Toast.LENGTH_SHORT;
 
 public class LoginActitity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
@@ -59,7 +55,6 @@ public class LoginActitity extends AppCompatActivity {
     public static ArrayList<User> arrSSR;
     String user,pass;
     private String[] ITEMS = null;
-    private ArrayAdapter<String> adapter;
 
     //Animation
     Handler handler = new Handler();
@@ -76,6 +71,10 @@ public class LoginActitity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        rellay1 = findViewById(R.id.rellay1);
+        imageView = findViewById(R.id.imgView_logo);
+        spinner = findViewById(R.id.spinner);
+
         //Google Login Services
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -87,16 +86,16 @@ public class LoginActitity extends AppCompatActivity {
         //registerUser ServiceAPI and call getJSON from server
         api = ServiceAPI.userService(NetworkAPI.class);
 
-        rellay1 = findViewById(R.id.rellay1);
-        imageView = findViewById(R.id.imgView_logo);
-
         // Set the dimensions of the sign-in button.
         final SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
 
         //Spinner set
         ITEMS = getResources().getStringArray(R.array.place_arrays);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ITEMS){
+        // If this is the initial dummy entry, make it hidden
+        // Pass convertView as null to prevent reuse of special case views
+        // Hide scroll bar because it appears sometimes unnecessarily, this does not prevent scrolling
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ITEMS) {
             @Override
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View v;
@@ -107,9 +106,7 @@ public class LoginActitity extends AppCompatActivity {
                     tv.setHeight(0);
                     tv.setVisibility(View.GONE);
                     v = tv;
-
-                }
-                else {
+                } else {
                     // Pass convertView as null to prevent reuse of special case views
                     v = super.getDropDownView(position, null, parent);
                 }
@@ -120,8 +117,8 @@ public class LoginActitity extends AppCompatActivity {
             }
         };
 
+        //Set spinner adapter
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner = findViewById(R.id.spinner);
         spinner.setAdapter(adapter);
         spinner.setPaddingSafe(0, 0, 0, 0);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -170,11 +167,13 @@ public class LoginActitity extends AppCompatActivity {
         });
     }
 
+    //SignIn with Google
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, 101);
     }
 
+    //SignOut with Google
     private void signOut() {
         mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
             @Override
@@ -184,7 +183,6 @@ public class LoginActitity extends AppCompatActivity {
             }
         });
     }
-
 
     public void login(){
         final ProgressDialog dialog = ProgressDialog.show(LoginActitity.this, "Authenticating",
@@ -210,7 +208,7 @@ public class LoginActitity extends AppCompatActivity {
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 if (response.body().getResult()==1) {
                     arrSSR = response.body().getData();
-                    Toast.makeText(getBaseContext(), arrSSR.get(0).getId(), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getBaseContext(), arrSSR.get(0).getId(), Toast.LENGTH_LONG).show();
                     Intent i = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(i);
             } else {

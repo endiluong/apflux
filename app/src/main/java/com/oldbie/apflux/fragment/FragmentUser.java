@@ -1,7 +1,5 @@
 package com.oldbie.apflux.fragment;
 
-
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -77,13 +75,6 @@ public class FragmentUser extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
                         signOut();
-//                        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-//                        SharedPreferences.Editor editor = prefs.edit();
-//                        editor.remove("user");
-//                        editor.remove("pass");
-//                        editor.remove("isLoggedIn");
-//                        editor.remove("isTempLoggedIn");
-//                        editor.apply();
                         Intent a = new Intent(getContext(), LoginActitity.class);
                         startActivity(a);
                     }
@@ -96,9 +87,6 @@ public class FragmentUser extends Fragment {
                 });
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
-
-
-
             }
         });
 
@@ -106,14 +94,7 @@ public class FragmentUser extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), DetailUserActivity.class);
-//                intent.putExtra("user", user);
-//                intent.putExtra("name", name);
-//                intent.putExtra("email", email);
-//                intent.putExtra("thumb", thumb);
-//                intent.putExtra("date", date);
-//                startActivityForResult(intent, 10001);
                 startActivity(intent);
-//                getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
 
@@ -121,20 +102,11 @@ public class FragmentUser extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), DetailUserActivity.class);
-//                intent.putExtra("user", user);
-//                intent.putExtra("name", name);
-//                intent.putExtra("email", email);
-//                intent.putExtra("thumb", thumb);
-//                intent.putExtra("date", date);
-//                startActivityForResult(intent, 10001);
                 startActivity(intent);
-//                getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
 
         getUserDetail();
-//
-//        getUserProfile(AccessToken.getCurrentAccessToken());
         return view;
 
     }
@@ -152,7 +124,7 @@ public class FragmentUser extends Fragment {
 
     public void getUserDetail() {
         tvName.setText(LoginActitity.arrSSR.get(0).getName());
-        tvUsername.setText(LoginActitity.arrSSR.get(0).getUsername());
+        tvUsername.setText(LoginActitity.arrSSR.get(0).getEmail());
         avt = LoginActitity.arrSSR.get(0).getAvatar();
 
         RequestOptions options = new RequestOptions()

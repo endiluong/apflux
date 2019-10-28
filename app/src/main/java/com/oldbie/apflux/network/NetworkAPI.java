@@ -19,14 +19,7 @@ public interface NetworkAPI {
     Call<ServerResponse> checkLogin(@Field("user") String user,
                                     @Field("pass") String pass);
 
-    @POST("api_login.php")
-    @FormUrlEncoded
-    Call<ServerResponse> getUser(@Field("user") String user);
-
-    @GET("api_login.php")
-    Call<ServerResponse> getAllUser(  );
-
     @GET("aee9b644-52bf-4fb5-a3c1-371b1803192d")
-    Call<List<TimeTable>> getAllData(  );
+    Call<List<TimeTable>> getAllData();
 
 }
