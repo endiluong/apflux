@@ -84,7 +84,7 @@
                 android:layout_marginLeft="@dimen/_3sdp"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginRight="@dimen/_3sdp"
-                android:background="@color/colorPrimary"
+                android:background="@color/colorPrimaryDark"
                 android:elevation="@dimen/_2sdp"
                 android:orientation="vertical"
                 android:outlineAmbientShadowColor="@color/colorAccent">

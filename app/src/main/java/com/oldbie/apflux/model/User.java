@@ -50,7 +50,7 @@ public class User implements Serializable, Parcelable {
     @SerializedName("specialize")
     @Expose
     private String specialize;
-    @SerializedName("course")
+    @SerializedName("class")
     @Expose
     private String course;
     @SerializedName("start_date")
