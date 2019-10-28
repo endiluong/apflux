@@ -1,5 +1,6 @@
 package com.oldbie.apflux.network;
 
+import com.oldbie.apflux.model.ResponseTimeTable;
 import com.oldbie.apflux.model.ServerResponse;
 import com.oldbie.apflux.model.TimeTable;
 import com.oldbie.apflux.model.User;
@@ -26,7 +27,8 @@ public interface NetworkAPI {
     @GET("api_login.php")
     Call<ServerResponse> getAllUser(  );
 
-    @GET("aee9b644-52bf-4fb5-a3c1-371b1803192d")
-    Call<List<TimeTable>> getAllData(  );
+    @POST("api_get_time_table.php")
+    @FormUrlEncoded
+    Call<ResponseTimeTable> getAllData(@Field("sid") String id);
 
 }

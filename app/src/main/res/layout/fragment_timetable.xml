@@ -17,7 +17,8 @@
         android:paddingBottom="@dimen/_6sdp"
         android:paddingLeft="@dimen/_6sdp"
         android:paddingRight="@dimen/_6sdp"
-        android:paddingTop="@dimen/_6sdp" />
+        android:paddingTop="@dimen/_6sdp"
+        android:background="#e8e8e8"/>
 
 <!--    <androidx.recyclerview.widget.RecyclerView-->
 <!--        android:layout_width="match_parent"-->
