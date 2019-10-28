@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="320dp"
-    android:visibility="gone">
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -193,17 +193,6 @@
                         android:text="Title view"
                         android:textSize="@dimen/_16sdp"/>
                 </LinearLayout>
-                <TextView
-                    android:id="@+id/content_request_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="32dp"
-                    android:background="@drawable/bg_gradient_3"
-                    android:padding="10dp"
-                    android:gravity="center"
-                    android:text="Button Request"
-                    android:textSize="20sp"
-                    android:textColor="#fff"
-                    android:visibility="gone"/>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

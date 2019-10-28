@@ -35,10 +35,9 @@ public class FragmentTimetable extends Fragment {
 
     private String TAG = "TimeTable";
 
-    TimeTable timeTable;
     ListView lvMain;
 
-    ArrayList<TimeTable> arrBanana;
+    ArrayList<TimeTable> arrTimeTable;
     //.. ..//
     FoldingCell fc;
     NetworkAPI api;
@@ -98,9 +97,9 @@ public class FragmentTimetable extends Fragment {
                     @Override
                     public void onResponse(Call<ResponseTimeTable> call, Response<ResponseTimeTable> response) {
                         if(response.body().getResult()==1){
-                            arrBanana=response.body().getData();
-                            for(int i=0;i<arrBanana.size();i++){
-                                adapter=new TimeTableAdapter( getContext(),arrBanana );
+                            arrTimeTable=response.body().getData();
+                            for(int i=0;i<arrTimeTable.size();i++){
+                                adapter=new TimeTableAdapter( getContext(),arrTimeTable );
                                 lvMain.setAdapter( adapter );
                             }
                         }else{

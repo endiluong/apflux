@@ -43,7 +43,7 @@ public class TimeTable {
     @Expose
     private String mSlot;
 
-    private View.OnClickListener requestBtnClickListener;
+//    private View.OnClickListener requestBtnClickListener;
 
 
     public TimeTable() { }
@@ -60,13 +60,14 @@ public class TimeTable {
         this.mSlot = mSlot;
     }
 
-    public View.OnClickListener getRequestBtnClickListener() {
-        return requestBtnClickListener;
-    }
-
-    public void setRequestBtnClickListener(View.OnClickListener requestBtnClickListener) {
-        this.requestBtnClickListener = requestBtnClickListener;
-    }
+//
+//    public View.OnClickListener getRequestBtnClickListener() {
+//        return requestBtnClickListener;
+//    }
+//
+//    public void setRequestBtnClickListener(View.OnClickListener requestBtnClickListener) {
+//        this.requestBtnClickListener = requestBtnClickListener;
+//    }
 
     public String getmId() {
         return mId;

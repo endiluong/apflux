@@ -20,7 +20,6 @@ import androidx.annotation.Nullable;
 public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
 
     private HashSet<Integer> unfoldedIndexes = new HashSet<>();
-    private View.OnClickListener defaultRequestBtnClickListener;
 
     public TimeTableAdapter(Context context, List<TimeTable> objects) {
         super(context, 0, objects);
@@ -59,7 +58,7 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
             viewHolder.tvIdSubject_content =cell.findViewById( R.id.tvIdSubject_content );
             viewHolder.tvClass_content =cell.findViewById( R.id.tvClass_content );
             viewHolder.tvSlot_content =cell.findViewById( R.id.tvSlot_content );
-            viewHolder.contentRequestBtn = cell.findViewById(R.id.content_request_btn);
+//            viewHolder.contentRequestBtn = cell.findViewById(R.id.content_request_btn);
 
             cell.setTag(viewHolder);
         } else {
@@ -72,8 +71,9 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
             viewHolder = (ViewHolder) cell.getTag();
         }
 
-        if (null == item)
+        if (item == null) {
             return cell;
+        }
 
         //.. bind data from selected element to view through view holder
         //.. head
@@ -93,17 +93,7 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
         viewHolder.tvIdSubject_content.setText(item.getmIdSubject());
         viewHolder.tvClass_content.setText(item.getmClass());
         viewHolder.tvSlot_content.setText(item.getmSlot());
-
         //..
-
-
-        // set custom btn handler for list item from that item
-        if (item.getRequestBtnClickListener() != null) {
-            viewHolder.contentRequestBtn.setOnClickListener(item.getRequestBtnClickListener());
-        } else {
-            // (optionally) add "default" handler if no handler found in item
-            viewHolder.contentRequestBtn.setOnClickListener(defaultRequestBtnClickListener);
-        }
 
         return cell;
     }
@@ -121,14 +111,6 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
 
     public void registerUnfold(int position) {
         unfoldedIndexes.add(position);
-    }
-
-    public View.OnClickListener getDefaultRequestBtnClickListener() {
-        return defaultRequestBtnClickListener;
-    }
-
-    public void setDefaultRequestBtnClickListener(View.OnClickListener defaultRequestBtnClickListener) {
-        this.defaultRequestBtnClickListener = defaultRequestBtnClickListener;
     }
 
     // View lookup cache
@@ -150,7 +132,5 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
         TextView tvIdSubject_content;
         TextView tvClass_content;
         TextView tvSlot_content;
-        TextView contentRequestBtn;
-
     }
 }
