@@ -65,8 +65,10 @@ public class MainActivity extends AppCompatActivity {
                     case 2:
                         collapsingToolbarLayout.setTitle( adapter.getPageTitle( position ) );
                         imageView.setImageResource( R.drawable.bg_gradient_3);
-//                        tabLayout.getTabAt( position ).setIcon( R.drawable.socials_color );
-
+                        break;
+                    case 3:
+                        collapsingToolbarLayout.setTitle( adapter.getPageTitle( position ) );
+                        imageView.setImageResource( R.drawable.background_color_book );
                         break;
                 }
             }

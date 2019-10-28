@@ -1,6 +1,5 @@
 package com.oldbie.apflux.fragment;
 
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,18 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
-
+import com.oldbie.apflux.LoginActitity;
 import com.oldbie.apflux.R;
+import com.oldbie.apflux.adapter.TimeTableAdapter;
+import com.oldbie.apflux.model.ResponseTimeTable;
+import com.oldbie.apflux.model.TimeTable;
 import com.oldbie.apflux.network.NetworkAPI;
 import com.oldbie.apflux.network.ServiceAPI;
-import com.oldbie.applux.adapter.TimeTableAdapter;
-import com.oldbie.applux.model.TimeTable;
+import com.oldbie.apflux.adapter.TimeTableAdapter;
+import com.oldbie.apflux.model.TimeTable;
 import com.ramotion.foldingcell.FoldingCell;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.Fragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,12 +35,12 @@ public class FragmentTimetable extends Fragment {
 
     private String TAG = "TimeTable";
 
-    TimeTable timeTable;
     ListView lvMain;
 
+    ArrayList<TimeTable> arrTimeTable;
     //.. ..//
+    FoldingCell fc;
     NetworkAPI api;
-    List<TimeTable> arrTime;
     TimeTableAdapter adapter;
     //.. ..//
     public FragmentTimetable() {
@@ -51,17 +55,21 @@ public class FragmentTimetable extends Fragment {
         View view;
         view=inflater.inflate( R.layout.fragment_timetable, container, false );
         lvMain=(ListView) view.findViewById( R.id.lvMain );
+        api = ServiceAPI.userService( NetworkAPI.class );
 
-        ShowDataJSON(view);
+        fc = (FoldingCell) view.findViewById(R.id.folding_cell);
 
         lvMain.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                ((FoldingCell) view).toggle( false );
-                adapter.registerToggle( i );
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // toggle clicked cell state
+                ((FoldingCell) view).toggle(false);
+                // register in adapter that state for selected cell is toggled
+                adapter.registerToggle(position);
             }
         } );
+
+        ShowDataJSON(view);
 
         return view;
 
@@ -80,25 +88,28 @@ public class FragmentTimetable extends Fragment {
         getActivity().runOnUiThread( new Runnable() {
             @Override
             public void run() {
-                api = ServiceAPI.getDataJSON();
-                Call<List<TimeTable>> call = api.getAllData();
-                call.enqueue( new Callback<List<TimeTable>>() {
-                    @Override
-                    public void onResponse(Call<List<TimeTable>> call, Response<List<TimeTable>> response) {
-                        arrTime=response.body();
-                        if(response.isSuccessful()) {
-                            adapter = new TimeTableAdapter( getContext(),arrTime );
-                            lvMain.setAdapter( adapter );
-                        }else{
-//                            Toast.makeText(getContext(),"Failed!", LENGTH_LONG).show();
-                            Log.e(TAG," Response Error " + response.code());
+                final String checkId = LoginActitity.arrSSR.get( 0 ).getStudentId();
 
+                Toast.makeText( getContext(),checkId,Toast.LENGTH_SHORT ).show();
+
+                Call<ResponseTimeTable> call = api.getAllData( checkId );
+                call.enqueue( new Callback<ResponseTimeTable>() {
+                    @Override
+                    public void onResponse(Call<ResponseTimeTable> call, Response<ResponseTimeTable> response) {
+                        if(response.body().getResult()==1){
+                            arrTimeTable=response.body().getData();
+                            for(int i=0;i<arrTimeTable.size();i++){
+                                adapter=new TimeTableAdapter( getContext(),arrTimeTable );
+                                lvMain.setAdapter( adapter );
+                            }
+                        }else{
+                            Toast.makeText( getContext(),"Errors:...",Toast.LENGTH_SHORT ).show();
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<List<TimeTable>> call, Throwable t) {
-                        Log.e(TAG," Response Error "+ t.getMessage());
+                    public void onFailure(Call<ResponseTimeTable> call, Throwable t) {
+
                     }
                 } );
             }
