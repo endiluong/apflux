@@ -25,17 +25,16 @@
             android:fontFamily="sans-serif-medium"
             android:textSize="@dimen/_15sdp"
             android:text="@string/app_name"/>
-
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/lnProfileSum"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_100sdp"
+        android:layout_height="@dimen/_120sdp"
         android:layout_marginLeft="@dimen/_3sdp"
         android:layout_marginTop="@dimen/_3sdp"
         android:layout_marginRight="@dimen/_3sdp"
-        android:background="@color/colorPrimary"
+        android:background="@raw/main"
         android:elevation="@dimen/_2sdp"
         android:gravity="center"
         android:orientation="horizontal"
@@ -50,9 +49,7 @@
             android:layout_height="@dimen/_90sdp"
             app:civ_border_width="2dp"
             app:civ_border_color="#ffffff"/>
-
     </LinearLayout>
-
 
     <TextView
         android:layout_width="match_parent"
@@ -72,7 +69,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:elevation="@dimen/_2sdp"
             android:gravity="center"
             android:orientation="vertical"

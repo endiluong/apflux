@@ -19,6 +19,7 @@
                 android:layout_height="40dp"
                 android:textSize="@dimen/_16sdp"
                 android:textStyle="bold"
+                android:textColor="@color/white"
                 android:text="Wednesday"/>
             <TextView
                 android:id="@+id/tvSlot_head"
@@ -26,6 +27,7 @@
                 android:layout_height="24dp"
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
+                android:textColor="@color/white"
                 android:text="12:00 PM"/>
         </LinearLayout>
     </RelativeLayout>
@@ -97,7 +99,6 @@
                     android:text="Title view"
                     android:textSize="@dimen/_16sdp"/>
             </LinearLayout>
-
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>
