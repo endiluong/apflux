@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/navigation_news"
+        android:icon="@raw/news"
+        android:title="@string/news"
+        tools:ignore="DuplicateIds" />
+
+    <item
+        android:id="@+id/navigation_timeTable"
+        android:icon="@raw/time_table"
+        android:title="@string/timetable" />
+
+
+    <item
+        android:id="@+id/navigation_user"
+        android:icon="@raw/profile"
+        android:title="@string/user"
+        tools:ignore="DuplicateIds" />
+
+</menu>

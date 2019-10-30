@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="320dp"
+    android:layout_height="wrap_content"
     android:visibility="gone">
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <!-- Room -->
                 <LinearLayout
@@ -129,7 +129,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <!-- Subject -->
                 <LinearLayout
@@ -175,7 +175,7 @@
                 <!-- Slot -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="64dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center">
                     <TextView

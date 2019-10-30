@@ -87,9 +87,51 @@ public class DetailUserActivity extends AppCompatActivity {
         } else {
             mGender.setText("Female");
         }
-        mMajor.setText(LoginActitity.arrSSR.get(0).getMajor());
-        mSpecialize.setText(LoginActitity.arrSSR.get(0).getSpecialize());
-        mClass.setText(LoginActitity.arrSSR.get(0).getCourse());
+//        mMajor.setText(LoginActitity.arrSSR.get(0).getMajor());
+        if(LoginActitity.arrSSR.get(0).getMajor().equals("1")) {
+            mMajor.setText("Công Nghệ Thông Tin");
+        } else if (LoginActitity.arrSSR.get(0).getMajor().equals("2")) {
+            mMajor.setText("Du lịch - Nhà hàng - Khách sạn");
+        } else if (LoginActitity.arrSSR.get(0).getMajor().equals("3")) {
+            mMajor.setText("Kinh Tế Kinh Doanh");
+        }
+
+//        mSpecialize.setText(LoginActitity.arrSSR.get(0).getSpecialize());
+        if(LoginActitity.arrSSR.get(0).getSpecialize().equals("1")) {
+            mSpecialize.setText("Lập Trình Máy Tính/Thiết Bị Di Động");
+        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("2")) {
+            mSpecialize.setText("Thiết Kế Website");
+        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("3")) {
+            mSpecialize.setText("CNTT/ Ứng Dụng Phần Mềm");
+        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("4")) {
+            mSpecialize.setText("Thiết Kế Đồ Hoạ");
+        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("5")) {
+            mSpecialize.setText("Digital/ Online Marketing");
+        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("6")) {
+            mSpecialize.setText("Tổ Chức Sự Kiện");
+        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("7")) {
+            mSpecialize.setText("Marketing & Sales");
+        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("8")) {
+            mSpecialize.setText("Digital/ Online Marketing");
+        }
+//        mClass.setText(LoginActitity.arrSSR.get(0).getCourse());
+        if(LoginActitity.arrSSR.get(0).getCourse().equals("1")) {
+            mClass.setText("PT13301");
+        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("2")) {
+            mClass.setText("PT13302");
+        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("3")) {
+            mClass.setText("PT13303");
+        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("4")) {
+            mClass.setText("PT13304");
+        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("5")) {
+            mClass.setText("PT13305");
+        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("6")) {
+            mClass.setText("PT13306");
+        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("7")) {
+            mClass.setText("PT13307");
+        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("8")) {
+            mClass.setText("PT13308");
+        }
 //        mStadate.setText(LoginActitity.arrSSR.get(0).getStartDate());
         try {
             date = fmt.parse(LoginActitity.arrSSR.get(0).getStartDate());

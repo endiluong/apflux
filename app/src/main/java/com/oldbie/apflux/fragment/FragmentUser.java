@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.oldbie.apflux.DetailUserActivity;
 import com.oldbie.apflux.LoginActitity;
+import com.oldbie.apflux.MarkActivity;
 import com.oldbie.apflux.R;
 import com.oldbie.apflux.network.NetworkAPI;
 import com.oldbie.apflux.network.ServiceAPI;
@@ -36,12 +37,11 @@ import androidx.fragment.app.Fragment;
 public class FragmentUser extends Fragment {
     private static final String TAG = "FragmentUser";
     private NetworkAPI api;
-    GoogleSignInClient mGoogleSignInClient;
-    String avt;
-    LinearLayout lnProfile,lnDetail;
-    TextView tvName, tvUsername;
-    ImageView imvProfile;
-    Button btnLogout;
+    private GoogleSignInClient mGoogleSignInClient;
+    private LinearLayout lnProfile, lnDetail, lnMark;
+    private TextView tvName, tvUsername;
+    private ImageView imvProfile;
+    private Button btnLogout;
 
     @Nullable
     @Override
@@ -59,6 +59,7 @@ public class FragmentUser extends Fragment {
 
         lnProfile = view.findViewById(R.id.lnProfileSum);
         lnDetail = view.findViewById(R.id.lnDetail);
+        lnMark = view.findViewById(R.id.lnMark);
         tvName = view.findViewById(R.id.tvProfileName);
         tvUsername = view.findViewById(R.id.tvRole);
         imvProfile = view.findViewById(R.id.imvProfile);
@@ -106,6 +107,14 @@ public class FragmentUser extends Fragment {
             }
         });
 
+        lnMark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), MarkActivity.class);
+                startActivity(intent);
+            }
+        });
+
         getUserDetail();
         return view;
 
@@ -122,10 +131,10 @@ public class FragmentUser extends Fragment {
         });
     }
 
-    public void getUserDetail() {
+    private void getUserDetail() {
         tvName.setText(LoginActitity.arrSSR.get(0).getName());
         tvUsername.setText(LoginActitity.arrSSR.get(0).getEmail());
-        avt = LoginActitity.arrSSR.get(0).getAvatar();
+        String avt = LoginActitity.arrSSR.get(0).getAvatar();
 
         RequestOptions options = new RequestOptions()
                 .centerCrop()
