@@ -13,11 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.oldbie.apflux.MainActivity">
-
-        </activity>
-        <activity android:name="com.oldbie.apflux.DetailUserActivity"></activity>
-        <activity android:name="com.oldbie.apflux.LoginActitity"
+        <activity android:name=".MarkActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".DetailUserActivity" />
+        <activity
+            android:name=".LoginActitity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

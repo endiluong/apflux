@@ -84,7 +84,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/lnFacebook"
+        android:id="@+id/lnMark"
         android:outlineAmbientShadowColor="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
