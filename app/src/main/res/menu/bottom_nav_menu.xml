@@ -2,10 +2,7 @@
 <menu xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black"
-        android:title="@string/home" />
+
 
     <item
         android:id="@+id/navigation_news"
@@ -18,11 +15,21 @@
         android:icon="@raw/time_table"
         android:title="@string/timetable" />
 
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black"
+        android:title="@string/home" />
 
     <item
         android:id="@+id/navigation_user"
         android:icon="@raw/profile"
         android:title="@string/user"
+        tools:ignore="DuplicateIds" />
+
+    <item
+        android:id="@+id/navigation_mark"
+        android:icon="@raw/score"
+        android:title="@string/score"
         tools:ignore="DuplicateIds" />
 
 </menu>

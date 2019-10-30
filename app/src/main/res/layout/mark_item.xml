@@ -58,7 +58,6 @@
                     android:layout_weight="1"
                     android:text="SubID"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -75,7 +74,6 @@
                     android:layout_weight="1"
                     android:text="Season"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -91,7 +89,6 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="Status"
-                    android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:textSize="16sp"
                     android:textStyle="bold" />
