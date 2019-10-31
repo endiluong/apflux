@@ -39,10 +39,11 @@ public class MarkActivity extends AppCompatActivity {
             @Override
             public void run() {
                 final String checkId = LoginActitity.arrSSR.get(0).getStudentId();
+                final String token = LoginActitity.arrSSR.get(0).getToken();
 
                 Toast.makeText(getBaseContext(),checkId,Toast.LENGTH_SHORT).show();
 
-                Call<ResponseMark> call = api.getMark(checkId);
+                Call<ResponseMark> call = api.getMark(checkId, token);
                 call.enqueue( new Callback<ResponseMark>() {
                     @Override
                     public void onResponse(Call<ResponseMark> call, Response<ResponseMark> response) {

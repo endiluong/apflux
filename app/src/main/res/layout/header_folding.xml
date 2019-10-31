@@ -29,8 +29,7 @@
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:text="12:00 PM"
-                />
+                android:text="12:00 PM" />
         </LinearLayout>
     </RelativeLayout>
     <RelativeLayout

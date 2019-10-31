@@ -3,19 +3,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:visibility="gone">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/time_table_bg">
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/radiant_top">
+            <TextView
+                android:id="@+id/tvSubject_content"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Title view"
+                android:textSize="@dimen/_16sdp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/tvSlot_content"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="12:00 PM" />
+        </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/white">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/_4sdp">
+                <!-- Date -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/tvDate_content"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Title view"
+                        android:textSize="@dimen/_16sdp"/>
+                </LinearLayout>
                 <!-- Room -->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -56,7 +97,23 @@
                         android:text="Title view"
                         android:textSize="@dimen/_16sdp"/>
                 </LinearLayout>
-                <!-- Date -->
+            </LinearLayout>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/btn_bg" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_4sdp">
+                <!-- ID Subject-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
@@ -66,16 +123,17 @@
                         android:layout_weight="3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Ngày : "
+                        android:text="Mã Môn: "
                         android:textSize="@dimen/_16sdp"/>
                     <TextView
-                        android:id="@+id/tvDate_content"
+                        android:id="@+id/tvIdSubject_content"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Title view"
                         android:textSize="@dimen/_16sdp"/>
                 </LinearLayout>
+
                 <!-- Tutor -->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -118,81 +176,26 @@
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@drawable/btn_bg"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
+            android:layout_height="64dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/radiant_top">
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <!-- Subject -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-                    <TextView
-                        android:layout_weight="3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:text="Môn: "
-                        android:textSize="@dimen/_16sdp"/>
-                    <TextView
-                        android:id="@+id/tvSubject_content"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="64dp"
-                        android:text="Title view"
-                        android:textSize="@dimen/_16sdp"/>
-                </LinearLayout>
-                <!-- ID Subject-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="32dp"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-                    <TextView
-                        android:layout_weight="3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Mã Môn: "
-                        android:textSize="@dimen/_16sdp"/>
-                    <TextView
-                        android:id="@+id/tvIdSubject_content"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Title view"
-                        android:textSize="@dimen/_16sdp"/>
-                </LinearLayout>
-                <!-- Slot -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-                    <TextView
-                        android:layout_gravity="top"
-                        android:layout_weight="3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Thời gian: "
-                        android:textSize="@dimen/_16sdp"/>
-                    <TextView
-                        android:id="@+id/tvSlot_content"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="64dp"
-                        android:text="Title view"
-                        android:textSize="@dimen/_16sdp"/>
-                </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
+                android:layout_height="40dp"
+                android:textSize="@dimen/_16sdp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:textColor="@color/white" />
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

@@ -53,7 +53,7 @@ public class LoginActitity extends AppCompatActivity {
     private NetworkAPI api;
     GoogleSignInClient mGoogleSignInClient;
     public static ArrayList<User> arrSSR;
-    String user,pass;
+    String email;
     private String[] ITEMS = null;
 
     //Animation
@@ -185,8 +185,8 @@ public class LoginActitity extends AppCompatActivity {
     }
 
     public void login(){
-        final ProgressDialog dialog = ProgressDialog.show(LoginActitity.this, "Authenticating",
-                "Please Wait...", true);
+        final ProgressDialog dialog = ProgressDialog.show(LoginActitity.this, "Xác nhận",
+                "Chờ tí...", true);
         dialog.show();
 
         //authentication from server
@@ -201,7 +201,7 @@ public class LoginActitity extends AppCompatActivity {
     }
 
     public void onLoginSuccess() {
-        Call<ServerResponse> call = api.checkLogin(user, pass);
+        Call<ServerResponse> call = api.checkLogin(email);
         call.enqueue(new Callback<ServerResponse>() {
             @SuppressLint("ResourceType")
             @Override
@@ -223,7 +223,7 @@ public class LoginActitity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 Log.e(TAG," Response Error "+ t.getMessage());
-                Toast.makeText(getBaseContext(),"This account is not authorized!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(),"Tài khoản không khả dụng", Toast.LENGTH_LONG).show();
                 signOut();
             }
         });
@@ -240,8 +240,7 @@ public class LoginActitity extends AppCompatActivity {
 
     private void updateUI(GoogleSignInAccount account) {
         if (account != null){
-            user = account.getEmail();
-            pass = account.getEmail();
+            email = account.getEmail();
             //Get Google infomation
 //            Toast.makeText(LoginActitity.this,
 //                    account.getDisplayName() + "\n"+
@@ -282,19 +281,19 @@ public class LoginActitity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Exit?");
-        builder.setMessage("Are you sure?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setTitle("Rời khỏi?");
+        builder.setMessage("Bạn muốn rời khỏi ?");
+        builder.setPositiveButton("Đúng", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
                 finish();
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(LoginActitity.this, "Canceled", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActitity.this, "Huỷ rời khỏi", Toast.LENGTH_SHORT).show();
             }
         });
         AlertDialog alertDialog = builder.create();
