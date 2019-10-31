@@ -10,7 +10,7 @@
         android:id="@+id/lvMark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/grad_bg"
+        android:background="#e8e8e8"
         android:divider="@android:color/transparent"
         android:paddingLeft="@dimen/_6sdp"
         android:paddingRight="@dimen/_6sdp"

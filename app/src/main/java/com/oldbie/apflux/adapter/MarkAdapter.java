@@ -54,11 +54,11 @@ public class MarkAdapter extends ArrayAdapter<Mark> {
 //        viewHolder.tvStatus.setText(mark.getStatus());
         if (mark.getStatus().equals("1")) {
             viewHolder.tvSubStatus.setText("Passed");
-            viewHolder.tvSubStatus.setTextColor(Color.GREEN);
+            viewHolder.tvSubStatus.setTextColor(Color.parseColor("#00c853"));
 
         } else {
             viewHolder.tvSubStatus.setText("Failed");
-            viewHolder.tvSubStatus.setTextColor(Color.RED);
+            viewHolder.tvSubStatus.setTextColor(Color.parseColor("#ff3d00"));
         }
         return convertView;
     }
