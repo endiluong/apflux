@@ -1,6 +1,7 @@
 package com.oldbie.apflux.network;
 
 import com.oldbie.apflux.model.ResponseMark;
+import com.oldbie.apflux.model.ResponseNews;
 import com.oldbie.apflux.model.ResponseTimeTable;
 import com.oldbie.apflux.model.ServerResponse;
 import com.oldbie.apflux.model.TimeTable;
@@ -18,15 +19,19 @@ public interface NetworkAPI {
 
     @POST("api_login.php")
     @FormUrlEncoded
-    Call<ServerResponse> checkLogin(@Field("user") String user,
-                                    @Field("pass") String pass);
+    Call<ServerResponse> checkLogin(@Field("email") String email);
 
     @POST("api_get_time_table.php")
     @FormUrlEncoded
-    Call<ResponseTimeTable> getAllData(@Field("sid") String id);
+    Call<ResponseTimeTable> getAllData(@Field("sid") String id,
+                                       @Field("token") String token);
 
     @POST("api_get_mark.php")
     @FormUrlEncoded
-    Call<ResponseMark> getMark(@Field("sid") String id);
+    Call<ResponseMark> getMark(@Field("sid") String id,
+                               @Field( "token" ) String token);
+
+    @GET("api_get_news.php")
+    Call<ResponseNews> getNewData();
 
 }

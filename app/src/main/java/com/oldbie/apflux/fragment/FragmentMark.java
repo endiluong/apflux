@@ -53,7 +53,8 @@ public class FragmentMark extends Fragment {
             @Override
             public void run() {
                 final String checkId = LoginActitity.arrSSR.get(0).getStudentId();
-                Call<ResponseMark> call = api.getMark(checkId);
+                final String token = LoginActitity.arrSSR.get( 0 ).getToken();
+                Call<ResponseMark> call = api.getMark(checkId, token);
                 call.enqueue( new Callback<ResponseMark>() {
                     @Override
                     public void onResponse(Call<ResponseMark> call, Response<ResponseMark> response) {

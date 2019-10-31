@@ -11,9 +11,10 @@ public class News {
     @SerializedName("title")
     @Expose
     private String mTitle;
-    @SerializedName("new_type")
+    @SerializedName("news_type")
     @Expose
     private String mNewType;
+
     @SerializedName("content")
     @Expose
     private String mContent;

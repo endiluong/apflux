@@ -10,6 +10,7 @@
     <color name="transparent">#00000000</color>
     <color name="gradStart">#005AA7</color>
     <color name="gradStop">#FFFDE4</color>
+    <color name="lightGrey">#d9d9d9</color>
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
 
