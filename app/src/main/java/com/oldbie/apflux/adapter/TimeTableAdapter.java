@@ -11,6 +11,9 @@ import com.oldbie.apflux.R;
 import com.oldbie.apflux.model.TimeTable;
 import com.ramotion.foldingcell.FoldingCell;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
@@ -18,6 +21,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
+
+    private Date date;
+    private SimpleDateFormat fmtOut = new SimpleDateFormat("dd-MM-yyyy");
+    private SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 
     private HashSet<Integer> unfoldedIndexes = new HashSet<>();
 
@@ -75,9 +82,16 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
             return cell;
         }
 
+        try {
+            date = fmt.parse( item.getmDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         //.. bind data from selected element to view through view holder
         //.. head
-        viewHolder.tvDate_head.setText(item.getmDate());
+//        viewHolder.tvDate_head.setText(item.getmDate());
+        viewHolder.tvDate_head.setText(fmtOut.format(date));
         viewHolder.tvSlot_head.setText(item.getmSlot());
         viewHolder.tvSubject_head.setText(item.getmSubject());
         viewHolder.tvPlace_head.setText(item.getmPlace());
@@ -86,7 +100,8 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
         //.. content
         viewHolder.tvRoom_content.setText(item.getmRoom());
         viewHolder.tvPlace_content.setText(item.getmPlace());
-        viewHolder.tvDate_content.setText(item.getmDate());
+//        viewHolder.tvDate_content.setText(item.getmDate());
+        viewHolder.tvDate_content.setText(fmtOut.format(date));
         viewHolder.tvTutor_content.setText(item.getmTutor());
         viewHolder.tvSubject_content.setText(item.getmSubject());
 

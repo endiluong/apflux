@@ -13,14 +13,15 @@
             android:gravity="center"
             android:background="@drawable/radiant_top">
             <TextView
-                android:gravity="center"
-                android:id="@+id/tvDate_head"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvSubject_head"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:text="Title view"
                 android:textSize="@dimen/_16sdp"
-                android:textStyle="bold"
                 android:textColor="@color/white"
-                android:text="Wednesday"/>
+                android:textStyle="bold"
+                android:gravity="center"/>
+
             <TextView
                 android:id="@+id/tvSlot_head"
                 android:layout_width="wrap_content"
@@ -28,7 +29,8 @@
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:text="12:00 PM"/>
+                android:text="12:00 PM"
+                />
         </LinearLayout>
     </RelativeLayout>
     <RelativeLayout
@@ -42,22 +44,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:layout_height="32dp">
                 <TextView
-                    android:layout_weight="2"
-                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:id="@+id/tvDate_head"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Subject: "
-                    android:textSize="@dimen/_16sdp"/>
-                <TextView
-                    android:id="@+id/tvSubject_head"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Title view"
-                    android:textSize="@dimen/_16sdp"/>
+                    android:textSize="@dimen/_16sdp"
+                    android:text="Wednesday" />
             </LinearLayout>
 
             <LinearLayout
@@ -69,7 +63,7 @@
                     android:layout_weight="2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Place: "
+                    android:text="Địa điểm: "
                     android:textSize="@dimen/_16sdp"/>
                 <TextView
                     android:id="@+id/tvPlace_head"
@@ -89,7 +83,7 @@
                     android:layout_weight="2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Room: "
+                    android:text="Phòng: "
                     android:textSize="@dimen/_16sdp"/>
                 <TextView
                     android:id="@+id/tvRoom_head"

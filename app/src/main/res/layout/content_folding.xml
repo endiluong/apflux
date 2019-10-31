@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:visibility="gone">
+    android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +26,7 @@
                         android:layout_weight="3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Room: "
+                        android:text="Phòng: "
                         android:textSize="@dimen/_16sdp"/>
                     <TextView
                         android:id="@+id/tvRoom_content"
@@ -47,7 +46,7 @@
                         android:layout_weight="3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Place: "
+                        android:text="Địa điểm: "
                         android:textSize="@dimen/_16sdp"/>
                     <TextView
                         android:id="@+id/tvPlace_content"
@@ -67,7 +66,7 @@
                         android:layout_weight="3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Date: "
+                        android:text="Ngày : "
                         android:textSize="@dimen/_16sdp"/>
                     <TextView
                         android:id="@+id/tvDate_content"
@@ -87,7 +86,7 @@
                         android:layout_weight="3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tutor: "
+                        android:text="Giáo viên: "
                         android:textSize="@dimen/_16sdp"/>
                     <TextView
                         android:id="@+id/tvTutor_content"
@@ -107,7 +106,7 @@
                         android:layout_weight="3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Class: "
+                        android:text="Lớp: "
                         android:textSize="@dimen/_16sdp"/>
                     <TextView
                         android:id="@+id/tvClass_content"
@@ -142,7 +141,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
-                        android:text="Subject: "
+                        android:text="Môn: "
                         android:textSize="@dimen/_16sdp"/>
                     <TextView
                         android:id="@+id/tvSubject_content"
@@ -162,7 +161,7 @@
                         android:layout_weight="3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ID: "
+                        android:text="Mã Môn: "
                         android:textSize="@dimen/_16sdp"/>
                     <TextView
                         android:id="@+id/tvIdSubject_content"
@@ -183,7 +182,7 @@
                         android:layout_weight="3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Slot: "
+                        android:text="Thời gian: "
                         android:textSize="@dimen/_16sdp"/>
                     <TextView
                         android:id="@+id/tvSlot_content"

@@ -58,13 +58,11 @@
 
     <FrameLayout
         android:id="@+id/fragment"
-        android:background="@color/whitegraylight"
+        android:background="@color/lightGrey"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_30sdp"
-        android:layout_marginBottom="@dimen/_40sdp">
-
-    </FrameLayout>
+        android:layout_marginBottom="@dimen/_40sdp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
