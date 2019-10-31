@@ -62,21 +62,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_30sdp"
-        android:layout_marginBottom="@dimen/_40sdp"/>
+        android:layout_marginBottom="@dimen/_38sdp"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="0dp"
-        android:elevation="@dimen/_2sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
+    <com.luseen.spacenavigation.SpaceNavigationView
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:space_background_color="@color/colorPrimary"
+        app:centre_button_color="@color/white"
+        app:inactive_item_color="@color/white"
+        app:centre_button_icon="@drawable/ic_home_black"
+        app:inactive_centre_button_icon_color="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        android:layout_gravity="bottom"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

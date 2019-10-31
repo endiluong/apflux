@@ -91,7 +91,7 @@ public class FragmentTimetable extends Fragment {
                 final String checkId = LoginActitity.arrSSR.get( 0 ).getStudentId();
                 final String token = LoginActitity.arrSSR.get( 0 ).getToken();
 
-                Toast.makeText( getContext(),checkId,Toast.LENGTH_SHORT ).show();
+                Toast.makeText( getContext(),checkId + "\n"+token ,Toast.LENGTH_SHORT ).show();
 
                 Call<ResponseTimeTable> call = api.getAllData( checkId, token );
                 call.enqueue( new Callback<ResponseTimeTable>() {
@@ -105,6 +105,7 @@ public class FragmentTimetable extends Fragment {
                             }
                         }else{
                             Toast.makeText( getContext(),"Errors:...",Toast.LENGTH_SHORT ).show();
+                            Log.e( TAG,"Errors: ..."+ response.body().getResult() );
                         }
                     }
 

@@ -50,12 +50,15 @@ public class User implements Serializable, Parcelable {
     @SerializedName("specialize")
     @Expose
     private String specialize;
-    @SerializedName("class")
-    @Expose
-    private String token;
+
     @SerializedName("access_token")
     @Expose
+    private String token;
+
+    @SerializedName("class")
+    @Expose
     private String course;
+
     @SerializedName("start_date")
     @Expose
     private String startDate;
@@ -136,6 +139,7 @@ public class User implements Serializable, Parcelable {
      * @param studentId
      * @param identification
      * @param name
+     * @param token
      * @param gender
      * @param createDate
      * @param major
