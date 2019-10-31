@@ -28,7 +28,7 @@
 
     <item
         android:id="@+id/navigation_mark"
-        android:icon="@raw/score"
+        android:icon="@raw/grade"
         android:title="@string/score"
         tools:ignore="DuplicateIds" />
 

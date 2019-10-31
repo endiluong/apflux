@@ -14,6 +14,7 @@
         android:divider="@android:color/transparent"
         android:paddingLeft="@dimen/_6sdp"
         android:paddingRight="@dimen/_6sdp"
-        android:paddingTop="@dimen/_6sdp"/>
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_6sdp"/>
 
 </FrameLayout>

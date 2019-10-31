@@ -34,7 +34,7 @@ public class MarkAdapter extends ArrayAdapter<Mark> {
     public View getView(int position, View convertView, @NotNull ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(convertView.getContext()).inflate(R.layout.mark_item, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.mark_item, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.tvAVG = (TextView) convertView.findViewById(R.id.tvAVG);
             viewHolder.tvSubName = (TextView) convertView.findViewById(R.id.tvSubName);
