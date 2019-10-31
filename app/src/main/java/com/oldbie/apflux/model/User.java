@@ -52,6 +52,9 @@ public class User implements Serializable, Parcelable {
     private String specialize;
     @SerializedName("class")
     @Expose
+    private String token;
+    @SerializedName("access_token")
+    @Expose
     private String course;
     @SerializedName("start_date")
     @Expose
@@ -100,6 +103,7 @@ public class User implements Serializable, Parcelable {
         this.gender = ((String) in.readValue((String.class.getClassLoader())));
         this.major = ((String) in.readValue((String.class.getClassLoader())));
         this.specialize = ((String) in.readValue((String.class.getClassLoader())));
+        this.token = ((String) in.readValue((String.class.getClassLoader())));
         this.course = ((String) in.readValue((String.class.getClassLoader())));
         this.startDate = ((String) in.readValue((String.class.getClassLoader())));
         this.status = ((String) in.readValue((String.class.getClassLoader())));
@@ -136,7 +140,7 @@ public class User implements Serializable, Parcelable {
      * @param createDate
      * @param major
      */
-    public User(String id, String username, String password, String email, String name, String phone, String address, String avatar, String identification, String studentId, String birthday, String gender, String major, String specialize, String course, String startDate, String status, String createDate, String updateDate, String deleteStatus) {
+    public User(String id, String username, String password, String email, String name, String phone, String address, String avatar, String identification, String studentId, String birthday, String gender, String major, String specialize, String course, String token, String startDate, String status, String createDate, String updateDate, String deleteStatus) {
         super();
         this.id = id;
         this.username = username;
@@ -152,6 +156,7 @@ public class User implements Serializable, Parcelable {
         this.gender = gender;
         this.major = major;
         this.specialize = specialize;
+        this.token = token;
         this.course = course;
         this.startDate = startDate;
         this.status = status;
@@ -312,6 +317,14 @@ public class User implements Serializable, Parcelable {
         this.updateDate = updateDate;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public String getDeleteStatus() {
         return deleteStatus;
     }
@@ -336,6 +349,7 @@ public class User implements Serializable, Parcelable {
         dest.writeValue(major);
         dest.writeValue(specialize);
         dest.writeValue(course);
+        dest.writeValue(token);
         dest.writeValue(startDate);
         dest.writeValue(status);
         dest.writeValue(createDate);

@@ -89,10 +89,11 @@ public class FragmentTimetable extends Fragment {
             @Override
             public void run() {
                 final String checkId = LoginActitity.arrSSR.get( 0 ).getStudentId();
+                final String token = LoginActitity.arrSSR.get( 0 ).getToken();
 
                 Toast.makeText( getContext(),checkId,Toast.LENGTH_SHORT ).show();
 
-                Call<ResponseTimeTable> call = api.getAllData( checkId );
+                Call<ResponseTimeTable> call = api.getAllData( checkId, token );
                 call.enqueue( new Callback<ResponseTimeTable>() {
                     @Override
                     public void onResponse(Call<ResponseTimeTable> call, Response<ResponseTimeTable> response) {
