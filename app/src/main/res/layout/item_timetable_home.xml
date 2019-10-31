@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
             android:background="@drawable/radiant_top">
             <TextView
-                android:id="@+id/tvSubject_head"
+                android:id="@+id/tvSubject_home"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="Title view"
@@ -23,7 +22,7 @@
                 android:gravity="center"/>
 
             <TextView
-                android:id="@+id/tvSlot_head"
+                android:id="@+id/tvSlot_home"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
                 android:textSize="@dimen/_11sdp"
@@ -37,7 +36,7 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="96dp"
             android:orientation="vertical"
             android:background="@drawable/radiant_bottom">
 
@@ -48,41 +47,23 @@
                 <TextView
                     android:layout_weight="3"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Ngày học: "
                     android:textSize="@dimen/_16sdp"/>
                 <TextView
                     android:layout_weight="1"
-                    android:id="@+id/tvDate_head"
+                    android:id="@+id/tvDate_home"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_16sdp"
-                    android:text="Wednesday"
-                    android:layout_margin="@dimen/_1sdp"/>
+                    android:text="Wednesday" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_weight="3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Phòng: "
-                    android:textSize="@dimen/_16sdp"/>
-                <TextView
-                    android:id="@+id/tvRoom_head"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Title view"
-                    android:textSize="@dimen/_16sdp"
-                    android:layout_margin="@dimen/_1sdp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="top">
                 <TextView
                     android:layout_weight="3"
                     android:layout_width="match_parent"
@@ -90,14 +71,32 @@
                     android:text="Địa điểm: "
                     android:textSize="@dimen/_16sdp"/>
                 <TextView
-                    android:id="@+id/tvPlace_head"
+                    android:id="@+id/tvPlace_home"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Title view"
-                    android:textSize="@dimen/_16sdp"
-                    android:layout_margin="@dimen/_1sdp"
-                    android:paddingBottom="@dimen/_1sdp"/>
+                    android:textSize="@dimen/_16sdp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_weight="3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phòng: "
+                    android:textSize="@dimen/_16sdp"/>
+                <TextView
+                    android:id="@+id/tvRoom_home"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Title view"
+                    android:textSize="@dimen/_16sdp"/>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

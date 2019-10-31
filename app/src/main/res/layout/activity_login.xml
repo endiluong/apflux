@@ -39,7 +39,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif-medium"
                 android:textAlignment="center"
-                android:text="Login"
+                android:text="Đăng Nhập"
                 android:textColor="@color/whitegraylight"
                 android:textSize="30sp" />
 
@@ -59,7 +59,7 @@
                     app:ms_arrowColor="@color/whiteyellow"
                     app:ms_arrowSize="16dp"
                     app:ms_floatingLabelColor="@color/white"
-                    app:ms_floatingLabelText="Campus"
+                    app:ms_floatingLabelText="Cơ Sở"
                     app:ms_baseColor="@color/white"
                     app:ms_highlightColor="@color/white"
                     app:ms_multiline="true" />

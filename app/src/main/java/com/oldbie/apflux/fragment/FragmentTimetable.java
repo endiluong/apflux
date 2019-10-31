@@ -69,7 +69,7 @@ public class FragmentTimetable extends Fragment {
             }
         } );
 
-        ShowDataJSON(view);
+        ShowDataJSON();
 
         return view;
 
@@ -79,11 +79,12 @@ public class FragmentTimetable extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+//        adapter.notifyDataSetChanged();
+        ShowDataJSON();
 
     }
 
-    private void ShowDataJSON(View view){
-        view.getApplicationWindowToken();
+    private void ShowDataJSON(){
 
         getActivity().runOnUiThread( new Runnable() {
             @Override
@@ -91,7 +92,7 @@ public class FragmentTimetable extends Fragment {
                 final String checkId = LoginActitity.arrSSR.get( 0 ).getStudentId();
                 final String token = LoginActitity.arrSSR.get( 0 ).getToken();
 
-                Toast.makeText( getContext(),checkId + "\n"+token ,Toast.LENGTH_SHORT ).show();
+//                Toast.makeText( getContext(),checkId + "\n"+token ,Toast.LENGTH_SHORT ).show();
 
                 Call<ResponseTimeTable> call = api.getAllData( checkId, token );
                 call.enqueue( new Callback<ResponseTimeTable>() {
@@ -118,5 +119,4 @@ public class FragmentTimetable extends Fragment {
         } );
 
     }
-
 }

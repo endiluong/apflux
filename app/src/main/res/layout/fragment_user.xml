@@ -78,7 +78,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/_10sdp"
             android:fontFamily="sans-serif-medium"
-            android:text="Detai Infomation"
+            android:text="Thông Tin Người Dùng"
             android:textColor="@color/white"
             android:textSize="@dimen/_13sdp" />
     </LinearLayout>
@@ -102,7 +102,7 @@
             android:fontFamily="sans-serif-medium"
             android:textColor="@color/white"
             android:textSize="@dimen/_13sdp"
-            android:text="Mark"/>
+            android:text="Điểm"/>
 
 
     </LinearLayout>
@@ -126,7 +126,7 @@
             android:fontFamily="sans-serif-medium"
             android:textColor="@color/white"
             android:textSize="@dimen/_13sdp"
-            android:text="Info"/>
+            android:text="Thông tin"/>
 
 
     </LinearLayout>

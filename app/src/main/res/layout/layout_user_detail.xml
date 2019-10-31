@@ -58,7 +58,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/_12sdp"
         android:textStyle="bold"
-        android:text="User Profile"
+        android:text="Thông Tin Người Dùng"
         android:textAlignment="center"/>
 
     <ScrollView
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Name"
+                    android:text="Họ và Tên"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_8sdp" />
 
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Email"
+                    android:text="Địa chỉ Email"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_8sdp" />
 
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Phone Number"
+                    android:text="Số điện thoại"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_8sdp" />
 
@@ -183,7 +183,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Address"
+                    android:text="Địa chỉ"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_8sdp" />
 
@@ -215,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Identification Number"
+                    android:text="CMND/CCCD"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_8sdp" />
 
@@ -246,7 +246,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Student ID"
+                    android:text="Mã số sinh viên"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_8sdp" />
 
@@ -278,7 +278,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Birthday"
+                    android:text="Ngày sinh"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_8sdp" />
 
@@ -309,7 +309,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Gender"
+                    android:text="Giới tính"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_8sdp" />
 
@@ -341,7 +341,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Major"
+                    android:text="Nghành"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_8sdp" />
 
@@ -372,7 +372,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Specialize"
+                    android:text="Chuyên Nghành"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_8sdp" />
 
@@ -403,7 +403,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Class"
+                    android:text="Lớp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_8sdp" />
 
@@ -434,7 +434,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Start date"
+                    android:text="Bắt đầu học từ ngày"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_8sdp" />
 
@@ -466,7 +466,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5sdp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Status"
+                    android:text="Tình trạng hiện tại"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_8sdp" />
 
@@ -499,7 +499,7 @@
             android:background="@drawable/round_button"
             android:layout_width="@dimen/_130sdp"
             android:layout_height="@dimen/_40sdp"
-            android:text="Back"
+            android:text="Quay lại"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold"
             android:elevation="@dimen/_2sdp"
