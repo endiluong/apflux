@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.FragmentHome">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.FragmentHome"
+    android:background="@color/transparent"
+    android:orientation="vertical">
     <!-- TODO: Update blank fragment layout -->
 
-</FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_6sdp"
+        android:layout_margin="@dimen/_4sdp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTimeTable_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_timetable_home"
+            tools:itemCount="2" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_6sdp"
+        android:layout_margin="@dimen/_4sdp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNews_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_news"
+            tools:itemCount="2" />
+    </RelativeLayout>
+
+
+</LinearLayout>

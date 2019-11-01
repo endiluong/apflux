@@ -110,5 +110,7 @@ public class FragmentNews extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+//        adapter.notifyDataSetChanged();
+        getNews();
     }
 }
