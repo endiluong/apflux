@@ -53,5 +53,6 @@ dependencies {
     //Spinner
     implementation 'com.github.ganfra:material-spinner:2.0.0'
 
-
+    //Space-Navigation-View
+    implementation 'com.github.armcha:SpaceNavigationView:1.6.0'
 }

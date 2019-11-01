@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.oldbie.apflux.LoginActitity;
+import com.oldbie.apflux.LoginActivity;
 import com.oldbie.apflux.R;
 import com.oldbie.apflux.adapter.HomeAdapter_news;
 import com.oldbie.apflux.adapter.NewsAdapter;
@@ -64,8 +64,8 @@ public class FragmentHome extends Fragment {
     }
 
     private void showData_timeTable(){
-        sid = LoginActitity.arrSSR.get( 0 ).getStudentId();
-        token = LoginActitity.arrSSR.get( 0 ).getToken();
+        sid = LoginActivity.arrSSR.get( 0 ).getStudentId();
+        token = LoginActivity.arrSSR.get( 0 ).getToken();
 
     }
 

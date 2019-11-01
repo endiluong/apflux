@@ -19,13 +19,13 @@ import java.util.List;
 public class MarkAdapter extends ArrayAdapter<Mark> {
 
     private Context context;
-    private int resource;
+//    private int resource;
     private List<Mark> arrMark;
 
-    public MarkAdapter(Context context, int resource, ArrayList<Mark> arrMark) {
-        super(context, resource, arrMark);
+    public MarkAdapter(Context context, ArrayList<Mark> arrMark) {
+        super(context, 0, arrMark);
         this.context = context;
-        this.resource = resource;
+//        this.resource = resource;
         this.arrMark = arrMark;
     }
 
@@ -34,7 +34,7 @@ public class MarkAdapter extends ArrayAdapter<Mark> {
     public View getView(int position, View convertView, @NotNull ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(convertView.getContext()).inflate(R.layout.mark_item, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.mark_item, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.tvAVG = (TextView) convertView.findViewById(R.id.tvAVG);
             viewHolder.tvSubName = (TextView) convertView.findViewById(R.id.tvSubName);
@@ -54,11 +54,11 @@ public class MarkAdapter extends ArrayAdapter<Mark> {
 //        viewHolder.tvStatus.setText(mark.getStatus());
         if (mark.getStatus().equals("1")) {
             viewHolder.tvSubStatus.setText("Passed");
-            viewHolder.tvSubStatus.setTextColor(Color.GREEN);
+            viewHolder.tvSubStatus.setTextColor(Color.parseColor("#00c853"));
 
         } else {
             viewHolder.tvSubStatus.setText("Failed");
-            viewHolder.tvSubStatus.setTextColor(Color.RED);
+            viewHolder.tvSubStatus.setTextColor(Color.parseColor("#ff3d00"));
         }
         return convertView;
     }

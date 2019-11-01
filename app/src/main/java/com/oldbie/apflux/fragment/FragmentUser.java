@@ -1,28 +1,18 @@
 package com.oldbie.apflux.fragment;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.oldbie.apflux.DetailUserActivity;
-import com.oldbie.apflux.LoginActitity;
-import com.oldbie.apflux.MarkActivity;
+import com.oldbie.apflux.LoginActivity;
 import com.oldbie.apflux.R;
 import com.oldbie.apflux.network.NetworkAPI;
 import com.oldbie.apflux.network.ServiceAPI;
@@ -31,6 +21,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -38,10 +32,16 @@ public class FragmentUser extends Fragment {
     private static final String TAG = "FragmentUser";
     private NetworkAPI api;
     private GoogleSignInClient mGoogleSignInClient;
-    private LinearLayout lnProfile, lnDetail, lnMark;
     private TextView tvName, tvUsername;
     private ImageView imvProfile;
-    private Button btnLogout;
+
+    TextView mName, mUser, mPhone, mAddress, mIdent, mStudentId, mBirthday,
+            mGender, mMajor,mSpecialize, mClass, mStadate, mStatus;
+    String avt;
+    Date date;
+
+    SimpleDateFormat fmtOut = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 
     @Nullable
     @Override
@@ -57,85 +57,112 @@ public class FragmentUser extends Fragment {
         //registerUser ServiceAPI and call getJSON from server
         api = ServiceAPI.userService(NetworkAPI.class);
 
-        lnProfile = view.findViewById(R.id.lnProfileSum);
-        lnDetail = view.findViewById(R.id.lnDetail);
-        lnMark = view.findViewById(R.id.lnMark);
         tvName = view.findViewById(R.id.tvProfileName);
         tvUsername = view.findViewById(R.id.tvRole);
         imvProfile = view.findViewById(R.id.imvProfile);
-        btnLogout = view.findViewById(R.id.btnLogout);
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Exit?");
-                builder.setMessage("Are you sure?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        signOut();
-                        Intent a = new Intent(getContext(), LoginActitity.class);
-                        startActivity(a);
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getContext(), "Canceled", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-            }
-        });
+        mName = view.findViewById(R.id.tvName);
+        mUser = view.findViewById(R.id.tvUser);
+        mPhone = view.findViewById(R.id.tvPhone);
+        mAddress = view.findViewById(R.id.tvAddress);
+        mIdent = view.findViewById(R.id.tvIdentification);
+        mStudentId = view.findViewById(R.id.tvStudentId);
+        mBirthday = view.findViewById(R.id.tvBirthday);
+        mGender = view.findViewById(R.id.tvGender);
+        mMajor = view.findViewById(R.id.tvMajor);
+        mSpecialize = view.findViewById(R.id.tvSpecialize);
+        mClass = view.findViewById(R.id.tvClass);
+        mStadate = view.findViewById(R.id.tvStartDate);
+        mStatus = view.findViewById(R.id.tvStatus);
 
-        lnProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), DetailUserActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        lnDetail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), DetailUserActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        lnMark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), MarkActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        getUserDetail();
+        setData();
         return view;
 
     }
 
-    private void signOut() {
-        mGoogleSignInClient.signOut().addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                // ...
-                Intent i = new Intent(getContext(), LoginActitity.class);
-                startActivity(i);
-            }
-        });
-    }
+    public void setData(){
+        //Set data into TextView
+        mUser.setText(LoginActivity.arrSSR.get(0).getEmail());
+        mName.setText(LoginActivity.arrSSR.get(0).getName());
+        mPhone.setText(LoginActivity.arrSSR.get(0).getPhone());
+        mAddress.setText(LoginActivity.arrSSR.get(0).getAddress());
+        mIdent.setText(LoginActivity.arrSSR.get(0).getIdentification());
+        mStudentId.setText(LoginActivity.arrSSR.get(0).getStudentId());
+//        mBirthday.setText(LoginActivity.arrSSR.get(0).getBirthday());
+        try {
+            date = fmt.parse(LoginActivity.arrSSR.get(0).getBirthday());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        mBirthday.setText(fmtOut.format(date));
 
-    private void getUserDetail() {
-        tvName.setText(LoginActitity.arrSSR.get(0).getName());
-        tvUsername.setText(LoginActitity.arrSSR.get(0).getEmail());
-        String avt = LoginActitity.arrSSR.get(0).getAvatar();
+        if (LoginActivity.arrSSR.get(0).getGender().equals("1")) {
+            mGender.setText("Male");
+        } else {
+            mGender.setText("Female");
+        }
+//        mMajor.setText(LoginActivity.arrSSR.get(0).getMajor());
+        if(LoginActivity.arrSSR.get(0).getMajor().equals("1")) {
+            mMajor.setText("Công Nghệ Thông Tin");
+        } else if (LoginActivity.arrSSR.get(0).getMajor().equals("2")) {
+            mMajor.setText("Du lịch - Nhà hàng - Khách sạn");
+        } else if (LoginActivity.arrSSR.get(0).getMajor().equals("3")) {
+            mMajor.setText("Kinh Tế Kinh Doanh");
+        }
 
+//        mSpecialize.setText(LoginActivity.arrSSR.get(0).getSpecialize());
+        if(LoginActivity.arrSSR.get(0).getSpecialize().equals("1")) {
+            mSpecialize.setText("Lập Trình Máy Tính/Thiết Bị Di Động");
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("2")) {
+            mSpecialize.setText("Thiết Kế Website");
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("3")) {
+            mSpecialize.setText("CNTT/ Ứng Dụng Phần Mềm");
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("4")) {
+            mSpecialize.setText("Thiết Kế Đồ Hoạ");
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("5")) {
+            mSpecialize.setText("Digital/ Online Marketing");
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("6")) {
+            mSpecialize.setText("Tổ Chức Sự Kiện");
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("7")) {
+            mSpecialize.setText("Marketing & Sales");
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("8")) {
+            mSpecialize.setText("Digital/ Online Marketing");
+        }
+//        mClass.setText(LoginActivity.arrSSR.get(0).getCourse());
+        if(LoginActivity.arrSSR.get(0).getCourse().equals("1")) {
+            mClass.setText("PT13301");
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("2")) {
+            mClass.setText("PT13302");
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("3")) {
+            mClass.setText("PT13303");
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("4")) {
+            mClass.setText("PT13304");
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("5")) {
+            mClass.setText("PT13305");
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("6")) {
+            mClass.setText("PT13306");
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("7")) {
+            mClass.setText("PT13307");
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("8")) {
+            mClass.setText("PT13308");
+        }
+//        mStadate.setText(LoginActivity.arrSSR.get(0).getStartDate());
+        try {
+            date = fmt.parse(LoginActivity.arrSSR.get(0).getStartDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        fmtOut = new SimpleDateFormat("dd-MM-yyyy");
+        mStadate.setText(fmtOut.format(date));
+        if (LoginActivity.arrSSR.get(0).getStatus().equals("1")) {
+            mStatus.setText("Studying");
+        } else {
+            mStatus.setText("Relearning");
+        }
+        tvName.setText(LoginActivity.arrSSR.get(0).getName());
+        tvUsername.setText(LoginActivity.arrSSR.get(0).getEmail());
+
+        avt = LoginActivity.arrSSR.get(0).getAvatar();
         RequestOptions options = new RequestOptions()
                 .centerCrop()
                 .placeholder(R.drawable.person)

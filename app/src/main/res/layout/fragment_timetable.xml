@@ -14,6 +14,7 @@
         android:clipToPadding="false"
         android:divider="@android:color/transparent"
         android:dividerHeight="10dp"
+        android:scrollbars="none"
         android:paddingBottom="@dimen/_6sdp"
         android:paddingLeft="@dimen/_6sdp"
         android:paddingRight="@dimen/_6sdp"

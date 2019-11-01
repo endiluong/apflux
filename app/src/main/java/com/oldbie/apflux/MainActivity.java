@@ -8,53 +8,169 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.luseen.spacenavigation.SpaceItem;
+import com.luseen.spacenavigation.SpaceNavigationView;
+import com.luseen.spacenavigation.SpaceOnClickListener;
 import com.oldbie.apflux.fragment.FragmentHome;
+import com.oldbie.apflux.fragment.FragmentMark;
 import com.oldbie.apflux.fragment.FragmentNews;
 import com.oldbie.apflux.fragment.FragmentTimetable;
 import com.oldbie.apflux.fragment.FragmentUser;
+import com.oldbie.apflux.network.NetworkAPI;
 
 public class MainActivity extends AppCompatActivity {
 
     Fragment fragment = null;
+    Button btnLogout;
+    private NetworkAPI api;
+    private GoogleSignInClient mGoogleSignInClient;
+    private SpaceNavigationView spaceNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView navigation = findViewById(R.id.nav_view);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
+        loadFragment(new FragmentHome());
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    fragment = new FragmentHome();
-                    break;
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
 
-                case R.id.navigation_news:
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        spaceNavigationView = findViewById(R.id.space);
+        spaceNavigationView.initWithSaveInstanceState(savedInstanceState);
+        spaceNavigationView.addSpaceItem(new SpaceItem("TIMETABLE", R.raw.time_table));
+        spaceNavigationView.addSpaceItem(new SpaceItem("MARK", R.raw.grade));
+        spaceNavigationView.addSpaceItem(new SpaceItem("NEWS", R.raw.news));
+        spaceNavigationView.addSpaceItem(new SpaceItem("USER", R.raw.profile));
+        spaceNavigationView.showIconOnly();
+        spaceNavigationView.setCentreButtonSelectable(true);
+        spaceNavigationView.setCentreButtonSelected();
+
+        spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
+            @Override
+            public void onCentreButtonClick() {
+                loadFragment(new FragmentHome());
+
+
+            }
+
+            @Override
+            public void onItemClick(int itemIndex, String itemName) {
+                switch (itemName) {
+                case "NEWS":
                     fragment = new FragmentNews();
+
                     break;
 
-                case R.id.navigation_timeTable:
+                case "TIMETABLE":
                     fragment = new FragmentTimetable();
                     break;
 
-                case R.id.navigation_user:
+                case "USER":
                     fragment = new FragmentUser();
                     break;
 
+                case "MARK":
+                    fragment = new FragmentMark();
+                    break;
+                }
+                loadFragment(fragment);
             }
-            return loadFragment(fragment);
-        }
-    };
+
+            @Override
+            public void onItemReselected(int itemIndex, String itemName) {
+                Toast.makeText(MainActivity.this, itemName, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+//        BottomNavigationView navigation = findViewById(R.id.nav_view);
+        btnLogout = findViewById(R.id.btnLogout);
+//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+//        navigation.setSelectedItemId(R.id.navigation_home);
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Logout?");
+                builder.setMessage("Are you sure?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        signOut();
+                        Intent a = new Intent(getBaseContext(), LoginActivity.class);
+                        startActivity(a);
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getBaseContext(), "Canceled", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                android.app.AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
+    }
+
+    private void signOut() {
+        mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                // ...
+                Intent i = new Intent(getBaseContext(), LoginActivity.class);
+                startActivity(i);
+            }
+        });
+    }
+
+
+
+
+//    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+//            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+//        @Override
+//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//            switch (item.getItemId()) {
+//                case R.id.navigation_home:
+//                    fragment = new FragmentHome();
+//                    break;
+//
+//                case R.id.navigation_news:
+//                    fragment = new FragmentNews();
+//                    break;
+//
+//                case R.id.navigation_timeTable:
+//                    fragment = new FragmentTimetable();
+//                    break;
+//
+//                case R.id.navigation_user:
+//                    fragment = new FragmentUser();
+//                    break;
+//
+//                case R.id.navigation_mark:
+//                    fragment = new FragmentMark();
+//                    break;
+//            }
+//            return loadFragment(fragment);
+//        }
+//    };
 
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
