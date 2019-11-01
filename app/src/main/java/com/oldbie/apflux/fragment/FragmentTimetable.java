@@ -9,19 +9,16 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.oldbie.apflux.LoginActitity;
+import com.oldbie.apflux.LoginActivity;
 import com.oldbie.apflux.R;
 import com.oldbie.apflux.adapter.TimeTableAdapter;
 import com.oldbie.apflux.model.ResponseTimeTable;
 import com.oldbie.apflux.model.TimeTable;
 import com.oldbie.apflux.network.NetworkAPI;
 import com.oldbie.apflux.network.ServiceAPI;
-import com.oldbie.apflux.adapter.TimeTableAdapter;
-import com.oldbie.apflux.model.TimeTable;
 import com.ramotion.foldingcell.FoldingCell;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.fragment.app.Fragment;
 import retrofit2.Call;
@@ -88,8 +85,8 @@ public class FragmentTimetable extends Fragment {
         getActivity().runOnUiThread( new Runnable() {
             @Override
             public void run() {
-                final String checkId = LoginActitity.arrSSR.get( 0 ).getStudentId();
-                final String token = LoginActitity.arrSSR.get( 0 ).getToken();
+                final String checkId = LoginActivity.arrSSR.get( 0 ).getStudentId();
+                final String token = LoginActivity.arrSSR.get( 0 ).getToken();
 
                 Toast.makeText( getContext(),checkId + "\n"+token ,Toast.LENGTH_SHORT ).show();
 

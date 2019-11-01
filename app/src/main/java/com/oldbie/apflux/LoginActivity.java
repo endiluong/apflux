@@ -45,7 +45,7 @@ import retrofit2.Response;
 
 import static android.widget.Toast.LENGTH_LONG;
 
-public class LoginActitity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     RelativeLayout rellay1;
     ImageView imageView;
@@ -138,7 +138,7 @@ public class LoginActitity extends AppCompatActivity {
 
         //Animation
         handler.postDelayed(runnable, 2000); //2000 is the timeout for the splash
-        Animation fadeOut = AnimationUtils.loadAnimation(LoginActitity.this, R.anim.fade_out);
+        Animation fadeOut = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.fade_out);
         imageView.startAnimation(fadeOut);
         fadeOut.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -147,7 +147,7 @@ public class LoginActitity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                Animation fadeIn = AnimationUtils.loadAnimation(LoginActitity.this, R.anim.fade_in);
+                Animation fadeIn = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.fade_in);
                 imageView.setImageResource(R.drawable.background_color_book);
                 imageView.startAnimation(fadeIn);
             }
@@ -185,7 +185,7 @@ public class LoginActitity extends AppCompatActivity {
     }
 
     public void login(){
-        final ProgressDialog dialog = ProgressDialog.show(LoginActitity.this, "Xác nhận",
+        final ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "Xác nhận",
                 "Chờ tí...", true);
         dialog.show();
 
@@ -212,8 +212,8 @@ public class LoginActitity extends AppCompatActivity {
                     Intent i = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(i);
             } else {
-                    Toast.makeText(LoginActitity.this,"Error!", LENGTH_LONG).show();
-                    startActivity(new Intent(getApplicationContext(),LoginActitity.class));
+                    Toast.makeText(LoginActivity.this,"Error!", LENGTH_LONG).show();
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     Log.e(TAG, "onResponse: "+ response.body().getResult());
                     finish();
 
@@ -242,7 +242,7 @@ public class LoginActitity extends AppCompatActivity {
         if (account != null){
             email = account.getEmail();
             //Get Google infomation
-//            Toast.makeText(LoginActitity.this,
+//            Toast.makeText(LoginActivity.this,
 //                    account.getDisplayName() + "\n"+
 //                            account.getGivenName() + "\n"+
 //                            account.getFamilyName() + "\n"+
@@ -293,7 +293,7 @@ public class LoginActitity extends AppCompatActivity {
         builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(LoginActitity.this, "Huỷ rời khỏi", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Huỷ rời khỏi", Toast.LENGTH_SHORT).show();
             }
         });
         AlertDialog alertDialog = builder.create();

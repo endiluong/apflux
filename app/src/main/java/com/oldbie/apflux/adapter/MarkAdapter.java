@@ -19,13 +19,13 @@ import java.util.List;
 public class MarkAdapter extends ArrayAdapter<Mark> {
 
     private Context context;
-    private int resource;
+//    private int resource;
     private List<Mark> arrMark;
 
-    public MarkAdapter(Context context, int resource, ArrayList<Mark> arrMark) {
-        super(context, resource, arrMark);
+    public MarkAdapter(Context context, ArrayList<Mark> arrMark) {
+        super(context, 0, arrMark);
         this.context = context;
-        this.resource = resource;
+//        this.resource = resource;
         this.arrMark = arrMark;
     }
 

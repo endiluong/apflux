@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:background="#e8e8e8"
         android:divider="@android:color/transparent"
+        android:scrollbars="none"
         android:paddingLeft="@dimen/_6sdp"
         android:paddingRight="@dimen/_6sdp"
         android:paddingTop="@dimen/_6sdp"

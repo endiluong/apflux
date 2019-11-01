@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.oldbie.apflux.LoginActitity;
+import com.oldbie.apflux.LoginActivity;
 import com.oldbie.apflux.R;
 import com.oldbie.apflux.adapter.MarkAdapter;
 import com.oldbie.apflux.model.Mark;
@@ -52,8 +52,8 @@ public class FragmentMark extends Fragment {
         getActivity().runOnUiThread( new Runnable() {
             @Override
             public void run() {
-                final String checkId = LoginActitity.arrSSR.get(0).getStudentId();
-                final String token = LoginActitity.arrSSR.get( 0 ).getToken();
+                final String checkId = LoginActivity.arrSSR.get(0).getStudentId();
+                final String token = LoginActivity.arrSSR.get( 0 ).getToken();
                 Call<ResponseMark> call = api.getMark(checkId, token);
                 call.enqueue( new Callback<ResponseMark>() {
                     @Override
@@ -61,7 +61,7 @@ public class FragmentMark extends Fragment {
                         if(response.body().getResult()==1){
                             arrMark=response.body().getData();
                             for(int i=0;i<arrMark.size();i++){
-                                markAdapter=new MarkAdapter(getContext(),R.layout.mark_item, arrMark);
+                                markAdapter=new MarkAdapter(getContext(), arrMark);
                                 lvMark.setAdapter( markAdapter );
                             }
                         }else{

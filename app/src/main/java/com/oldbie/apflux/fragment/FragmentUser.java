@@ -12,7 +12,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.oldbie.apflux.LoginActitity;
+import com.oldbie.apflux.LoginActivity;
 import com.oldbie.apflux.R;
 import com.oldbie.apflux.network.NetworkAPI;
 import com.oldbie.apflux.network.ServiceAPI;
@@ -82,87 +82,87 @@ public class FragmentUser extends Fragment {
 
     public void setData(){
         //Set data into TextView
-        mUser.setText(LoginActitity.arrSSR.get(0).getEmail());
-        mName.setText(LoginActitity.arrSSR.get(0).getName());
-        mPhone.setText(LoginActitity.arrSSR.get(0).getPhone());
-        mAddress.setText(LoginActitity.arrSSR.get(0).getAddress());
-        mIdent.setText(LoginActitity.arrSSR.get(0).getIdentification());
-        mStudentId.setText(LoginActitity.arrSSR.get(0).getStudentId());
-//        mBirthday.setText(LoginActitity.arrSSR.get(0).getBirthday());
+        mUser.setText(LoginActivity.arrSSR.get(0).getEmail());
+        mName.setText(LoginActivity.arrSSR.get(0).getName());
+        mPhone.setText(LoginActivity.arrSSR.get(0).getPhone());
+        mAddress.setText(LoginActivity.arrSSR.get(0).getAddress());
+        mIdent.setText(LoginActivity.arrSSR.get(0).getIdentification());
+        mStudentId.setText(LoginActivity.arrSSR.get(0).getStudentId());
+//        mBirthday.setText(LoginActivity.arrSSR.get(0).getBirthday());
         try {
-            date = fmt.parse(LoginActitity.arrSSR.get(0).getBirthday());
+            date = fmt.parse(LoginActivity.arrSSR.get(0).getBirthday());
         } catch (ParseException e) {
             e.printStackTrace();
         }
         mBirthday.setText(fmtOut.format(date));
 
-        if (LoginActitity.arrSSR.get(0).getGender().equals("1")) {
+        if (LoginActivity.arrSSR.get(0).getGender().equals("1")) {
             mGender.setText("Male");
         } else {
             mGender.setText("Female");
         }
-//        mMajor.setText(LoginActitity.arrSSR.get(0).getMajor());
-        if(LoginActitity.arrSSR.get(0).getMajor().equals("1")) {
+//        mMajor.setText(LoginActivity.arrSSR.get(0).getMajor());
+        if(LoginActivity.arrSSR.get(0).getMajor().equals("1")) {
             mMajor.setText("Công Nghệ Thông Tin");
-        } else if (LoginActitity.arrSSR.get(0).getMajor().equals("2")) {
+        } else if (LoginActivity.arrSSR.get(0).getMajor().equals("2")) {
             mMajor.setText("Du lịch - Nhà hàng - Khách sạn");
-        } else if (LoginActitity.arrSSR.get(0).getMajor().equals("3")) {
+        } else if (LoginActivity.arrSSR.get(0).getMajor().equals("3")) {
             mMajor.setText("Kinh Tế Kinh Doanh");
         }
 
-//        mSpecialize.setText(LoginActitity.arrSSR.get(0).getSpecialize());
-        if(LoginActitity.arrSSR.get(0).getSpecialize().equals("1")) {
+//        mSpecialize.setText(LoginActivity.arrSSR.get(0).getSpecialize());
+        if(LoginActivity.arrSSR.get(0).getSpecialize().equals("1")) {
             mSpecialize.setText("Lập Trình Máy Tính/Thiết Bị Di Động");
-        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("2")) {
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("2")) {
             mSpecialize.setText("Thiết Kế Website");
-        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("3")) {
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("3")) {
             mSpecialize.setText("CNTT/ Ứng Dụng Phần Mềm");
-        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("4")) {
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("4")) {
             mSpecialize.setText("Thiết Kế Đồ Hoạ");
-        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("5")) {
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("5")) {
             mSpecialize.setText("Digital/ Online Marketing");
-        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("6")) {
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("6")) {
             mSpecialize.setText("Tổ Chức Sự Kiện");
-        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("7")) {
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("7")) {
             mSpecialize.setText("Marketing & Sales");
-        } else if (LoginActitity.arrSSR.get(0).getSpecialize().equals("8")) {
+        } else if (LoginActivity.arrSSR.get(0).getSpecialize().equals("8")) {
             mSpecialize.setText("Digital/ Online Marketing");
         }
-//        mClass.setText(LoginActitity.arrSSR.get(0).getCourse());
-        if(LoginActitity.arrSSR.get(0).getCourse().equals("1")) {
+//        mClass.setText(LoginActivity.arrSSR.get(0).getCourse());
+        if(LoginActivity.arrSSR.get(0).getCourse().equals("1")) {
             mClass.setText("PT13301");
-        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("2")) {
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("2")) {
             mClass.setText("PT13302");
-        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("3")) {
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("3")) {
             mClass.setText("PT13303");
-        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("4")) {
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("4")) {
             mClass.setText("PT13304");
-        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("5")) {
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("5")) {
             mClass.setText("PT13305");
-        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("6")) {
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("6")) {
             mClass.setText("PT13306");
-        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("7")) {
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("7")) {
             mClass.setText("PT13307");
-        } else if (LoginActitity.arrSSR.get(0).getCourse().equals("8")) {
+        } else if (LoginActivity.arrSSR.get(0).getCourse().equals("8")) {
             mClass.setText("PT13308");
         }
-//        mStadate.setText(LoginActitity.arrSSR.get(0).getStartDate());
+//        mStadate.setText(LoginActivity.arrSSR.get(0).getStartDate());
         try {
-            date = fmt.parse(LoginActitity.arrSSR.get(0).getStartDate());
+            date = fmt.parse(LoginActivity.arrSSR.get(0).getStartDate());
         } catch (ParseException e) {
             e.printStackTrace();
         }
         fmtOut = new SimpleDateFormat("dd-MM-yyyy");
         mStadate.setText(fmtOut.format(date));
-        if (LoginActitity.arrSSR.get(0).getStatus().equals("1")) {
+        if (LoginActivity.arrSSR.get(0).getStatus().equals("1")) {
             mStatus.setText("Studying");
         } else {
             mStatus.setText("Relearning");
         }
-        tvName.setText(LoginActitity.arrSSR.get(0).getName());
-        tvUsername.setText(LoginActitity.arrSSR.get(0).getEmail());
+        tvName.setText(LoginActivity.arrSSR.get(0).getName());
+        tvUsername.setText(LoginActivity.arrSSR.get(0).getEmail());
 
-        avt = LoginActitity.arrSSR.get(0).getAvatar();
+        avt = LoginActivity.arrSSR.get(0).getAvatar();
         RequestOptions options = new RequestOptions()
                 .centerCrop()
                 .placeholder(R.drawable.person)

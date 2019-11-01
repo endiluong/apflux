@@ -71,8 +71,11 @@
         app:space_background_color="@color/colorPrimary"
         app:centre_button_color="@color/white"
         app:inactive_item_color="@color/white"
+        app:active_item_color="@color/colorPrimaryDark"
         app:centre_button_icon="@drawable/ic_home_black"
         app:inactive_centre_button_icon_color="@color/colorPrimary"
+        app:active_centre_button_icon_color="@color/colorPrimaryDark"
+        app:active_centre_button_background_color="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_gravity="bottom"/>
 
