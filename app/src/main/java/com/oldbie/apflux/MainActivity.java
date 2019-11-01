@@ -3,16 +3,13 @@ package com.oldbie.apflux;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -22,7 +19,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
 import com.luseen.spacenavigation.SpaceOnClickListener;
@@ -54,18 +50,21 @@ public class MainActivity extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        spaceNavigationView = (SpaceNavigationView) findViewById(R.id.space);
+        spaceNavigationView = findViewById(R.id.space);
         spaceNavigationView.initWithSaveInstanceState(savedInstanceState);
         spaceNavigationView.addSpaceItem(new SpaceItem("TIMETABLE", R.raw.time_table));
         spaceNavigationView.addSpaceItem(new SpaceItem("MARK", R.raw.grade));
         spaceNavigationView.addSpaceItem(new SpaceItem("NEWS", R.raw.news));
         spaceNavigationView.addSpaceItem(new SpaceItem("USER", R.raw.profile));
         spaceNavigationView.showIconOnly();
+        spaceNavigationView.setCentreButtonSelectable(true);
+        spaceNavigationView.setCentreButtonSelected();
 
         spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
             public void onCentreButtonClick() {
                 loadFragment(new FragmentHome());
+
 
             }
 
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onItemReselected(int itemIndex, String itemName) {
-                Toast.makeText(MainActivity.this, itemIndex + " " + itemName, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, itemName, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -114,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
                         signOut();
-                        Intent a = new Intent(getBaseContext(), LoginActitity.class);
+                        Intent a = new Intent(getBaseContext(), LoginActivity.class);
                         startActivity(a);
                     }
                 });
@@ -135,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 // ...
-                Intent i = new Intent(getBaseContext(), LoginActitity.class);
+                Intent i = new Intent(getBaseContext(), LoginActivity.class);
                 startActivity(i);
             }
         });
