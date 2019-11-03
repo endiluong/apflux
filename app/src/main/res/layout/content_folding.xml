@@ -177,7 +177,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/_4sdp">
                     <TextView
                         android:layout_weight="3"
                         android:layout_width="match_parent"
@@ -190,19 +191,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Title view"
-                        android:textSize="@dimen/_16sdp"/>
+                        android:textSize="@dimen/_16sdp"
+                        />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
             android:background="@drawable/radiant_top">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="34dp" />
 
             <TextView
                 android:layout_width="wrap_content"
