@@ -9,11 +9,21 @@
     android:orientation="vertical">
     <!-- TODO: Update blank fragment layout -->
 
-    <RelativeLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_6sdp"
-        android:layout_margin="@dimen/_4sdp">
+        android:layout_above="@id/rvTimeTable_home"
+        android:text="Thời Khoá Biểu"
+        android:textAlignment="center"
+        android:background="@color/space_default_color"
+        android:textSize="@dimen/_18sdp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:padding="@dimen/_2sdp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTimeTable_home"
             android:layout_width="match_parent"
@@ -22,11 +32,19 @@
             tools:itemCount="2" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_6sdp"
-        android:layout_margin="@dimen/_4sdp">
+        android:text="Tin Tức"
+        android:textAlignment="center"
+        android:background="@color/space_default_color"
+        android:textSize="@dimen/_18sdp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:padding="@dimen/_2sdp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvNews_home"
             android:layout_width="match_parent"
@@ -34,6 +52,4 @@
             tools:listitem="@layout/item_news"
             tools:itemCount="2" />
     </RelativeLayout>
-
-
 </LinearLayout>
