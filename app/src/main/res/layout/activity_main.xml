@@ -1,71 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbarMain"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_190sdp"
-        android:background="@android:color/transparent"
-        android:fitsSystemWindows="true"
-        android:animateLayoutChanges="true">
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsingLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:collapsedTitleGravity="center"
-            app:contentScrim="#FFF"
-            app:expandedTitleGravity="center"
-            android:fitsSystemWindows="true"
-            android:minHeight="64dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="@string/app_name"
-            android:layout_marginLeft="-25dp">
-            <ImageView
-                android:id="@+id/ivBackground"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/bg_gradient_1">
-            </ImageView>
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbarMain"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                app:layout_collapseMode="pin">
-
-            </androidx.appcompat.widget.Toolbar>
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
-    </com.google.android.material.appbar.AppBarLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabMode="fixed"
-            app:tabGravity="fill"
-            android:background="#FFF"
-            app:tabTextColor="#000"
-            app:tabSelectedTextColor="#54aaf2">
+        android:layout_height="@dimen/_30sdp"
+        android:gravity="center"
+        android:elevation="@dimen/_2sdp"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary"
+        tools:ignore="MissingConstraints">
 
-        </com.google.android.material.tabs.TabLayout>
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <include layout="@layout/content_layout"/>
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"></LinearLayout>
 
-        </androidx.core.widget.NestedScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_weight="2"
+                android:text="@string/app_name"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_gravity="right"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_margin="@dimen/_4sdp"
+                android:background="@raw/logout" />
+        </LinearLayout>
+
     </LinearLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:background="@color/lightGrey"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_38sdp"/>
+
+    <com.luseen.spacenavigation.SpaceNavigationView
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:space_background_color="@color/colorPrimary"
+        app:centre_button_color="@color/white"
+        app:inactive_item_color="@color/white"
+        app:active_item_color="@color/colorPrimaryDark"
+        app:centre_button_icon="@drawable/ic_home_black"
+        app:inactive_centre_button_icon_color="@color/colorPrimary"
+        app:active_centre_button_icon_color="@color/colorPrimaryDark"
+        app:active_centre_button_background_color="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="bottom"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

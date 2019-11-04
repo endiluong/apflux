@@ -2,135 +2,142 @@ package com.oldbie.apflux.model;
 
 import android.view.View;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class TimeTable {
 
-    @SerializedName( "day_of_week" )
-    private String dayOfWeek;
-    @SerializedName( "clock" )
-    private String clock;
-    @SerializedName( "title" )
-    private String title;
-    @SerializedName( "lesson" )
-    private String lesson;
-    @SerializedName( "teacher" )
-    private String teacher;
+    @SerializedName( "id" )
+    @Expose
+    private String mId;
+
     @SerializedName( "room" )
-    private String room;
-    @SerializedName( "id_room" )
-    private String id_room;
-    @SerializedName( "id_subject" )
-    private String id_subject;
+    @Expose
+    private String mRoom;
+
+    @SerializedName( "place" )
+    @Expose
+    private String mPlace;
+
+    @SerializedName( "tutor" )
+    @Expose
+    private String mTutor;
+
+    @SerializedName( "date" )
+    @Expose
+    private String mDate;
+
     @SerializedName( "subject" )
-    private String subject;
-    @SerializedName( "subject_detail" )
-    private String subject_detail;
+    @Expose
+    private String mSubject;
 
-    private View.OnClickListener requestBtnClickListener;
+    @SerializedName( "subject_id" )
+    @Expose
+    private String mIdSubject;
+
+    @SerializedName( "class" )
+    @Expose
+    private String mClass;
+
+    @SerializedName( "slot" )
+    @Expose
+    private String mSlot;
+
+//    private View.OnClickListener requestBtnClickListener;
 
 
-    public TimeTable() {
+    public TimeTable() { }
+
+    public TimeTable(String mId, String mRoom, String mPlace, String mTutor, String mDate, String mSubject, String mIdSubject, String mClass, String mSlot) {
+        this.mId = mId;
+        this.mRoom = mRoom;
+        this.mPlace = mPlace;
+        this.mTutor = mTutor;
+        this.mDate = mDate;
+        this.mSubject = mSubject;
+        this.mIdSubject = mIdSubject;
+        this.mClass = mClass;
+        this.mSlot = mSlot;
     }
 
-    public TimeTable(String dayOfWeek, String clock, String title, String lesson, String teacher, String room, String id_room, String id_subject, String subject, String subject_detail) {
-        this.dayOfWeek = dayOfWeek;
-        this.clock = clock;
-        this.title = title;
-        this.lesson = lesson;
-        this.teacher = teacher;
-        this.room = room;
-        this.id_room = id_room;
-        this.id_subject = id_subject;
-        this.subject = subject;
-        this.subject_detail = subject_detail;
+//
+//    public View.OnClickListener getRequestBtnClickListener() {
+//        return requestBtnClickListener;
+//    }
+//
+//    public void setRequestBtnClickListener(View.OnClickListener requestBtnClickListener) {
+//        this.requestBtnClickListener = requestBtnClickListener;
+//    }
+
+    public String getmId() {
+        return mId;
     }
 
-    public View.OnClickListener getRequestBtnClickListener() {
-        return requestBtnClickListener;
+    public void setmId(String mId) {
+        this.mId = mId;
     }
 
-    public void setRequestBtnClickListener(View.OnClickListener requestBtnClickListener) {
-        this.requestBtnClickListener = requestBtnClickListener;
+    public String getmRoom() {
+        return mRoom;
     }
 
-    public String getDayOfWeek() {
-        return dayOfWeek;
+    public void setmRoom(String mRoom) {
+        this.mRoom = mRoom;
     }
 
-    public void setDayOfWeek(String dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
+    public String getmPlace() {
+        return mPlace;
     }
 
-    public String getClock() {
-        return clock;
+    public void setmPlace(String mPlace) {
+        this.mPlace = mPlace;
     }
 
-    public void setClock(String clock) {
-        this.clock = clock;
+    public String getmTutor() {
+        return mTutor;
     }
 
-    public String getTitle() {
-        return title;
+    public void setmTutor(String mTutor) {
+        this.mTutor = mTutor;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getmDate() {
+        return mDate;
     }
 
-    public String getLesson() {
-        return lesson;
+    public void setmDate(String mDate) {
+        this.mDate = mDate;
     }
 
-    public void setLesson(String lesson) {
-        this.lesson = lesson;
+    public String getmSubject() {
+        return mSubject;
     }
 
-    public String getTeacher() {
-        return teacher;
+    public void setmSubject(String mSubject) {
+        this.mSubject = mSubject;
     }
 
-    public void setTeacher(String teacher) {
-        this.teacher = teacher;
+    public String getmIdSubject() {
+        return mIdSubject;
     }
 
-    public String getRoom() {
-        return room;
+    public void setmIdSubject(String mIdSubject) {
+        this.mIdSubject = mIdSubject;
     }
 
-    public void setRoom(String room) {
-        this.room = room;
+    public String getmClass() {
+        return mClass;
     }
 
-    public String getId_room() {
-        return id_room;
+    public void setmClass(String mClass) {
+        this.mClass = mClass;
     }
 
-    public void setId_room(String id_room) {
-        this.id_room = id_room;
+    public String getmSlot() {
+        return mSlot;
     }
 
-    public String getId_subject() {
-        return id_subject;
-    }
-
-    public void setId_subject(String id_subject) {
-        this.id_subject = id_subject;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getSubject_detail() {
-        return subject_detail;
-    }
-
-    public void setSubject_detail(String subject_detail) {
-        this.subject_detail = subject_detail;
+    public void setmSlot(String mSlot) {
+        this.mSlot = mSlot;
     }
 }

@@ -8,19 +8,17 @@
     <!-- TODO: Update blank fragment layout -->
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_560sdp"
+        android:layout_height="match_parent"
         android:id="@+id/lvMain"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:divider="@android:color/transparent"
         android:dividerHeight="10dp"
+        android:scrollbars="none"
         android:paddingBottom="@dimen/_6sdp"
         android:paddingLeft="@dimen/_6sdp"
         android:paddingRight="@dimen/_6sdp"
-        android:paddingTop="@dimen/_6sdp" />
+        android:paddingTop="@dimen/_6sdp"
+        android:background="@color/transparent" />
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="2000dp"-->
-<!--        android:id="@+id/lvMain"/>-->
 </FrameLayout>
