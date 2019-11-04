@@ -87,7 +87,7 @@ public class FragmentTimetable extends Fragment {
             @Override
             public void run() {
                 final String checkId = LoginActivity.arrSSR.get( 0 ).getStudentId();
-                final String token = LoginActivity.arrSSR.get( 0 ).getToken();
+                final String token = LoginActivity.arrToken.get( 0 ).getToken();
 
 //                Toast.makeText( getContext(),checkId + "\n"+token ,Toast.LENGTH_SHORT ).show();
 

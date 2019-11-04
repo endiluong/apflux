@@ -52,8 +52,8 @@ public class LoginActivity extends AppCompatActivity {
     MaterialSpinner spinner;
     private NetworkAPI api;
     GoogleSignInClient mGoogleSignInClient;
-    public static ArrayList<User> arrSSR;
-    String email;
+    public static ArrayList<User> arrSSR, arrToken;
+    String email, token;
     private String[] ITEMS = null;
 
     //Animation
@@ -194,14 +194,50 @@ public class LoginActivity extends AppCompatActivity {
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess
-                            onLoginSuccess();
+                        getTokenStudent();
                         dialog.dismiss();
                     }
                 }, 2000);
     }
 
-    public void onLoginSuccess() {
+    public void getTokenStudent(){
         Call<ServerResponse> call = api.checkLogin(email);
+        call.enqueue(new Callback<ServerResponse>() {
+            @SuppressLint("ResourceType")
+            @Override
+            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
+                if (response.body().getResult()==1) {
+                    arrToken = response.body().getData();
+                    token = arrToken.get(0).getToken();
+                    Runnable myRunnable = new Runnable(){
+                        public void run(){
+                            onLoginSuccess();
+                        }
+                    };
+                    Thread thread = new Thread(myRunnable);
+                    thread.start();
+//                    Intent i = new Intent(getBaseContext(), MainActivity.class);
+//                    startActivity(i);
+                } else {
+                    Toast.makeText(LoginActivity.this,"ErrorToken!", LENGTH_LONG).show();
+                    Log.e(TAG, "onResponseToken: "+ response.body().getResult());
+                    finish();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServerResponse> call, Throwable t) {
+                Log.e(TAG," Response Error "+ t.getMessage());
+                Toast.makeText(getBaseContext(),"Token không khả dụng", Toast.LENGTH_LONG).show();
+                signOut();
+            }
+        });
+    }
+
+    public void onLoginSuccess() {
+//        Log.e(TAG," Response "+ email + token);
+        Call<ServerResponse> call = api.getStudent(email, token);
         call.enqueue(new Callback<ServerResponse>() {
             @SuppressLint("ResourceType")
             @Override

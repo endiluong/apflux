@@ -2,6 +2,7 @@ package com.oldbie.apflux.fragment;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentHome extends Fragment {
+    private static final String TAG = "Home";
     public FragmentHome() {
         // Required empty public constructor
     }
@@ -73,13 +75,14 @@ public class FragmentHome extends Fragment {
     private void showData_timeTable(){
         api = ServiceAPI.userService( NetworkAPI.class );
         final String sid = LoginActivity.arrSSR.get( 0 ).getStudentId();
-        final String token = LoginActivity.arrSSR.get( 0 ).getToken();
+        final String token = LoginActivity.arrToken.get( 0 ).getToken();
 
         getActivity().runOnUiThread( new Runnable() {
             @Override
             public void run() {
+                Log.e(TAG," Response Error "+ sid+ token);
                 final String sid = LoginActivity.arrSSR.get( 0 ).getStudentId();
-                final String token = LoginActivity.arrSSR.get( 0 ).getToken();
+                final String token = LoginActivity.arrToken.get( 0 ).getToken();
 
                 Call<ResponseTimeTable> call = api.getAllData( sid,token );
                 call.enqueue( new Callback<ResponseTimeTable>() {
