@@ -2,6 +2,7 @@ package com.oldbie.apflux.fragment;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentHome extends Fragment {
+    private static final String TAG = "Home";
     public FragmentHome() {
         // Required empty public constructor
     }
@@ -64,8 +66,42 @@ public class FragmentHome extends Fragment {
     }
 
     private void showData_timeTable(){
-        sid = LoginActivity.arrSSR.get( 0 ).getStudentId();
-        token = LoginActivity.arrSSR.get( 0 ).getToken();
+        api = ServiceAPI.userService( NetworkAPI.class );
+        final String sid = LoginActivity.arrSSR.get( 0 ).getStudentId();
+        final String token = LoginActivity.arrToken.get( 0 ).getToken();
+
+        getActivity().runOnUiThread( new Runnable() {
+            @Override
+            public void run() {
+                Log.e(TAG," Response Error "+ sid+ token);
+                final String sid = LoginActivity.arrSSR.get( 0 ).getStudentId();
+                final String token = LoginActivity.arrToken.get( 0 ).getToken();
+
+                Call<ResponseTimeTable> call = api.getAllData( sid,token );
+                call.enqueue( new Callback<ResponseTimeTable>() {
+                    @Override
+                    public void onResponse(Call<ResponseTimeTable> call, Response<ResponseTimeTable> response) {
+//                        Toast.makeText( getContext(),sid+"\n"+token,Toast.LENGTH_SHORT ).show();
+                        if (response.body().getResult()==1){
+                            arrTimetable=response.body().getData();
+                            for (int i=0;i<arrTimetable.size();i++){
+                                adapterTimetable = new HomeAdapter_timetable( getContext(),arrTimetable );
+                                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                                rvTimeTable_home.setLayoutManager(layoutManager);
+                                rvTimeTable_home.setAdapter( adapterTimetable );
+                            }
+                        }else{
+                            Toast.makeText( getContext(), "Error: "+response.body().getResult(), Toast.LENGTH_SHORT ).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseTimeTable> call, Throwable t) {
+
+                    }
+                } );
+            }
+        } );
 
     }
 

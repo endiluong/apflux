@@ -21,6 +21,11 @@ public interface NetworkAPI {
     @FormUrlEncoded
     Call<ServerResponse> checkLogin(@Field("email") String email);
 
+    @POST("api_get_student.php")
+    @FormUrlEncoded
+    Call<ServerResponse> getStudent(@Field("email") String email,
+                                    @Field("token") String token);
+
     @POST("api_get_time_table.php")
     @FormUrlEncoded
     Call<ResponseTimeTable> getAllData(@Field("sid") String id,

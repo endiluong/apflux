@@ -53,7 +53,7 @@ public class FragmentMark extends Fragment {
             @Override
             public void run() {
                 final String checkId = LoginActivity.arrSSR.get(0).getStudentId();
-                final String token = LoginActivity.arrSSR.get( 0 ).getToken();
+                final String token = LoginActivity.arrToken.get(0).getToken();
                 Call<ResponseMark> call = api.getMark(checkId, token);
                 call.enqueue( new Callback<ResponseMark>() {
                     @Override
@@ -62,10 +62,10 @@ public class FragmentMark extends Fragment {
                             arrMark=response.body().getData();
                             for(int i=0;i<arrMark.size();i++){
                                 markAdapter=new MarkAdapter(getContext(), arrMark);
-                                lvMark.setAdapter( markAdapter );
+                                lvMark.setAdapter(markAdapter);
                             }
                         }else{
-                            Toast.makeText( getContext(),"Errors:...",Toast.LENGTH_SHORT ).show();
+                            Toast.makeText( getContext(),"Errors!",Toast.LENGTH_SHORT ).show();
                         }
                     }
 
