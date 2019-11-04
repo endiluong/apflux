@@ -85,7 +85,7 @@ public class FragmentHome extends Fragment {
             @Override
             public void run() {
                 final String sid = LoginActivity.arrSSR.get( 0 ).getStudentId();
-                final String token = LoginActivity.arrSSR.get( 0 ).getToken();
+                final String token = LoginActivity.arrToken.get( 0 ).getToken();
 
                 Call<ResponseTimeTable> call = api.getAllData( sid,token );
                 call.enqueue( new Callback<ResponseTimeTable>() {
