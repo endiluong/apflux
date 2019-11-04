@@ -8,37 +8,32 @@
     android:background="@color/transparent"
     android:orientation="vertical">
     <!-- TODO: Update blank fragment layout -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/_6sdp"
-        >
-        <ScrollView
+        android:layout_margin="@dimen/_4sdp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTimeTable_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTimeTable_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_timetable_home"
-                tools:itemCount="2" />
-        </ScrollView>
+            tools:listitem="@layout/item_timetable_home"
+            tools:itemCount="2" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_6sdp">
-        <ScrollView
+        android:padding="@dimen/_6sdp"
+        android:layout_margin="@dimen/_4sdp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNews_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvNews_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_news"
-                tools:itemCount="2"/>
-        </ScrollView>
+            tools:listitem="@layout/item_news"
+            tools:itemCount="2" />
     </RelativeLayout>
+
+
 </LinearLayout>
