@@ -148,7 +148,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 Animation fadeIn = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.fade_in);
-                imageView.setImageResource(R.drawable.background_color_book);
+                imageView.setImageResource(R.drawable.logoc);
                 imageView.startAnimation(fadeIn);
             }
 
@@ -185,8 +185,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(){
-        final ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "Xác nhận",
-                "Chờ tí...", true);
+        final ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "Đang xác nhận",
+                "Vui lòng chờ...", true);
         dialog.show();
 
         //authentication from server
@@ -216,8 +216,6 @@ public class LoginActivity extends AppCompatActivity {
                     };
                     Thread thread = new Thread(myRunnable);
                     thread.start();
-//                    Intent i = new Intent(getBaseContext(), MainActivity.class);
-//                    startActivity(i);
                 } else {
                     Toast.makeText(LoginActivity.this,"ErrorToken!", LENGTH_LONG).show();
                     Log.e(TAG, "onResponseToken: "+ response.body().getResult());
@@ -317,9 +315,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Rời khỏi?");
-        builder.setMessage("Bạn muốn rời khỏi ?");
-        builder.setPositiveButton("Đúng", new DialogInterface.OnClickListener() {
+        builder.setTitle("Thoát?");
+        builder.setMessage("Bạn chắc chắn muốn thoát ?");
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
@@ -329,7 +327,6 @@ public class LoginActivity extends AppCompatActivity {
         builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(LoginActivity.this, "Huỷ rời khỏi", Toast.LENGTH_SHORT).show();
             }
         });
         AlertDialog alertDialog = builder.create();

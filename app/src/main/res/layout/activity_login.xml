@@ -23,7 +23,7 @@
             android:layout_height="80dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/white_book_icon" />
+            android:src="@drawable/logob" />
 
         <RelativeLayout
             android:id="@+id/rellay1"

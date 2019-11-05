@@ -3,19 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.FragmentMark">
+    tools:context=".fragment.FragmentMark"
+    android:background="#e8e8e8">
 
     <!-- TODO: Update blank fragment layout -->
     <ListView
         android:id="@+id/lvMark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#e8e8e8"
         android:divider="@android:color/transparent"
         android:scrollbars="none"
-        android:paddingLeft="@dimen/_6sdp"
-        android:paddingRight="@dimen/_6sdp"
-        android:paddingTop="@dimen/_6sdp"
-        android:paddingBottom="@dimen/_6sdp"/>
+        android:background="@color/transparent"
+        android:paddingLeft="@dimen/_4sdp"
+        android:paddingRight="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_12sdp"/>
 
 </FrameLayout>

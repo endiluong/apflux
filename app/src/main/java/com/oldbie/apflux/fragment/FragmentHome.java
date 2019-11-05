@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.luseen.spacenavigation.SpaceNavigationView;
 import com.oldbie.apflux.LoginActivity;
+import com.oldbie.apflux.MainActivity;
 import com.oldbie.apflux.R;
 import com.oldbie.apflux.adapter.HomeAdapter_news;
 import com.oldbie.apflux.adapter.HomeAdapter_timetable;
@@ -47,7 +48,7 @@ public class FragmentHome extends Fragment {
     private String sid,token;
     private RecyclerView rvTimeTable_home,rvNews_home;
     private NetworkAPI api;
-    private SpaceNavigationView spaceNavigationView;
+//    private SpaceNavigationView spaceNavigationView;
 
     //.. NEWS ..//
     private HomeAdapter_news adapterNews;
@@ -123,6 +124,7 @@ public class FragmentHome extends Fragment {
                 transaction.replace(R.id.fragment, new FragmentTimetable());
                 transaction.addToBackStack(null);
                 transaction.commit();
+//                MainActivity.spaceNavigationView.changeCurrentItem(0);
             }
         } ) );
 

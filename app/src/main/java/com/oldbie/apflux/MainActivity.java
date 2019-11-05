@@ -12,7 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -32,10 +32,11 @@ import com.oldbie.apflux.network.NetworkAPI;
 public class MainActivity extends AppCompatActivity {
 
     Fragment fragment = null;
-    Button btnLogout;
+    private TextView tvTitle;
+    private Button btnLogout;
     private NetworkAPI api;
     private GoogleSignInClient mGoogleSignInClient;
-    private SpaceNavigationView spaceNavigationView;
+    public static SpaceNavigationView spaceNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        tvTitle = findViewById(R.id.tvTitle);
 
         spaceNavigationView = findViewById(R.id.space);
         spaceNavigationView.initWithSaveInstanceState(savedInstanceState);
@@ -64,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCentreButtonClick() {
                 loadFragment(new FragmentHome());
-
-
+                tvTitle.setText(R.string.app_name);
             }
 
             @Override
@@ -73,19 +75,23 @@ public class MainActivity extends AppCompatActivity {
                 switch (itemName) {
                 case "NEWS":
                     fragment = new FragmentNews();
-
+                    tvTitle.setText("Tin Tức");
                     break;
 
                 case "TIMETABLE":
                     fragment = new FragmentTimetable();
+                    tvTitle.setText("Thời Khoá Biểu");
+
                     break;
 
                 case "USER":
                     fragment = new FragmentUser();
+                    tvTitle.setText("Thông Tin Cá Nhân");
                     break;
 
                 case "MARK":
                     fragment = new FragmentMark();
+                    tvTitle.setText("Bảng Điểm");
                     break;
                 }
                 loadFragment(fragment);
@@ -93,22 +99,18 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onItemReselected(int itemIndex, String itemName) {
-                Toast.makeText(MainActivity.this, itemName, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, itemName, Toast.LENGTH_SHORT).show();
             }
         });
 
-//        BottomNavigationView navigation = findViewById(R.id.nav_view);
         btnLogout = findViewById(R.id.btnLogout);
-//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-//        navigation.setSelectedItemId(R.id.navigation_home);
-
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Logout?");
-                builder.setMessage("Are you sure?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setTitle("Đăng xuất?");
+                builder.setMessage("Bạn có muốn đăng xuất?");
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
@@ -117,10 +119,9 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(a);
                     }
                 });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getBaseContext(), "Canceled", Toast.LENGTH_SHORT).show();
                     }
                 });
                 android.app.AlertDialog alertDialog = builder.create();
@@ -140,39 +141,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
-
-//    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-//            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-//        @Override
-//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//            switch (item.getItemId()) {
-//                case R.id.navigation_home:
-//                    fragment = new FragmentHome();
-//                    break;
-//
-//                case R.id.navigation_news:
-//                    fragment = new FragmentNews();
-//                    break;
-//
-//                case R.id.navigation_timeTable:
-//                    fragment = new FragmentTimetable();
-//                    break;
-//
-//                case R.id.navigation_user:
-//                    fragment = new FragmentUser();
-//                    break;
-//
-//                case R.id.navigation_mark:
-//                    fragment = new FragmentMark();
-//                    break;
-//            }
-//            return loadFragment(fragment);
-//        }
-//    };
-
-    private boolean loadFragment(Fragment fragment) {
+    private void loadFragment(Fragment fragment) {
         //switching fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
@@ -182,9 +151,7 @@ public class MainActivity extends AppCompatActivity {
             transaction.replace(R.id.fragment, fragment);
             transaction.addToBackStack(null);
             transaction.commit();
-            return true;
         }
-        return false;
     }
 
     @Override
@@ -195,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-//        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -210,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 .setIcon(R.raw.loading)
                 .setTitle(R.string.app_name)
                 .setMessage(R.string.exit_app)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                .setPositiveButton("Có", new DialogInterface.OnClickListener()
                 {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -218,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     }
                 })
-                .setNegativeButton("No", null)
+                .setNegativeButton("Không", null)
                 .show();
     }
 }

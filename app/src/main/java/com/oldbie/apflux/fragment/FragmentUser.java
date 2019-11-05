@@ -97,9 +97,9 @@ public class FragmentUser extends Fragment {
         mBirthday.setText(fmtOut.format(date));
 
         if (LoginActivity.arrSSR.get(0).getGender().equals("1")) {
-            mGender.setText("Male");
+            mGender.setText("Nam");
         } else {
-            mGender.setText("Female");
+            mGender.setText("Nữ");
         }
 //        mMajor.setText(LoginActivity.arrSSR.get(0).getMajor());
         if(LoginActivity.arrSSR.get(0).getMajor().equals("1")) {
@@ -155,9 +155,9 @@ public class FragmentUser extends Fragment {
         fmtOut = new SimpleDateFormat("dd-MM-yyyy");
         mStadate.setText(fmtOut.format(date));
         if (LoginActivity.arrSSR.get(0).getStatus().equals("1")) {
-            mStatus.setText("Studying");
+            mStatus.setText("Học đi");
         } else {
-            mStatus.setText("Relearning");
+            mStatus.setText("Học lại");
         }
         tvName.setText(LoginActivity.arrSSR.get(0).getName());
         tvUsername.setText(LoginActivity.arrSSR.get(0).getEmail());
