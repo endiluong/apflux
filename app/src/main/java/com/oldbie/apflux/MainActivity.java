@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragment = null;
     private TextView tvTitle;
     private Button btnLogout;
-    private NetworkAPI api;
     private GoogleSignInClient mGoogleSignInClient;
     public static SpaceNavigationView spaceNavigationView;
 
@@ -99,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onItemReselected(int itemIndex, String itemName) {
-//                Toast.makeText(MainActivity.this, itemName, Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -145,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
         //switching fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-
         if (fragment != null) {
             getSupportFragmentManager().popBackStack();
             transaction.replace(R.id.fragment, fragment);
@@ -169,11 +167,10 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    @SuppressLint("ResourceType")
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
-                .setIcon(R.raw.loading)
+                .setIcon(R.drawable.logoc)
                 .setTitle(R.string.app_name)
                 .setMessage(R.string.exit_app)
                 .setPositiveButton("Có", new DialogInterface.OnClickListener()

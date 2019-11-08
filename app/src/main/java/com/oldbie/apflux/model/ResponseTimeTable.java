@@ -14,17 +14,15 @@ public class ResponseTimeTable implements Serializable, Parcelable {
     @SerializedName("error")
     @Expose
     private Integer error;
-
     @SerializedName("result")
     @Expose
-
     private Integer result;
     @SerializedName("message")
     @Expose
-
     private String message;
     @SerializedName("data")
     @Expose
+
     private ArrayList<TimeTable> data = new ArrayList<>();
 
     public ResponseTimeTable(Integer error, Integer result, String message, ArrayList<TimeTable> data) {
@@ -34,9 +32,8 @@ public class ResponseTimeTable implements Serializable, Parcelable {
         this.data = data;
     }
 
-    protected ResponseTimeTable(Parcel in) {
+    private ResponseTimeTable(Parcel in) {
     }
-
 
     public static final Creator<ResponseTimeTable> CREATOR = new Creator<ResponseTimeTable>() {
         @Override

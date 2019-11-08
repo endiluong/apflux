@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServerResponse implements Serializable, Parcelable {
+
     @SerializedName("error")
     @Expose
     private Integer error;
@@ -22,7 +23,9 @@ public class ServerResponse implements Serializable, Parcelable {
     private String message;
     @SerializedName("data")
     @Expose
+
     private ArrayList<User> data = new ArrayList<>();
+
     public final static Parcelable.Creator<ServerResponse> CREATOR = new Parcelable.Creator<ServerResponse>() {
 
 

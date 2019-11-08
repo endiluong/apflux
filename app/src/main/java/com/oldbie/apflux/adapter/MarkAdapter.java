@@ -17,15 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MarkAdapter extends ArrayAdapter<Mark> {
-
     private Context context;
-//    private int resource;
     private List<Mark> arrMark;
 
     public MarkAdapter(Context context, ArrayList<Mark> arrMark) {
         super(context, 0, arrMark);
         this.context = context;
-//        this.resource = resource;
         this.arrMark = arrMark;
     }
 
@@ -36,12 +33,11 @@ public class MarkAdapter extends ArrayAdapter<Mark> {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.mark_item, parent, false);
             viewHolder = new ViewHolder();
-            viewHolder.tvAVG = (TextView) convertView.findViewById(R.id.tvAVG);
-            viewHolder.tvSubName = (TextView) convertView.findViewById(R.id.tvSubName);
-            viewHolder.tvSubID = (TextView) convertView.findViewById(R.id.tvSubID);
-            viewHolder.tvSeason = (TextView) convertView.findViewById(R.id.tvSeason);
-            viewHolder.tvSubStatus = (TextView) convertView.findViewById(R.id.tvSubStatus);
-
+            viewHolder.tvAVG = convertView.findViewById(R.id.tvAVG);
+            viewHolder.tvSubName = convertView.findViewById(R.id.tvSubName);
+            viewHolder.tvSubID = convertView.findViewById(R.id.tvSubID);
+            viewHolder.tvSeason = convertView.findViewById(R.id.tvSeason);
+            viewHolder.tvSubStatus = convertView.findViewById(R.id.tvSubStatus);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -51,7 +47,6 @@ public class MarkAdapter extends ArrayAdapter<Mark> {
         viewHolder.tvSubName.setText(mark.getSubjectName());
         viewHolder.tvSubID.setText(mark.getSubjectId());
         viewHolder.tvSeason.setText(mark.getSeason());
-//        viewHolder.tvStatus.setText(mark.getStatus());
         if (mark.getStatus().equals("1")) {
             viewHolder.tvSubStatus.setText("Passed");
             viewHolder.tvSubStatus.setTextColor(Color.parseColor("#00c853"));

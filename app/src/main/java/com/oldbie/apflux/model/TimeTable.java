@@ -1,7 +1,5 @@
 package com.oldbie.apflux.model;
 
-import android.view.View;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -10,41 +8,30 @@ public class TimeTable {
     @SerializedName( "id" )
     @Expose
     private String mId;
-
     @SerializedName( "room" )
     @Expose
     private String mRoom;
-
     @SerializedName( "place" )
     @Expose
     private String mPlace;
-
     @SerializedName( "tutor" )
     @Expose
     private String mTutor;
-
     @SerializedName( "date" )
     @Expose
     private String mDate;
-
     @SerializedName( "subject" )
     @Expose
     private String mSubject;
-
     @SerializedName( "subject_id" )
     @Expose
     private String mIdSubject;
-
     @SerializedName( "class" )
     @Expose
     private String mClass;
-
     @SerializedName( "slot" )
     @Expose
     private String mSlot;
-
-//    private View.OnClickListener requestBtnClickListener;
-
 
     public TimeTable() { }
 
@@ -59,15 +46,6 @@ public class TimeTable {
         this.mClass = mClass;
         this.mSlot = mSlot;
     }
-
-//
-//    public View.OnClickListener getRequestBtnClickListener() {
-//        return requestBtnClickListener;
-//    }
-//
-//    public void setRequestBtnClickListener(View.OnClickListener requestBtnClickListener) {
-//        this.requestBtnClickListener = requestBtnClickListener;
-//    }
 
     public String getmId() {
         return mId;

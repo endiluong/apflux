@@ -1,7 +1,6 @@
 package com.oldbie.apflux;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,6 +8,7 @@ import android.os.Handler;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -220,7 +220,6 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this,"ErrorToken!", LENGTH_LONG).show();
                     Log.e(TAG, "onResponseToken: "+ response.body().getResult());
                     finish();
-
                 }
             }
 
@@ -250,7 +249,6 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     Log.e(TAG, "onResponse: "+ response.body().getResult());
                     finish();
-
             }
         }
 
@@ -314,22 +312,19 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Thoát?");
-        builder.setMessage("Bạn chắc chắn muốn thoát ?");
-        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-                finish();
-            }
-        });
-        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+        new AlertDialog.Builder(this)
+                .setIcon(R.drawable.logoc)
+                .setTitle(R.string.app_name)
+                .setMessage(R.string.exit_app)
+                .setPositiveButton("Có", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        moveTaskToBack(true);
+                        finish();
+                    }
+                })
+                .setNegativeButton("Không", null)
+                .show();
     }
 }

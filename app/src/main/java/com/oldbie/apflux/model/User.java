@@ -50,15 +50,12 @@ public class User implements Serializable, Parcelable {
     @SerializedName("specialize")
     @Expose
     private String specialize;
-
     @SerializedName("access_token")
     @Expose
     private String token;
-
     @SerializedName("class")
     @Expose
     private String course;
-
     @SerializedName("start_date")
     @Expose
     private String startDate;
@@ -76,7 +73,6 @@ public class User implements Serializable, Parcelable {
     private String deleteStatus;
     public final static Parcelable.Creator<User> CREATOR = new Creator<User>() {
 
-
         @SuppressWarnings({
                 "unchecked"
         })
@@ -91,7 +87,7 @@ public class User implements Serializable, Parcelable {
     };
     private final static long serialVersionUID = 6923745104029015873L;
 
-    protected User(Parcel in) {
+    private User(Parcel in) {
         this.id = ((String) in.readValue((String.class.getClassLoader())));
         this.username = ((String) in.readValue((String.class.getClassLoader())));
         this.password = ((String) in.readValue((String.class.getClassLoader())));
@@ -144,6 +140,7 @@ public class User implements Serializable, Parcelable {
      * @param createDate
      * @param major
      */
+
     public User(String id, String username, String password, String email, String name, String phone, String address, String avatar, String identification, String studentId, String birthday, String gender, String major, String specialize, String course, String token, String startDate, String status, String createDate, String updateDate, String deleteStatus) {
         super();
         this.id = id;

@@ -29,33 +29,23 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentTimetable extends Fragment {
-
     private String TAG = "TimeTable";
+    private ListView lvMain;
+    private ArrayList<TimeTable> arrTimeTable;
+    private NetworkAPI api;
+    private TimeTableAdapter adapter;
 
-    ListView lvMain;
-
-    ArrayList<TimeTable> arrTimeTable;
-    //.. ..//
-    FoldingCell fc;
-    NetworkAPI api;
-    TimeTableAdapter adapter;
-    //.. ..//
     public FragmentTimetable() {
         // Required empty public constructor
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view;
-        view=inflater.inflate( R.layout.fragment_timetable, container, false );
-        lvMain=(ListView) view.findViewById( R.id.lvMain );
+        view = inflater.inflate( R.layout.fragment_timetable, container, false );
+        lvMain = view.findViewById( R.id.lvMain );
         api = ServiceAPI.userService( NetworkAPI.class );
-
-        fc = (FoldingCell) view.findViewById(R.id.folding_cell);
-
         lvMain.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -64,56 +54,45 @@ public class FragmentTimetable extends Fragment {
                 // register in adapter that state for selected cell is toggled
                 adapter.registerToggle(position);
             }
-        } );
-
+        });
         ShowDataJSON();
-
         return view;
-
     }
-
 
     @Override
     public void onResume() {
         super.onResume();
-//        adapter.notifyDataSetChanged();
         ShowDataJSON();
-
     }
 
     private void ShowDataJSON(){
-
-        getActivity().runOnUiThread( new Runnable() {
+        getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                final String checkId = LoginActivity.arrSSR.get( 0 ).getStudentId();
-                final String token = LoginActivity.arrToken.get( 0 ).getToken();
-
-//                Toast.makeText( getContext(),checkId + "\n"+token ,Toast.LENGTH_SHORT ).show();
-
-                Call<ResponseTimeTable> call = api.getAllData( checkId, token );
-                call.enqueue( new Callback<ResponseTimeTable>() {
-                    @Override
-                    public void onResponse(Call<ResponseTimeTable> call, Response<ResponseTimeTable> response) {
-                        if(response.body().getResult()==1){
-                            arrTimeTable=response.body().getData();
-                            for(int i=0;i<arrTimeTable.size();i++){
-                                adapter=new TimeTableAdapter( getContext(),arrTimeTable );
-                                lvMain.setAdapter( adapter );
-                            }
-                        }else{
-                            Toast.makeText( getContext(),"Errors:...",Toast.LENGTH_SHORT ).show();
-                            Log.e( TAG,"Errors: ..."+ response.body().getResult() );
+            final String checkId = LoginActivity.arrSSR.get(0).getStudentId();
+            final String token = LoginActivity.arrToken.get(0).getToken();
+            Call<ResponseTimeTable> call = api.getAllData(checkId, token);
+            call.enqueue(new Callback<ResponseTimeTable>() {
+                @Override
+                public void onResponse(Call<ResponseTimeTable> call, Response<ResponseTimeTable> response) {
+                    if(response.body().getResult()==1){
+                        arrTimeTable = response.body().getData();
+                        for(int i=0;i<arrTimeTable.size();i++){
+                            adapter = new TimeTableAdapter(getContext(),arrTimeTable);
+                            lvMain.setAdapter(adapter);
                         }
+                    } else {
+                        Toast.makeText(getContext(),"Errors:...",Toast.LENGTH_SHORT).show();
+                        Log.e( TAG,"Errors: ..."+ response.body().getResult());
                     }
+                }
 
-                    @Override
-                    public void onFailure(Call<ResponseTimeTable> call, Throwable t) {
+                @Override
+                public void onFailure(Call<ResponseTimeTable> call, Throwable t) {
 
-                    }
-                } );
+                }
+            });
             }
-        } );
-
+        });
     }
 }

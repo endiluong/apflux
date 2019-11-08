@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 public class ResponseMark {
+
     @SerializedName("error")
     @Expose
     private Integer error;
@@ -17,6 +18,7 @@ public class ResponseMark {
     private String message;
     @SerializedName("data")
     @Expose
+
     private ArrayList<Mark> data = null;
 
     /**

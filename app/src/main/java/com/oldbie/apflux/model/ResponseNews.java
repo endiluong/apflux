@@ -22,6 +22,7 @@ public class ResponseNews implements Serializable, Parcelable {
     private String message;
     @SerializedName("data")
     @Expose
+
     private ArrayList<News> data = new ArrayList<>();
 
     public ResponseNews(Integer error, Integer result, String message, ArrayList<News> data) {
@@ -31,7 +32,7 @@ public class ResponseNews implements Serializable, Parcelable {
         this.data = data;
     }
 
-    protected ResponseNews(Parcel in) {
+    private ResponseNews(Parcel in) {
     }
 
     public static final Creator<ResponseNews> CREATOR = new Creator<ResponseNews>() {

@@ -14,7 +14,6 @@ public class News {
     @SerializedName("news_type")
     @Expose
     private String mNewType;
-
     @SerializedName("content")
     @Expose
     private String mContent;

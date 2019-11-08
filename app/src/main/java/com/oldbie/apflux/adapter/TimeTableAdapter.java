@@ -21,11 +21,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
-
     private Date date;
     private SimpleDateFormat fmtOut = new SimpleDateFormat("dd-MM-yyyy");
     private SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-
     private HashSet<Integer> unfoldedIndexes = new HashSet<>();
 
     public TimeTableAdapter(Context context, List<TimeTable> objects) {
@@ -49,23 +47,21 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
 
             //.. binding view parts to view holder ..//
             //.. Head ..//
-            viewHolder.tvDate_head =cell.findViewById( R.id.tvDate_head );
-            viewHolder.tvSlot_head =cell.findViewById( R.id.tvSlot_head );
-            viewHolder.tvSubject_head =cell.findViewById( R.id.tvSubject_head );
-            viewHolder.tvPlace_head =cell.findViewById( R.id.tvPlace_head );
-            viewHolder.tvRoom_head =cell.findViewById( R.id.tvRoom_head );
+            viewHolder.tvDate_head =cell.findViewById(R.id.tvDate_head);
+            viewHolder.tvSlot_head =cell.findViewById(R.id.tvSlot_head);
+            viewHolder.tvSubject_head =cell.findViewById(R.id.tvSubject_head);
+            viewHolder.tvPlace_head =cell.findViewById(R.id.tvPlace_head);
+            viewHolder.tvRoom_head =cell.findViewById(R.id.tvRoom_head);
 
             //.. Content ..//
-            viewHolder.tvRoom_content =cell.findViewById( R.id.tvRoom_content );
-            viewHolder.tvPlace_content =cell.findViewById( R.id.tvPlace_content );
-            viewHolder.tvDate_content =cell.findViewById( R.id.tvDate_content );
-            viewHolder.tvTutor_content =cell.findViewById( R.id.tvTutor_content );
-            viewHolder.tvSubject_content =cell.findViewById( R.id.tvSubject_content );
-
-            viewHolder.tvIdSubject_content =cell.findViewById( R.id.tvIdSubject_content );
-            viewHolder.tvClass_content =cell.findViewById( R.id.tvClass_content );
-            viewHolder.tvSlot_content =cell.findViewById( R.id.tvSlot_content );
-//            viewHolder.contentRequestBtn = cell.findViewById(R.id.content_request_btn);
+            viewHolder.tvRoom_content =cell.findViewById(R.id.tvRoom_content);
+            viewHolder.tvPlace_content =cell.findViewById(R.id.tvPlace_content);
+            viewHolder.tvDate_content =cell.findViewById(R.id.tvDate_content);
+            viewHolder.tvTutor_content =cell.findViewById(R.id.tvTutor_content);
+            viewHolder.tvSubject_content =cell.findViewById(R.id.tvSubject_content);
+            viewHolder.tvIdSubject_content =cell.findViewById(R.id.tvIdSubject_content);
+            viewHolder.tvClass_content =cell.findViewById(R.id.tvClass_content);
+            viewHolder.tvSlot_content =cell.findViewById(R.id.tvSlot_content);
 
             cell.setTag(viewHolder);
         } else {
@@ -83,33 +79,28 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
         }
 
         try {
-            date = fmt.parse( item.getmDate());
+            date = fmt.parse(item.getmDate());
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
         //.. bind data from selected element to view through view holder
         //.. head
-//        viewHolder.tvDate_head.setText(item.getmDate());
         viewHolder.tvDate_head.setText(fmtOut.format(date));
         viewHolder.tvSlot_head.setText(item.getmSlot());
         viewHolder.tvSubject_head.setText(item.getmSubject());
         viewHolder.tvPlace_head.setText(item.getmPlace());
         viewHolder.tvRoom_head.setText(item.getmRoom());
-
         //.. content
         viewHolder.tvRoom_content.setText(item.getmRoom());
         viewHolder.tvPlace_content.setText(item.getmPlace());
-//        viewHolder.tvDate_content.setText(item.getmDate());
         viewHolder.tvDate_content.setText(fmtOut.format(date));
         viewHolder.tvTutor_content.setText(item.getmTutor());
         viewHolder.tvSubject_content.setText(item.getmSubject());
-
         viewHolder.tvIdSubject_content.setText(item.getmIdSubject());
         viewHolder.tvClass_content.setText(item.getmClass());
         viewHolder.tvSlot_content.setText(item.getmSlot());
         //..
-
         return cell;
     }
     // simple methods for register cell state changes
@@ -120,11 +111,11 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
             registerUnfold(position);
     }
 
-    public void registerFold(int position) {
+    private void registerFold(int position) {
         unfoldedIndexes.remove(position);
     }
 
-    public void registerUnfold(int position) {
+    private void registerUnfold(int position) {
         unfoldedIndexes.add(position);
     }
 
@@ -136,14 +127,12 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
         TextView tvSubject_head;
         TextView tvPlace_head;
         TextView tvRoom_head;
-
         //.. Content ..//
         TextView tvRoom_content;
         TextView tvPlace_content;
         TextView tvDate_content;
         TextView tvTutor_content;
         TextView tvSubject_content;
-
         TextView tvIdSubject_content;
         TextView tvClass_content;
         TextView tvSlot_content;

@@ -27,9 +27,9 @@ import retrofit2.Response;
 public class FragmentMark extends Fragment {
 
     private ListView lvMark;
-    NetworkAPI api;
-    MarkAdapter markAdapter;
-    ArrayList<Mark> arrMark = new ArrayList<>();
+    private NetworkAPI api;
+    private MarkAdapter markAdapter;
+    private ArrayList<Mark> arrMark = new ArrayList<>();
 
     public FragmentMark() {
         // Required empty public constructor
@@ -44,7 +44,6 @@ public class FragmentMark extends Fragment {
         api = ServiceAPI.userService( NetworkAPI.class );
         ShowMarkJSON(view);
         return view;
-
     }
 
     private void ShowMarkJSON(View view){
@@ -52,36 +51,34 @@ public class FragmentMark extends Fragment {
         getActivity().runOnUiThread( new Runnable() {
             @Override
             public void run() {
-                final String checkId = LoginActivity.arrSSR.get(0).getStudentId();
-                final String token = LoginActivity.arrToken.get(0).getToken();
-                Call<ResponseMark> call = api.getMark(checkId, token);
-                call.enqueue( new Callback<ResponseMark>() {
-                    @Override
-                    public void onResponse(Call<ResponseMark> call, Response<ResponseMark> response) {
-                        if(response.body().getResult()==1){
-                            arrMark=response.body().getData();
-                            for(int i=0;i<arrMark.size();i++){
-                                markAdapter=new MarkAdapter(getContext(), arrMark);
-                                lvMark.setAdapter(markAdapter);
-                            }
-                        }else{
-                            Toast.makeText( getContext(),"Errors!",Toast.LENGTH_SHORT ).show();
+            final String checkId = LoginActivity.arrSSR.get(0).getStudentId();
+            final String token = LoginActivity.arrToken.get(0).getToken();
+            Call<ResponseMark> call = api.getMark(checkId, token);
+            call.enqueue(new Callback<ResponseMark>() {
+                @Override
+                public void onResponse(Call<ResponseMark> call, Response<ResponseMark> response) {
+                    if(response.body().getResult()==1){
+                        arrMark=response.body().getData();
+                        for(int i=0;i<arrMark.size();i++){
+                            markAdapter=new MarkAdapter(getContext(), arrMark);
+                            lvMark.setAdapter(markAdapter);
                         }
+                    } else {
+                        Toast.makeText(getContext(),"Errors!",Toast.LENGTH_SHORT).show();
                     }
+                }
 
-                    @Override
-                    public void onFailure(Call<ResponseMark> call, Throwable t) {
+                @Override
+                public void onFailure(Call<ResponseMark> call, Throwable t) {
 
-                    }
-                } );
+                }
+            });
             }
-        } );
-
+        });
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
     }
 }
