@@ -17,7 +17,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Title view"
-                android:textSize="@dimen/_16sdp"
+                android:textSize="@dimen/_14sdp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:gravity="center"/>
@@ -29,7 +29,8 @@
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:text="12:00 PM" />
+                android:text="12:00 PM"
+                android:maxLines="1" />
         </LinearLayout>
     </RelativeLayout>
     <RelativeLayout
@@ -46,18 +47,18 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingTop="@dimen/_2sdp">
+                <ImageView
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:src="@drawable/calendar"
+                    android:layout_gravity="center"/>
                 <TextView
-                    android:layout_weight="3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ngày học: "
-                    android:textSize="@dimen/_16sdp"/>
-                <TextView
+                    android:paddingLeft="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:id="@+id/tvDate_home"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/_16sdp"
+                    android:textSize="@dimen/_14sdp"
                     android:text="Wednesday" />
             </LinearLayout>
 
@@ -65,20 +66,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingTop="@dimen/_2sdp">
+                android:paddingTop= "@dimen/_2sdp">
+                <ImageView
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:src="@drawable/location"
+                    android:layout_gravity="center"/>
                 <TextView
-                    android:layout_weight="3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Địa điểm: "
-                    android:textSize="@dimen/_16sdp"/>
-                <TextView
+                    android:paddingLeft="@dimen/_4sdp"
                     android:id="@+id/tvPlace_home"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Title view"
-                    android:textSize="@dimen/_16sdp" />
+                    android:textSize="@dimen/_14sdp" />
             </LinearLayout>
 
             <LinearLayout
@@ -87,19 +88,19 @@
                 android:orientation="horizontal"
                 android:paddingTop="@dimen/_2sdp"
                 android:paddingBottom="@dimen/_2sdp">
+                <ImageView
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:src="@drawable/classroom"
+                    android:layout_gravity="center"/>
                 <TextView
-                    android:layout_weight="3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Phòng: "
-                    android:textSize="@dimen/_16sdp"/>
-                <TextView
+                    android:paddingLeft="@dimen/_4sdp"
                     android:id="@+id/tvRoom_home"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Title view"
-                    android:textSize="@dimen/_16sdp" />
+                    android:textSize="@dimen/_14sdp" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

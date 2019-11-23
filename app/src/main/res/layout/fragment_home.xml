@@ -15,10 +15,10 @@
         android:layout_above="@id/rvTimeTable_home"
         android:text="Thời Khoá Biểu"
         android:textAlignment="center"
-        android:background="@color/space_default_color"
+        android:background="@color/transparent"
         android:textSize="@dimen/_18sdp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="#000"
         android:padding="@dimen/_2sdp"/>
 
     <RelativeLayout
@@ -37,10 +37,10 @@
         android:layout_height="wrap_content"
         android:text="Tin Tức"
         android:textAlignment="center"
-        android:background="@color/space_default_color"
+        android:background="@color/transparent"
         android:textSize="@dimen/_18sdp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="#000"
         android:padding="@dimen/_2sdp"/>
     <RelativeLayout
         android:layout_width="match_parent"

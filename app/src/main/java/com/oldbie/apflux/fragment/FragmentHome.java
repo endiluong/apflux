@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -83,8 +84,9 @@ public class FragmentHome extends Fragment {
                             arrTimetable = response.body().getData();
                             for (int i = 0; i < arrTimetable.size(); i++) {
                                 adapterTimetable = new HomeAdapterTimetable(getContext(), arrTimetable);
-                                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-                                rvTimeTable_home.setLayoutManager(layoutManager);
+//                                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                                GridLayoutManager grid = new GridLayoutManager( getContext(),2 ,GridLayoutManager.VERTICAL,false);
+                                rvTimeTable_home.setLayoutManager(grid);
                                 rvTimeTable_home.setAdapter(adapterTimetable);
                             }
                         } else {
@@ -126,8 +128,9 @@ public class FragmentHome extends Fragment {
                         arrNews = response.body().getData();
                         for (int i=0;i<arrNews.size();i++) {
                             adapterNews = new HomeAdapterNews(arrNews,getContext());
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-                            rvNews_home.setLayoutManager(layoutManager);
+//                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                            GridLayoutManager grid = new GridLayoutManager( getContext(),2 ,GridLayoutManager.VERTICAL,false);
+                            rvNews_home.setLayoutManager(grid);
                             rvNews_home.setAdapter(adapterNews);
                         }
                     } else {

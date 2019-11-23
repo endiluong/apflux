@@ -35,7 +35,7 @@ public class HomeAdapterNews extends RecyclerView.Adapter<HomeAdapterNews.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View vi;
         LayoutInflater inflater=LayoutInflater.from(context);
-        vi=inflater.inflate(R.layout.item_news,parent,false);
+        vi=inflater.inflate(R.layout.item_news_home,parent,false);
         return new ViewHolder(vi);
     }
 
@@ -84,11 +84,11 @@ public class HomeAdapterNews extends RecyclerView.Adapter<HomeAdapterNews.ViewHo
 
         ViewHolder(@NonNull View v) {
             super(v);
-            tvTitle_news = v.findViewById(R.id.tvTitle_news);
-            tvCate_news = v.findViewById(R.id.tvCate_news);
-            tvDate_news = v.findViewById(R.id.tvDate_news);
-            tvPoster_news= v.findViewById(R.id.tvPoster_news);
-            tvContent_news = v.findViewById(R.id.tvContent_news);
+            tvTitle_news = v.findViewById(R.id.tvTitle_news_home);
+            tvCate_news = v.findViewById(R.id.tvCate_news_home);
+            tvDate_news = v.findViewById(R.id.tvDate_news_home);
+            tvPoster_news= v.findViewById(R.id.tvPoster_news_home);
+            tvContent_news = v.findViewById(R.id.tvContent_news_home);
         }
     }
 }
