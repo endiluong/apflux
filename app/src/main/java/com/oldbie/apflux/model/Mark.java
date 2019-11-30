@@ -3,11 +3,13 @@ package com.oldbie.apflux.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Mark {
+import java.util.List;
+
+public class Mark{
 
     @SerializedName("id")
     @Expose
-    private String id;
+    private Integer id;
     @SerializedName("subject_id")
     @Expose
     private String subjectId;
@@ -17,44 +19,21 @@ public class Mark {
     @SerializedName("season")
     @Expose
     private String season;
-    @SerializedName("mark")
+    @SerializedName("average_grade")
     @Expose
-    private String mark;
+    private Integer averageGrade;
     @SerializedName("status")
     @Expose
-    private String status;
+    private Integer status;
+    @SerializedName("grade_detail")
+    @Expose
+    private List<MarkDetail> gradeDetail = null;
 
-    /**
-     * No args constructor for use in serialization
-     *
-     */
-    public Mark() {
-    }
-
-    /**
-     *
-     * @param season
-     * @param id
-     * @param subjectId
-     * @param mark
-     * @param subjectName
-     * @param status
-     */
-    public Mark(String id, String subjectId, String subjectName, String season, String mark, String status) {
-        super();
-        this.id = id;
-        this.subjectId = subjectId;
-        this.subjectName = subjectName;
-        this.season = season;
-        this.mark = mark;
-        this.status = status;
-    }
-
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -82,20 +61,27 @@ public class Mark {
         this.season = season;
     }
 
-    public String getMark() {
-        return mark;
+    public Integer getAverageGrade() {
+        return averageGrade;
     }
 
-    public void setMark(String mark) {
-        this.mark = mark;
+    public void setAverageGrade(Integer averageGrade) {
+        this.averageGrade = averageGrade;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
+    public List<MarkDetail> getGradeDetail() {
+        return gradeDetail;
+    }
+
+    public void setGradeDetail(List<MarkDetail> gradeDetail) {
+        this.gradeDetail = gradeDetail;
+    }
 }

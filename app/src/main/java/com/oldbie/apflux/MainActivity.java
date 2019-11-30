@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
                 case "TIMETABLE":
                     fragment = new FragmentTimetable();
                     tvTitle.setText("Thời Khoá Biểu");
-
                     break;
 
                 case "USER":
@@ -178,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         moveTaskToBack(true);
+                        signOut();
                         finish();
                     }
                 })
