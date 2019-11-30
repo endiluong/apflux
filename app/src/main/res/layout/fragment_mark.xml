@@ -11,15 +11,11 @@
         android:id="@+id/lvMark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipChildren="false"
-        android:clipToPadding="false"
         android:divider="@android:color/transparent"
-        android:dividerHeight="10dp"
         android:scrollbars="none"
-        android:paddingBottom="@dimen/_6sdp"
-        android:paddingLeft="@dimen/_6sdp"
-        android:paddingRight="@dimen/_6sdp"
-        android:paddingTop="@dimen/_6sdp"
-        android:background="@color/transparent"/>
+        android:background="@color/transparent"
+        android:paddingLeft="@dimen/_4sdp"
+        android:paddingRight="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_12sdp"/>
 
 </FrameLayout>
