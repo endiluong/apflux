@@ -120,7 +120,7 @@ public class FragmentHome extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-            Call<ResponseNews> call = api.getNewData();
+            Call<ResponseNews> call = api.getNewData(0);
             call.enqueue(new Callback<ResponseNews>() {
                 @Override
                 public void onResponse(Call<ResponseNews> call, Response<ResponseNews> response) {

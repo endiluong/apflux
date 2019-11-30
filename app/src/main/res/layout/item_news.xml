@@ -114,12 +114,13 @@
             android:visibility="gone">
 
             <TextView
+                android:paddingLeft="@dimen/_8sdp"
                 android:id="@+id/tvContent_news"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="3"
                 android:text="bla bla bla..."
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_11sdp"
                 android:textStyle="bold" />
         </LinearLayout>
 
