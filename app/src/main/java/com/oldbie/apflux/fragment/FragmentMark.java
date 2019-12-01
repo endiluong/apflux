@@ -19,6 +19,7 @@ import com.google.gson.JsonObject;
 import com.oldbie.apflux.LoginActivity;
 import com.oldbie.apflux.R;
 import com.oldbie.apflux.adapter.MarkAdapter;
+import com.oldbie.apflux.adapter.MarkDetailAdapter;
 import com.oldbie.apflux.model.GetMark;
 import com.oldbie.apflux.model.Mark;
 import com.oldbie.apflux.model.ResponseGetMark;
@@ -99,30 +100,57 @@ public class FragmentMark extends Fragment {
 
     //.. EVENT CLICK ON ITEM ..//
     public void onClickItem(){
+
         lvMark.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ArrayList<GetMark.GetMarkDetail> details = arrGetMark.get( position ).getArrayList();
-                String MarkType,MarkDetail,Perc;
-                for (int i=0;i<details.size();i++){
-                    MarkType = details.get( i ).getmMarkType();
-                    MarkDetail = details.get( i ).getmPercentage();
-                    Perc = details.get( i ).getmMarkDetail();
-                    Toast.makeText( getContext(), MarkType+"\n"+ Perc+"\n"+MarkDetail,Toast.LENGTH_SHORT).show();
+//                View listViewDialog = View.inflate(getContext(), R.layout.dialog_item_mark_detail, null);
+//
+        AlertDialog.Builder builder = new AlertDialog.Builder( getContext() );
+        ListView lv = (ListView) view.findViewById(R.id.lvMarkDetail);
+//        ArrayList<GetMark.GetMarkDetail> details = arrGetMark.get( position ).getArrayList();
+        ArrayList<GetMark.GetMarkDetail> details = arrGetMark.get( position ).getArrayList();
+        MarkDetailAdapter adapter = new MarkDetailAdapter( getContext(), details );
+        lv.setAdapter( adapter );
+        builder.setTitle( arrGetMark.get( position ).getmSubjectName() )
+                .setView( R.layout.dialog_item_mark_detail )
+                .setCancelable( true ).create().show();
 
-                }
-
-//                AlertDialog.Builder builder = new AlertDialog.Builder( getContext() );
-//                builder.setTitle( arrGetMark.get( position ).getmSubjectName() )
-//                        .setMessage( MarkType+"\n"+ Perc+"\n"+MarkDetail+"\n")
-//                        .setCancelable( true ).create().show();
             }
         } );
 
+        ///////////////////////  ///////////////////////  ///////////////////////
+//        lvMark.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                ArrayList<GetMark.GetMarkDetail> details = arrGetMark.get( position ).getArrayList();
+//                String MarkType,MarkDetail,Perc;
+//                for (int i=0;i<details.size();i++){
+//                    MarkType = details.get( i ).getmMarkType();
+//                    MarkDetail = details.get( i ).getmPercentage();
+//                    Perc = details.get( i ).getmMarkDetail();
+//
+//                    if (details.isEmpty()){
+//                        Toast.makeText( getContext(), "NULL",Toast.LENGTH_SHORT).show();
+//
+//                    }else{
+////                        Toast.makeText( getContext(), MarkType+"\n"+ Perc+"\n"+MarkDetail,Toast.LENGTH_SHORT).show();
+//                        DialogShow( position,MarkType,Perc,MarkDetail );
+//
+//                    }
+//                }
+//            }
+//        } );
+    }
 
-
-
-
+    public void DialogShow(int position, String MarkType, String Perc, String MarkDetail){
+//        View listViewDialog = View.inflate(getContext(), R.layout.dialog_item_mark_detail, null);
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder( getContext() );
+//        ListView checkBox = findViewById(R.id.checkBox1);
+//        builder.setTitle( arrGetMark.get( position ).getmSubjectName() )
+//                .setView( listViewDialog )
+//                .setCancelable( true ).create().show();
     }
     @Override
     public void onResume() {
