@@ -1,5 +1,6 @@
 package com.oldbie.apflux.network;
 
+import com.oldbie.apflux.model.ResponseGetMark;
 import com.oldbie.apflux.model.ResponseMark;
 import com.oldbie.apflux.model.ResponseNews;
 import com.oldbie.apflux.model.ResponseTimeTable;
@@ -39,4 +40,9 @@ public interface NetworkAPI {
     @GET("api_get_news.php")
     Call<ResponseNews> getNewData();
 
+    @POST("api_get_mark.php")
+    @FormUrlEncoded
+    Call<ResponseGetMark> getAllMark(@Field("sid") String id,
+                                     @Field("index") int index,
+                                     @Field( "token" ) String token);
 }
