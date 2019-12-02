@@ -90,4 +90,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             tvContent_news = v.findViewById(R.id.tvContent_news);
         }
     }
+
+    public void loadingDataFetch(ArrayList<News> arrayNews){
+        for (News news : arrayNews) {
+            arrNews.add( news );
+            notifyDataSetChanged();
+        }
+    }
 }

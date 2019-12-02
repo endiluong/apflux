@@ -15,6 +15,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface NetworkAPI {
 
@@ -38,7 +39,7 @@ public interface NetworkAPI {
                                @Field( "token" ) String token);
 
     @GET("api_get_news.php")
-    Call<ResponseNews> getNewData();
+    Call<ResponseNews> getNewData(@Query( "index" ) int index);
 
     @POST("api_get_mark.php")
     @FormUrlEncoded

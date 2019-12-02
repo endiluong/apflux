@@ -121,7 +121,7 @@
                     android:id="@+id/tvContent_news_home"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="4"
+                    android:maxLines="3"
                     android:text="bla bla bla..."
                     android:textSize="@dimen/_10sdp"
                     android:textStyle="bold" />
