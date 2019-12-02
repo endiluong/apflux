@@ -1,8 +1,10 @@
 package com.oldbie.apflux.fragment;
 
-import android.app.AlertDialog;
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -81,7 +83,13 @@ public class FragmentMark extends Fragment {
 //                            Toast.makeText( getContext(),toastTest,Toast.LENGTH_SHORT ).show();
                             adapter = new MarkAdapter( getContext(),arrGetMark );
                             lvMark.setAdapter( adapter );
-                            onClickItem();
+
+                            lvMark.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    onClickItem(view,position);
+                                }
+                            } );
                         }
                     }else{
                         Toast.makeText( getContext(),"please check connection",Toast.LENGTH_SHORT ).show();
@@ -99,25 +107,19 @@ public class FragmentMark extends Fragment {
     }
 
     //.. EVENT CLICK ON ITEM ..//
-    public void onClickItem(){
+    public void onClickItem(View view,int position){
 
-        lvMark.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                View listViewDialog = View.inflate(getContext(), R.layout.dialog_item_mark_detail, null);
-//
-        AlertDialog.Builder builder = new AlertDialog.Builder( getContext() );
-        ListView lv = (ListView) view.findViewById(R.id.lvMarkDetail);
-//        ArrayList<GetMark.GetMarkDetail> details = arrGetMark.get( position ).getArrayList();
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(view.getContext());
+        View viewMarkDetail = getLayoutInflater().inflate(R.layout.dialog_item_mark_detail, null);
         ArrayList<GetMark.GetMarkDetail> details = arrGetMark.get( position ).getArrayList();
-        MarkDetailAdapter adapter = new MarkDetailAdapter( getContext(), details );
-        lv.setAdapter( adapter );
-        builder.setTitle( arrGetMark.get( position ).getmSubjectName() )
-                .setView( R.layout.dialog_item_mark_detail )
-                .setCancelable( true ).create().show();
+        ListView listView = viewMarkDetail.findViewById(R.id.lvMarkDetail);
 
-            }
-        } );
+        MarkDetailAdapter adapter = new MarkDetailAdapter(view.getContext(), details);
+        listView.setAdapter(adapter);
+
+        alertDialog.setView(viewMarkDetail);
+        AlertDialog dialog = alertDialog.create();
+        dialog.show();
 
         ///////////////////////  ///////////////////////  ///////////////////////
 //        lvMark.setOnItemClickListener( new AdapterView.OnItemClickListener() {
@@ -141,16 +143,6 @@ public class FragmentMark extends Fragment {
 //                }
 //            }
 //        } );
-    }
-
-    public void DialogShow(int position, String MarkType, String Perc, String MarkDetail){
-//        View listViewDialog = View.inflate(getContext(), R.layout.dialog_item_mark_detail, null);
-//
-//        AlertDialog.Builder builder = new AlertDialog.Builder( getContext() );
-//        ListView checkBox = findViewById(R.id.checkBox1);
-//        builder.setTitle( arrGetMark.get( position ).getmSubjectName() )
-//                .setView( listViewDialog )
-//                .setCancelable( true ).create().show();
     }
     @Override
     public void onResume() {
