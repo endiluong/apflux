@@ -46,11 +46,11 @@ public class FragmentNews extends Fragment {
 
     private int currentItem, totalItem, scrollItem, previousTotalItem;
 
-    private boolean isScroll = false;
+//    private boolean isScroll = false;
     private LinearLayoutManager layoutManager;
 
     private boolean isLoaddingPage=true;
-    private int viewPerpage=10;
+//    private int viewPerpage=10;
 
     public FragmentNews() {
         // Required empty public constructor
@@ -64,6 +64,7 @@ public class FragmentNews extends Fragment {
         rvMain= view.findViewById(R.id.rvMain);
         progressBar = view.findViewById( R.id.progressBar );
         getNews();
+
         return view;
     }
 
@@ -91,55 +92,55 @@ public class FragmentNews extends Fragment {
                     }
                 });
                 //..
-                rvMain.addOnScrollListener( new RecyclerView.OnScrollListener() {
-                    @Override
-                    public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                        super.onScrollStateChanged( recyclerView, newState );
-                    }
-
-                    @Override
-                    public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                        super.onScrolled( recyclerView, dx, dy );
-
-                        currentItem=layoutManager.getChildCount();
-                        totalItem=layoutManager.getItemCount();
-                        scrollItem=layoutManager.findFirstVisibleItemPosition();
-
-                        if(dy>0){
-                            if (isLoaddingPage){
-                                if (totalItem>previousTotalItem){
-                                    isLoaddingPage=false;
-                                    previousTotalItem=totalItem;
-                                }
-                            }
-
-                            if(!isLoaddingPage&& (totalItem-currentItem==scrollItem)){
-
-                                pageNumber++;
-                                delayPost();
-                                isLoaddingPage=true;
-                            }
-                        }
-                    }
-                } );
-
-                rvMain.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), new RecyclerItemClickListener.OnItemClickListener(){
-                    @Override
-                    public void onItemClick(View view, int position){
-                        String mContent = arrNew.get(position).getmContent();
-                        String mTitle = arrNew.get(position).getmTitle();
-                        AlertDialog.Builder mBuilder = new AlertDialog.Builder(view.getContext());
-                        mBuilder.setTitle(mTitle).setMessage(mContent).setCancelable(true).setNegativeButton("DONE", new DialogInterface.OnClickListener(){
-                            @Override
-                            public void onClick(DialogInterface dialog, int which){
-                                dialog.cancel();
-                                dialog.dismiss();
-                            }
-                        }).show();
-                    }
-                }));
             }
         });
+        rvMain.addOnScrollListener( new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged( recyclerView, newState );
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled( recyclerView, dx, dy );
+
+                currentItem=layoutManager.getChildCount();
+                totalItem=layoutManager.getItemCount();
+                scrollItem=layoutManager.findFirstVisibleItemPosition();
+
+                if(dy>0){
+                    if (isLoaddingPage){
+                        if (totalItem>previousTotalItem){
+                            isLoaddingPage=false;
+                            previousTotalItem=totalItem;
+                        }
+                    }
+
+                    if(!isLoaddingPage&& (totalItem-currentItem==scrollItem)){
+
+                        pageNumber++;
+                        delayPost();
+                        isLoaddingPage=true;
+                    }
+                }
+            }
+        } );
+
+        rvMain.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), new RecyclerItemClickListener.OnItemClickListener(){
+            @Override
+            public void onItemClick(View view, int position){
+                String mContent = arrNew.get(position).getmContent();
+                String mTitle = arrNew.get(position).getmTitle();
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(view.getContext());
+                mBuilder.setTitle(mTitle).setMessage(mContent).setCancelable(true).setNegativeButton("DONE", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){
+                        dialog.cancel();
+                        dialog.dismiss();
+                    }
+                }).show();
+            }
+        }));
 
     }
 
