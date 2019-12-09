@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.oldbie.apflux.R;
+import com.oldbie.apflux.model.GetMark;
 import com.oldbie.apflux.model.Mark;
 
 import org.jetbrains.annotations.NotNull;
@@ -16,11 +17,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MarkAdapter extends ArrayAdapter<Mark> {
+public class MarkAdapter extends ArrayAdapter<GetMark> {
     private Context context;
-    private List<Mark> arrMark;
+    private ArrayList<GetMark> arrMark;
 
-    public MarkAdapter(Context context, ArrayList<Mark> arrMark) {
+    public MarkAdapter(Context context, ArrayList<GetMark> arrMark) {
         super(context, 0, arrMark);
         this.context = context;
         this.arrMark = arrMark;
@@ -42,12 +43,12 @@ public class MarkAdapter extends ArrayAdapter<Mark> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        Mark mark = arrMark.get(position);
-        viewHolder.tvAVG.setText(mark.getMark());
-        viewHolder.tvSubName.setText(mark.getSubjectName());
-        viewHolder.tvSubID.setText(mark.getSubjectId());
-        viewHolder.tvSeason.setText(mark.getSeason());
-        if (mark.getStatus().equals("1")) {
+        GetMark mark = arrMark.get(position);
+        viewHolder.tvAVG.setText(mark.getmAverageGrade());
+        viewHolder.tvSubName.setText(mark.getmSubjectName());
+        viewHolder.tvSubID.setText(mark.getmSubjectId());
+        viewHolder.tvSeason.setText(mark.getmSeason());
+        if (mark.getmStatus().equals("1")) {
             viewHolder.tvSubStatus.setText("Passed");
             viewHolder.tvSubStatus.setTextColor(Color.parseColor("#00c853"));
 
