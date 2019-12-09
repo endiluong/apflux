@@ -118,6 +118,15 @@ public class FragmentMark extends Fragment {
         listView.setAdapter(adapter);
 
         alertDialog.setView(viewMarkDetail);
+        alertDialog.setCancelable( false );
+        alertDialog.setTitle( arrGetMark.get( position ).getmSubjectName() );
+        alertDialog.setNegativeButton( "DONE", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+                dialog.dismiss();
+            }
+        } );
         AlertDialog dialog = alertDialog.create();
         dialog.show();
 

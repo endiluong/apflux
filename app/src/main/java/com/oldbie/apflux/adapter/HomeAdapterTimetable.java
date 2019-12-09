@@ -45,10 +45,26 @@ public class HomeAdapterTimetable extends RecyclerView.Adapter<HomeAdapterTimeta
         holder.tvSlot_head.setText(temp.getmSlot());
         try {
             date = fmt.parse( temp.getmDate());
+
         } catch (ParseException e){
             e.printStackTrace();
         }
-        holder.tvDate_head.setText(fmtOut.format(date));
+        if (temp.getmWeekDay()==2){
+            holder.tvWeekDay_head.setText("Thứ 2");
+        }else if (temp.getmWeekDay()==3){
+            holder.tvWeekDay_head.setText("Thứ 3");
+        }else if (temp.getmWeekDay()==4){
+            holder.tvWeekDay_head.setText("Thứ 4");
+        }else if (temp.getmWeekDay()==5){
+            holder.tvWeekDay_head.setText("Thứ 5");
+        }else if (temp.getmWeekDay()==6){
+            holder.tvWeekDay_head.setText("Thứ 6");
+        }else if (temp.getmWeekDay()==7){
+            holder.tvWeekDay_head.setText("Thứ 7");
+        }else {
+            holder.tvWeekDay_head.setText("Chủ nhật");
+        }
+        holder.tvDate_head.setText("("+fmtOut.format(date)+")");
         holder.tvRoom_head.setText(temp.getmRoom());
         holder.tvPlace_head.setText(temp.getmPlace());
     }
@@ -64,6 +80,7 @@ public class HomeAdapterTimetable extends RecyclerView.Adapter<HomeAdapterTimeta
         private TextView tvSubject_head;
         private TextView tvPlace_head;
         private TextView tvRoom_head;
+        private TextView tvWeekDay_head;
 
         ViewHolder(@NonNull View vi) {
             super(vi);
@@ -72,6 +89,7 @@ public class HomeAdapterTimetable extends RecyclerView.Adapter<HomeAdapterTimeta
             tvSubject_head = vi.findViewById(R.id.tvSubject_home);
             tvPlace_head = vi.findViewById(R.id.tvPlace_home);
             tvRoom_head = vi.findViewById(R.id.tvRoom_home);
+            tvWeekDay_head = vi.findViewById(R.id.tvWeekDay_home);
         }
     }
 }

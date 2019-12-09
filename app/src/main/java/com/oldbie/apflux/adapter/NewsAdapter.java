@@ -25,6 +25,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     private SimpleDateFormat fmtOut = new SimpleDateFormat("dd-MM-yyyy");
     private SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 
+    OnloadMore onloadMore;
+
     public NewsAdapter(ArrayList<News> arrNews, Context context) {
         this.arrNews = arrNews;
         this.context = context;
@@ -96,5 +98,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             arrNews.add( news );
             notifyDataSetChanged();
         }
+    }
+
+    public interface OnloadMore{
+        void  onLoadMore();
+    }
+    public void setLoad(OnloadMore onloadMore){
+        this.onloadMore=onloadMore;
     }
 }

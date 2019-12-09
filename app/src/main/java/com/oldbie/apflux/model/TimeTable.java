@@ -14,6 +14,9 @@ public class TimeTable {
     @SerializedName( "place" )
     @Expose
     private String mPlace;
+    @SerializedName( "weekday" )
+    @Expose
+    private int mWeekDay;
     @SerializedName( "tutor" )
     @Expose
     private String mTutor;
@@ -33,18 +36,28 @@ public class TimeTable {
     @Expose
     private String mSlot;
 
-    public TimeTable() { }
+    public TimeTable() {
+    }
 
-    public TimeTable(String mId, String mRoom, String mPlace, String mTutor, String mDate, String mSubject, String mIdSubject, String mClass, String mSlot) {
+    public TimeTable(String mId, String mRoom, String mPlace, int mWeekDay, String mTutor, String mDate, String mSubject, String mIdSubject, String mClass, String mSlot) {
         this.mId = mId;
         this.mRoom = mRoom;
         this.mPlace = mPlace;
+        this.mWeekDay = mWeekDay;
         this.mTutor = mTutor;
         this.mDate = mDate;
         this.mSubject = mSubject;
         this.mIdSubject = mIdSubject;
         this.mClass = mClass;
         this.mSlot = mSlot;
+    }
+
+    public int getmWeekDay() {
+        return mWeekDay;
+    }
+
+    public void setmWeekDay(int mWeekDay) {
+        this.mWeekDay = mWeekDay;
     }
 
     public String getmId() {
