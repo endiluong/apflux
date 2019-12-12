@@ -132,7 +132,7 @@ public class FragmentNews extends Fragment {
                 String mContent = arrNew.get(position).getmContent();
                 String mTitle = arrNew.get(position).getmTitle();
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(view.getContext());
-                mBuilder.setTitle(mTitle).setMessage(mContent).setCancelable(true).setNegativeButton("DONE", new DialogInterface.OnClickListener(){
+                mBuilder.setTitle(mTitle).setMessage(mContent).setCancelable(false).setNegativeButton("Huỷ", new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which){
                         dialog.cancel();
@@ -182,7 +182,7 @@ public class FragmentNews extends Fragment {
                 adapter.notifyDataSetChanged();
                 progressBar.setVisibility( View.GONE );
             }
-        }, 3500 );
+        }, 2000 );
     }
     @Override
     public void onResume() {
